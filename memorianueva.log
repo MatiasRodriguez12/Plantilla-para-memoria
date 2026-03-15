@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  15 MAR 2026 00:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  15 MAR 2026 13:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1127,7 +1127,7 @@ l.62 L
 
 
 ]
-<./Figures/esquema_domotica.png, id=208, 623.32875pt x 295.1025pt>
+<./Figures/esquema_domotica.png, id=210, 623.32875pt x 295.1025pt>
 File: ./Figures/esquema_domotica.png Graphic file (type png)
 <use ./Figures/esquema_domotica.png>
 Package pdftex.def Info: ./Figures/esquema_domotica.png  used on input line 96.
@@ -1147,22 +1147,35 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.121 
-       [2])
+       [2]
+LaTeX Info: Redefining \. on input line 163.
+LaTeX Info: Redefining \% on input line 163.
+ [3 <./Figures/esquema_domotica.png>]
+<./Figures/esquema.png, id=225, 2547.5175pt x 1409.265pt>
+File: ./Figures/esquema.png Graphic file (type png)
+<use ./Figures/esquema.png>
+Package pdftex.def Info: ./Figures/esquema.png  used on input line 166.
+(pdftex.def)             Requested size: 407.61113pt x 225.487pt.
+
+Overfull \hbox (17.80844pt too wide) in paragraph at lines 166--167
+ [][] 
+ []
+
+)
 LaTeX Info: Redefining \. on input line 117.
 LaTeX Info: Redefining \% on input line 117.
- [3 <./Figures/esquema_domotica.png>]
+ [4 <./Figures/esquema.png>]
 \openout2 = `Chapters/Chapter2.aux'.
 
  (Chapters/Chapter2.tex
-[4
+Cap\'{\i }tulo 2.
+[5
 
 
 
 
 ]
-Cap\'{\i }tulo 2.
-[5]
-<./Figures/cuadradoAzul.png, id=236, 180.675pt x 180.675pt>
+<./Figures/cuadradoAzul.png, id=243, 180.675pt x 180.675pt>
 File: ./Figures/cuadradoAzul.png Graphic file (type png)
 <use ./Figures/cuadradoAzul.png>
 Package pdftex.def Info: ./Figures/cuadradoAzul.png  used on input line 58.
@@ -1171,7 +1184,7 @@ File: ./Figures/cuadradoAzul.png Graphic file (type png)
 <use ./Figures/cuadradoAzul.png>
 Package pdftex.def Info: ./Figures/cuadradoAzul.png  used on input line 65.
 (pdftex.def)             Requested size: 81.303pt x 81.303pt.
-<./Figures/word.jpeg, id=239, 259.97125pt x 194.7275pt>
+<./Figures/word.jpeg, id=246, 259.97125pt x 194.7275pt>
 File: ./Figures/word.jpeg Graphic file (type jpg)
 <use ./Figures/word.jpeg>
 Package pdftex.def Info: ./Figures/word.jpeg  used on input line 74.
@@ -1185,7 +1198,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Info: Redefining \. on input line 81.
 LaTeX Info: Redefining \% on input line 81.
  [6 <./Figures/cuadradoAzul.png>]
-<./Figures/questionMark.png, id=250, 225.84375pt x 225.84375pt>
+<./Figures/questionMark.png, id=257, 225.84375pt x 225.84375pt>
 File: ./Figures/questionMark.png Graphic file (type png)
 <use ./Figures/questionMark.png>
 Package pdftex.def Info: ./Figures/questionMark.png  used on input line 87.
@@ -1265,19 +1278,6 @@ Overfull \hbox (11.25131pt too wide) in paragraph at lines 139--139
 sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / www . victronenergy .
  []
 
-
-Overfull \hbox (11.94348pt too wide) in paragraph at lines 139--139
-[]\T1/ppl/m/n/10.95 John Doe. ^^S  The Book without Title^^T. En: Dummy Pu-blis
-her, 2100, págs. 100[]200. 
- []
-
-
-Overfull \hbox (11.21976pt too wide) in paragraph at lines 139--139
-[]\T1/ppl/m/n/10.95 Intel. \T1/ppl/m/it/10.95 Exam-ple Web-si-te\T1/ppl/m/n/10.
-95 . [][]$http : / / example . com$[][]. Dic. de 1988. (Vi-si-ta-do 26[]11[]201
-2). 
- []
-
 [15] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
@@ -1294,7 +1294,7 @@ L3 programming layer <2026-01-19>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: E61F3052CB8356C9779BD14532647F7E;3361.
+(rerunfilecheck)             Checksum: 27E4F75449555015F6AB763773F3CB25;3361.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1305,10 +1305,10 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31570 strings out of 467828
- 675935 string characters out of 5427024
- 1490376 words of memory out of 5000000
- 59984 multiletter control sequences out of 15000+600000
+ 31562 strings out of 467828
+ 675658 string characters out of 5427024
+ 1489815 words of memory out of 5000000
+ 59978 multiletter control sequences out of 15000+600000
  691513 words of font info for 114 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,20n,95p,1971b,2004s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1329,9 +1329,9 @@ base35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a
 .pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Prog
 ram Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiK
 TeX/fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (29 pages, 340068 bytes).
+Output written on memorianueva.pdf (29 pages, 1022672 bytes).
 PDF statistics:
- 436 PDF objects out of 1000 (max. 8388607)
- 104 named destinations out of 1000 (max. 500000)
- 194 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 439 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
+ 199 words of extra memory for PDF output out of 10000 (max. 10000000)
 

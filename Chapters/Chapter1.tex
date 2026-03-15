@@ -121,5 +121,58 @@ dentro de la red de domótica.
 
 \section{Objetivos y alcances}
 
-El objetivo del trabajo es el desarrollo de un dispositivo que permita satisfacer dos necesidade
+El objetivo del presente trabajo es el desarrollo de un dispositivo que
+permita satisfacer dos necesidades principales: por un lado, la
+incorporación de nuevas tecnologías a la red de domótica desarrollada
+por Enertik y, por otro, brindar a los usuarios una opción adicional
+para controlar dicha red mediante una aplicación ejecutable en
+dispositivos móviles, tales como teléfonos celulares y tablets.
 
+El microcontrolador elegido para el desarrollo del dispositivo fue el
+ESP32. Cabe destacar que este equipo no existía al momento de la
+planificación inicial del proyecto, por lo que su diseño fue realizado
+con la intención de que pueda convertirse posteriormente en un producto
+comercial para la empresa.
+
+La figura \ref{fig:esquema_equipo} muestra un esquema general de esta
+arquitectura de comunicación.
+
+Dentro del ecosistema Victron Energy existe un dispositivo denominado
+Cerbo GX. Este dispositivo actúa como módulo de control principal de la red de
+equipos Victron. En este contexto, el dispositivo desarrollado en este
+trabajo cumple la función de intermediario entre el módulo Cerbo GX y el
+módulo PRC10 perteneciente a la red de domótica de Enertik.
+
+De esta manera, el módulo PRC10 puede acceder a la información generada
+por los equipos Victron y, a su vez, controlar ciertas variables que el
+sistema pone a disposición a través del módulo Cerbo GX.
+
+Para lograr esta integración fue necesario que el dispositivo de
+comunicación sea capaz de manejar diferentes protocolos de comunicación.
+
+En primer lugar, se incorporó el protocolo CAN, ya que este es el
+protocolo utilizado en la red de domótica de Enertik. Por otra parte,
+Victron pone a disposición documentación técnica en su sitio web
+\citep{web_victron_modbus}, donde se describe la forma de controlar el
+módulo Cerbo GX mediante el protocolo Modbus TCP.
+
+Adicionalmente, el dispositivo debía contar con un terminal de cuatro
+hilos (+12 V, GND, CAN H y CAN L) con el objetivo de permitir su
+conexión directa al mismo cableado utilizado por la red de domótica,
+posibilitando así tanto su alimentación como el intercambio de datos.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/esquema.png}
+	\caption{Esquema de control en un vehículo.}
+	\label{fig:esquema_equipo}
+\end{figure}
+
+En cuanto a la aplicación móvil, se buscó que pueda ejecutarse en
+dispositivos portátiles y que sea capaz de comunicarse con el módulo
+PRC10 para obtener y mostrar en pantalla las lecturas de las distintas variables del vehículo,
+así como también enviar comandos de control hacia los dispositivos
+conectados a la red.
+
+Para ello, el ESP32 implementa la función de servidor, permitiendo la
+comunicación con la aplicación mediante solicitudes HTTP de tipo GET y POST.
