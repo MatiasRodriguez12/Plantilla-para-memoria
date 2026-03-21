@@ -88,53 +88,72 @@
     \field{note}{Última consulta: 2025-03-19}
     \field{title}{Overview of HTTP}
     \verb{url}
-    \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview?utm
-    \verb _source=chatgpt.com
+    \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
     \endverb
   \endentry
 
-  \entry{IEEE:citation}{book}{}{}
+  \entry{web_espressif}{misc}{}{}
     \name{author}{1}{}{%
-      {{hash=I}{%
-         family={IEEE},
-         familyi={I\bibinitperiod},
+      {{hash=E}{%
+         family={{Espressif}},
+         familyi={E\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE Publications}%
-    }
-    \strng{namehash}{I1}
-    \strng{fullhash}{I1}
+    \strng{namehash}{E2}
+    \strng{fullhash}{E2}
     \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{edition}{1}
-    \field{title}{IEEE Citation Reference}
+    \field{note}{Última consulta: 2025-03-21}
     \verb{url}
-    \verb http://www.ieee.org/documents/ieeecitationref.pdf
+    \verb https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-start
+    \verb ed/index.html
     \endverb
-    \field{year}{2016}
-    \field{urlday}{26}
-    \field{urlmonth}{09}
-    \field{urlyear}{2016}
   \endentry
 
-  \entry{CIAA}{misc}{}{}
-    \name{author}{1}{}{%
-      {{hash=P}{%
-         family={{Proyecto CIAA}},
-         familyi={P\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{P1}
-    \strng{fullhash}{P1}
-    \field{labelnamesource}{author}
+  \entry{pic_datasheet}{misc}{}{}
     \field{labeltitlesource}{title}
-    \field{note}{Visitado el 2016-06-25}
-    \field{title}{Computadora Industrial Abierta Argentina}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{PIC18F66K80 FAMILY}
     \verb{url}
-    \verb http://proyecto-ciaa.com.ar/devwiki/doku.php?id=start
+    \verb https://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F66K80%20FAMILY
+    \verb %20Enhanced%20Flash%20MCU%20with%20ECAN%20XLP%20Technology%2030009977
+    \verb G.pdf
     \endverb
-    \field{year}{2014}
+  \endentry
+
+  \entry{2551_datasheet}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{MCP2551}
+    \verb{url}
+    \verb https://ww1.microchip.com/downloads/en/devicedoc/20001667g.pdf
+    \endverb
+  \endentry
+
+  \entry{w5100_datasheet}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{W5100}
+    \verb{url}
+    \verb https://cdn.sparkfun.com/assets/e/2/f/c/2/W5100_Datasheet_v1_1_6.pdf
+    \endverb
+  \endentry
+
+  \entry{web_freertos}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{FreeRTOS}
+    \verb{url}
+    \verb https://www.freertos.org/
+    \endverb
+  \endentry
+
+  \entry{web_ionic}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{Introduction to Ionic}
+    \verb{url}
+    \verb https://ionicframework.com/docs
+    \endverb
   \endentry
 \enddatalist
 \endinput
