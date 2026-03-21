@@ -2,10 +2,119 @@
 
 \label{Chapter2}
 
+En este capítulo se describen los distintos protocolos de comunicación
+empleados en el desarrollo del trabajo, los componentes de hardware
+implementados para cumplir con los objetivos planteados y las
+herramientas utilizadas para el desarrollo del software.
+
+\section{Protocolos de comunicación}
+\label{sec:protocolos_comunicacion}
+
+Como se mencionó en la sección \ref{sec:1_4}, el dispositivo debía
+cumplir con la funcionalidad de actuar como intermediario entre las
+redes establecidas por Enertik y Victron, así como también constituir
+un punto de acceso para que la aplicación móvil pueda operar sobre el
+sistema.
+
+Para lograr este objetivo, fue necesario implementar distintos protocolos
+de comunicación que permitan el intercambio de información entre los
+subsistemas involucrados, incluyendo CAN, Modbus TCP y una interfaz basada
+en HTTP.
+
+\subsection{Protocolo CAN}
+El protocolo CAN (\textit{Controller Area Network}) \citep{web_intro_can}
+es un protocolo serie ampliamente utilizado en la industria automotriz.
+Permite la comunicación entre múltiples dispositivos sin la necesidad
+de un controlador central, ofreciendo un intercambio de datos rápido
+y confiable.
+
+En este protocolo, la transmisión de datos se realiza a través de un
+par de conductores denominado CAN H y CAN L, utilizando señalización
+diferencial. Esta técnica consiste en transmitir la información como
+la diferencia de tensión entre ambos conductores, lo que proporciona
+una alta inmunidad a interferencias electromagnéticas, ya que el ruido
+externo tiende a afectar a ambos cables de manera similar y, por lo
+tanto, es cancelado al evaluar la diferencia entre ellos.
+
+En cuanto a la representación lógica, un bit dominante (0 lógico) se
+caracteriza por una diferencia de tensión significativa entre CAN H y
+CAN L (normalmente un conductor adquiere una tensión igual a la fuente y el otro a 0 V), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el cual ambos conductores presentan niveles de tensión
+similares.
+
+Por otra parte, la comunicación en una red CAN se basa en un esquema de
+difusión, donde todos los nodos reciben los mensajes transmitidos. Cada
+mensaje incluye un identificador que permite a los dispositivos
+determinar si la información es relevante para ellos, ignorando aquellos
+mensajes que no corresponden a su funcionamiento.
+
+\subsection{Protocolo Modbus TCP}
+
+El protocolo Modbus \citep{web_intro_modbus} es uno de los protocolos mas utilizados en la industria de la automatización. Su función principal es permitir que distintos dispositivos electrónicos se comuniquen entre sí de una forma sencilla y entandarizada.
+
+En una red Modbus, exite una relación maestro-esclavo entre los dispositivos. El dispositivo maestro es el encargado de iniciar una comunicación y solicitar información. El esclavo se encarga de atender estas solicitudes y entregar los datos que el maestro requiera.
+
+En el caso de Modbus TCP, este protocolo se implementa sobre redes
+Ethernet, utilizando el protocolo TCP/IP como medio de transporte. Esto
+permite que los dispositivos puedan comunicarse a través de redes
+locales, identificándose mediante direcciones IP.
+
+La comunicación se basa en un esquema de tipo \textit{request-response},
+donde el cliente (maestro) envía una solicitud a un servidor (esclavo),
+el cual procesa la petición y devuelve una respuesta. Dentro de estas
+solicitudes se incluyen funciones específicas que permiten leer o
+escribir distintos tipos de registros, tales como \textit{holding
+registers} o \textit{input registers}.
+
+En el contexto de este trabajo, el protocolo Modbus TCP es utilizado para
+establecer la comunicación con el módulo Cerbo GX, el cual expone
+diferentes registros que pueden ser consultados y
+controlados de forma remota.
+
+\subsection{Solicitudes HTTP}
+
+El protocolo HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}
+es un protocolo de aplicación ampliamente utilizado para la comunicación
+entre clientes y servidores. Su funcionamiento se
+basa en un modelo de tipo \textit{request response}, donde un cliente
+envía una solicitud (request) a un servidor, este procesa la
+petición y devuelve una respuesta (response) con la información
+requerida.
+
+Las solicitudes HTTP permiten a los clientes acceder a recursos,
+enviar información y ejecutar acciones sobre un servidor. Estas
+peticiones están compuestas por distintos elementos, tales como el
+método de la solicitud, la dirección del recurso solicitado y, en
+algunos casos, un cuerpo de datos que contiene la información a enviar.
+
+Existen diferentes tipos de métodos HTTP, cada uno con una función
+específica. Entre los más utilizados se encuentran el método
+GET, empleado para solicitar información al servidor, y el
+método POST, utilizado para enviar datos y generar cambios en
+el estado del sistema. Otros métodos relevantes incluyen
+PUT, orientado a la actualización de recursos, y
+DELETE, destinado a su eliminación.
+
+En el contexto de este trabajo, las solicitudes HTTP son utilizadas
+como mecanismo de comunicación entre la aplicación móvil y el
+dispositivo basado en ESP32, permitiendo el envío de comandos de
+control y la obtención de información del sistema.
+
+\section{Componentes de hardware}
+\label{sec:componentes_hardware}
+\subsection{Microcontrolador ESP32}
+\subsection{Transceptor CAN}
+\subsection{Modulo ethernet W5100}
+
+\section{Herramientas de software}
+\label{sec:componentes_software}
+\subsection{IDE arduino}
+\subsection{Funcionamiento de ESP32}
+\subsection{Ionic/angular}
+
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal .
 
 \section{Estilo y convenciones}
 \label{sec:ejemplo}
