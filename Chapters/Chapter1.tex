@@ -41,7 +41,7 @@ diferentes subsistemas del vehículo, tales como la iluminación, los sistemas d
 audio, el monitoreo del estado de las baterías, el accionamiento de los motores 
 que operan las partes móviles del vehículo y la supervisión de distintos 
 parámetros del sistema energético. La integración de estos elementos permite 
-centralizar la información y el control de los dispositivos, facilitando su 
+centralizar la información y el control de los dispositivos, y así facilitar su 
 operación por parte del usuario.
 
 En este contexto, Enertik desarrolla una red de domótica propia destinada 
@@ -90,19 +90,12 @@ herramientas para la supervisión y el control del vehículo.
 \label{sec:1_3}
 En la actualidad, Enertik dispone de una estructura bastante bien definida a la hora de domotizar un motorhome. Entre los distintos dispositivos que componen esta red, se destaca uno en particular denominado PRC10.
 
-La figura \ref{fig:esquema_domotica} muestra un esquema básico de como se compone la red de domótica en la actualidad.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.6]{./Figures/esquema_domotica.png}
-	\caption{Esquema de control en un vehículo.}
-	\label{fig:esquema_domotica}
-\end{figure}
+La figura \ref{fig:esquema_domotica} muestra un esquema básico de cómo se compone la red de domótica en la actualidad.
 
 Como se puede apreciar, la arquitectura se basa en un esquema centralizado, donde el
 módulo PRC10 actúa como unidad de control principal del sistema. Los
 diferentes dispositivos presentes en el vehículo se comunican con este
-módulo, el cual se encarga de procesar la información recibida y ejecutar
+módulo, que se encarga de procesar la información recibida y ejecutar
 las acciones correspondientes sobre los distintos subsistemas.
 
 También se puede observar la presencia de una pantalla táctil que
@@ -113,12 +106,42 @@ la unidad, tales como valores asociados al sistema energético, estados
 de funcionamiento de los dispositivos conectados y otras variables de
 interés para el usuario.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{./Figures/esquema_domotica.png}
+	\caption{Arquitectura centralizada de la red de domótica con el módulo PRC10 como unidad de control.}
+	\label{fig:esquema_domotica}
+\end{figure}
+
+\newpage
 Además de permitir la supervisión del estado general del sistema, la
 pantalla brinda la posibilidad de interactuar con los distintos
 periféricos presentes en el motorhome. De esta manera, el usuario puede
 realizar acciones de control sobre diversos dispositivos, como la
 iluminación, los mecanismos motorizados y otros subsistemas integrados
 dentro de la red de domótica.
+
+Entre los distintos dispositivos que componen la red de domótica de Enertik, se destacan los siguientes:
+
+\begin{itemize}
+    \item PRC10: módulo central de procesamiento, responsable de la
+recepción de información proveniente de los demás dispositivos y de la
+toma de decisiones sobre el funcionamiento del sistema. Además, permite
+el comando de distintos periféricos, tales como la iluminación interna
+del vehículo, la apertura y cierre de esclusas de agua, la activación de
+la bomba de agua y el accionamiento de los motores asociados a las
+partes móviles del vehículo, como la mesa, la cama levadiza y el toldo.
+    \item Pantalla HMI (\textit{Human Machine Interface}): interfaz de usuario de tipo táctil que ejecuta el software principal del sistema. Permite la visualización del estado de las variables y la operación de los distintos dispositivos conectados a la red.
+    \item Módulo transceiver: dispositivo que permite la adaptación de la pantalla HMI a la red de comunicación del motorhome.
+    \item Módulo sensor de gases: dispositivo encargado de la medición de la composición de gases en el ambiente. Genera alertas ante la detección de condiciones perjudiciales para la salud.
+    \item Módulo RGB: módulo de potencia destinado al control de la iluminación RGB distribuida en el vehículo.
+    \item Módulo de control de patas: dispositivo responsable del accionamiento del sistema de estabilización del vehículo mediante el control de las patas de apoyo.
+    \item Módulo de control de escalón: dispositivo responsable de la operación del mecanismo del escalón de acceso al vehículo.
+    \item Módulo de relés para luces vehiculares: dispositivo encargado de la adaptación de niveles de tensión para el control de las luces del vehículo, tales como luces delanteras, traseras y señalización asociada al freno de mano.
+    \item Módulo medidor de tanques de agua: módulo encargado de medir y reportar el nivel de llenado de los tanques de agua limpia, gris y negra.
+
+\end{itemize}
+
 
 \section{Objetivos y alcances}
 \label{sec:1_4}
@@ -130,16 +153,18 @@ para controlar dicha red mediante una aplicación ejecutable en
 dispositivos móviles, tales como teléfonos celulares y tablets.
 
 El microcontrolador elegido para el desarrollo del dispositivo fue el
-ESP32. Cabe destacar que este equipo no existía al momento de la
+ESP32 \citep{web_espressif}. Cabe destacar que este equipo no existía al momento de la
 planificación inicial del trabajo, por lo que su diseño fue realizado
 con la intención de que pueda convertirse posteriormente en un producto
 comercial para la empresa.
 
-La figura \ref{fig:esquema_equipo} muestra un esquema general de esta
-arquitectura de comunicación.
+La figura \ref{fig:esquema_equipo} muestra el esquema de la arquitectura
+de comunicación implementada, en la que se destaca la integración del dispositivo
+basado en ESP32 como intermediario entre el módulo PRC10, el Cerbo GX y
+la aplicación móvil.
 
 Dentro del ecosistema Victron Energy existe un dispositivo denominado
-Cerbo GX. Este dispositivo actúa como módulo de control principal de la red de
+Cerbo GX \citep{web_cerbo_gx}. Este dispositivo actúa como módulo de control principal de la red de
 equipos Victron. En este contexto, el dispositivo desarrollado en este
 trabajo cumple la función de intermediario entre el módulo Cerbo GX y el
 módulo PRC10 perteneciente a la red de domótica de Enertik.
@@ -151,24 +176,24 @@ sistema pone a disposición a través del módulo Cerbo GX.
 Para lograr esta integración fue necesario que el dispositivo de
 comunicación sea capaz de manejar diferentes protocolos de comunicación.
 
-En primer lugar, se incorporó el protocolo CAN, ya que este es el
-protocolo utilizado en la red de domótica de Enertik. Por otra parte,
+En primer lugar, se incorporó el protocolo CAN (\textit{Controller Area Network}) \citep{web_intro_can}, ya que este es el protocolo utilizado en la red de domótica de Enertik. Por otra parte,
 Victron pone a disposición documentación técnica en su sitio web
 \citep{web_victron_modbus}, donde se describe la forma de controlar el
-módulo Cerbo GX mediante el protocolo Modbus TCP.
+módulo Cerbo GX mediante el protocolo Modbus TCP \citep{web_intro_modbus}.
 
 Adicionalmente, el dispositivo debía contar con un terminal de cuatro
 hilos (+12 V, GND, CAN H y CAN L) con el objetivo de permitir su
-conexión directa al mismo cableado utilizado por la red de domótica,
-posibilitando así tanto su alimentación como el intercambio de datos.
+conexión directa al mismo cableado utilizado por la red de domótica.
+De esta manera, se garantiza tanto su alimentación como el intercambio
+de datos.
 
-\begin{figure}[h]
+\begin{figure}[t]
 	\centering
 	\includegraphics[scale=0.16]{./Figures/esquema.png}
-	\caption{Arquitectura implementada con el equipo.}
+	\caption{Arquitectura de comunicación del sistema con el ESP32 como intermediario entre PRC10, Cerbo GX y la aplicación móvil.}
 	\label{fig:esquema_equipo}
 \end{figure}
-
+\newpage
 En cuanto a la aplicación móvil, se buscó que pueda ejecutarse en
 dispositivos portátiles y que sea capaz de comunicarse con el módulo
 PRC10 para obtener y mostrar en pantalla las lecturas de las distintas variables del vehículo,
