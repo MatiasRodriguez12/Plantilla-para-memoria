@@ -38,7 +38,7 @@ tanto, es cancelado al evaluar la diferencia entre ellos.
 
 En cuanto a la representación lógica, un bit dominante (0 lógico) se
 caracteriza por una diferencia de tensión significativa entre CAN H y
-CAN L (normalmente un conductor adquiere una tensión igual a la fuente y el otro a 0 V), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el cual ambos conductores presentan niveles de tensión
+CAN L (normalmente un conductor adquiere una tensión igual a la fuente y el otro a 0 V), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el que ambos conductores presentan niveles de tensión
 similares.
 
 Por otra parte, la comunicación en una red CAN se basa en un esquema de
@@ -60,15 +60,14 @@ locales, identificándose mediante direcciones IP.
 
 La comunicación se basa en un esquema de tipo \textit{request-response},
 donde el cliente (maestro) envía una solicitud a un servidor (esclavo),
-el cual procesa la petición y devuelve una respuesta. Dentro de estas
-solicitudes se incluyen funciones específicas que permiten leer o
+y este último procesa la petición y devuelve una respuesta. Dentro de
+estas solicitudes se incluyen funciones específicas que permiten leer o
 escribir distintos tipos de registros, tales como \textit{holding
 registers} o \textit{input registers}.
 
 En el contexto de este trabajo, el protocolo Modbus TCP es utilizado para
-establecer la comunicación con el módulo Cerbo GX, el cual expone
-diferentes registros que pueden ser consultados y
-controlados de forma remota.
+establecer la comunicación con el módulo Cerbo GX, que expone diferentes
+registros que pueden ser consultados y controlados de forma remota.
 
 \subsection{Solicitudes HTTP}
 
@@ -116,6 +115,13 @@ Además, el dispositivo incorpora conectividad inalámbrica, incluyendo
 Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para
 el desarrollo de aplicaciones orientadas al campo IoT (\textit{Internet of Things}). Todas las características mencionadas anteriormente vuelven al ESP32 en una opción mas que adecuada para el desarrolo del trabajo
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{./Figures/esp32.png}
+	\caption{Microcontrolador ESP32.}
+	\label{fig:im_esp32}
+\end{figure}
+
 \subsection{Módulo transceiver}
 
 Todos los dispositivos que pertenecen a la red de domótica de Enertik se
@@ -124,18 +130,34 @@ CAN H y CAN L). Este esquema permite tanto la alimentación como la
 comunicación de los equipos conectados a la red de manera sencilla.
 
 Por otra parte, el protocolo de comunicación empleado corresponde a una
-librería propia desarrollada por Enertik, basada en el estándar CAN.
+biblioteca propia desarrollada por Enertik, basada en el estándar CAN.
 Para adaptar el ESP32 a esta red y permitir su correcta integración, fue
 necesaria la implementación de un módulo transceiver.
 
 Este módulo actúa como interfaz entre el ESP32 y la red de domótica, y
 está compuesto por un microcontrolador PIC \citep{pic_datasheet}, en el
-cual se implementa la librería de comunicación, y un transceptor CAN
+que se implementa la biblioteca de comunicación, y un transceptor CAN
 MCP2551 \citep{2551_datasheet}, encargado de la adaptación de niveles
 eléctricos para la transmisión diferencial sobre el bus.
 
+Como se puede apreciar en la figura \ref{fig:im_transceiver}, este módulo
+realiza la conversión de la red CAN, proveniente del sistema de domótica,
+a una interfaz de comunicación serial UART, compatible con el ESP32.
 
-\subsection{Módulo ethernet W5100}
+Esta solución permite desacoplar la gestión del protocolo de comunicación
+del procesamiento principal del sistema, simplificando el desarrollo del
+firmware y facilitando la integración del dispositivo dentro de la red
+de domótica existente.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{./Figures/transceiver.png}
+	\caption{Funcionamiento del módulo transceiver.}
+	\label{fig:im_transceiver}
+\end{figure}
+
+
+\subsection{Módulo Ethernet W5100}
 
 Para lograr la comunicación mediante el protocolo Modbus TCP, fue
 necesaria la utilización de un módulo Ethernet basado en el circuito
@@ -151,6 +173,13 @@ Mediante el uso de este módulo, el dispositivo desarrollado puede
 establecer conexiones sobre redes Ethernet, permitiendo así la
 implementación del protocolo Modbus TCP para la comunicación con
 equipos del ecosistema Victron.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.9]{./Figures/w5100.jpg}
+	\caption{Módulo W5100.}
+	\label{fig:im_w5100}
+\end{figure}
 
 \section{Herramientas de software}
 \label{sec:componentes_software}
@@ -175,20 +204,20 @@ específicas que fueron adaptadas para su funcionamiento sobre el módulo
 Ethernet W5100.
 
 Adicionalmente, este entorno permite una rápida compilación y carga de
-programas sobre el dispositivo, así como también herramientas de
-depuración básicas, lo cual resultó adecuado para el desarrollo y prueba
-del sistema.
+programas sobre el dispositivo, así como el uso de herramientas de
+depuración básicas, lo que lo convierte en una opción adecuada para el
+desarrollo y prueba del sistema.
 
 \subsection{Funcionamiento del ESP32}
 
 Para la programación del microcontrolador se optó por el lenguaje C++,
-debido a que es el lenguaje en el cual se encuentran desarrolladas la
+debido a que es el lenguaje en el que se encuentran desarrolladas la
 mayoría de las bibliotecas disponibles en el entorno Arduino, lo que
 facilitó la integración de distintas funcionalidades requeridas en el
 proyecto.
 
 Como metodología de desarrollo, se utilizó FreeRTOS \citep{web_freertos},
-el cual se encuentra integrado en el ESP32. Este sistema operativo en
+que se encuentra integrado en el ESP32. Este sistema operativo en
 tiempo real permite organizar el firmware mediante la ejecución de
 múltiples tareas de forma concurrente, mejorando la estructura del
 programa y facilitando la gestión de distintas funcionalidades en
@@ -201,7 +230,7 @@ gestión de la comunicación Wi-Fi, donde el ESP32 opera en modo
 actuando como servidor HTTP para la recepción de solicitudes.
 
 Por otra parte, se desarrolló una tarea dedicada a la recepción de
-mensajes provenientes de la red CAN, la cual se encarga de procesar la
+mensajes provenientes de la red CAN, que se encarga de procesar la
 información recibida desde los distintos dispositivos conectados a la
 red de domótica.
 
