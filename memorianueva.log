@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  25 MAR 2026 22:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  25 MAR 2026 22:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1208,10 +1208,10 @@ LaTeX Info: Redefining \% on input line 241.
 File: ./Figures/esquema_herramientas_app.png Graphic file (type png)
 <use ./Figures/esquema_herramientas_app.png>
 Package pdftex.def Info: ./Figures/esquema_herramientas_app.png  used on input 
-line 268.
+line 269.
 (pdftex.def)             Requested size: 389.57951pt x 83.93839pt.
-LaTeX Info: Redefining \. on input line 307.
-LaTeX Info: Redefining \% on input line 307.
+LaTeX Info: Redefining \. on input line 308.
+LaTeX Info: Redefining \% on input line 308.
  [12 <./Figures/esquema_herramientas_app.png>])
 LaTeX Info: Redefining \. on input line 118.
 LaTeX Info: Redefining \% on input line 118.
@@ -1323,7 +1323,7 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 Here is how much of TeX's memory you used:
  31597 strings out of 467828
  678054 string characters out of 5427024
- 1494417 words of memory out of 5000000
+ 1494540 words of memory out of 5000000
  60001 multiletter control sequences out of 15000+600000
  686124 words of font info for 105 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1336,7 +1336,7 @@ ase35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.
 pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Progr
 am Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKT
 eX/fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (35 pages, 1201066 bytes).
+Output written on memorianueva.pdf (35 pages, 1201074 bytes).
 PDF statistics:
  507 PDF objects out of 1000 (max. 8388607)
  121 named destinations out of 1000 (max. 500000)

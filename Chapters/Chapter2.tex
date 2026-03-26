@@ -184,7 +184,7 @@ equipos del ecosistema Victron.
 \label{sec:componentes_software}
 
 Para el desarrollo del software fue necesario definir tanto el entorno
-de desarrollo integrado (IDE) como el lenguaje de programación a emplear.
+de desarrollo integrado como el lenguaje de programación a emplear.
 Asimismo, se evaluaron las herramientas necesarias para el desarrollo de
 la aplicación móvil.
 
@@ -242,8 +242,9 @@ funcionalidades implementadas en el sistema.
 En este contexto, el firmware fue dividido en distintas tareas
 principales. En primer lugar, se implementó una tarea encargada de la
 gestión de la comunicación Wi-Fi, donde el ESP32 opera en modo
-\textit{Access Point}, permitiendo la conexión de la aplicación móvil y
-actuando como servidor HTTP para la recepción de solicitudes.
+\textit{Access Point}. Este modo habilita la conexión de la aplicación
+móvil y permite al dispositivo funcionar como servidor HTTP para la
+recepción de solicitudes.
 
 Por otra parte, se desarrolló una tarea dedicada a la recepción de
 mensajes provenientes de la red CAN, que se encarga de procesar la
