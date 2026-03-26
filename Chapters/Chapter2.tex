@@ -24,11 +24,11 @@ en HTTP.
 \subsection{Protocolo CAN}
 El protocolo CAN es un protocolo serie ampliamente utilizado en la industria automotriz.
 Permite la comunicación entre múltiples dispositivos sin la necesidad
-de un controlador central, ofreciendo un intercambio de datos rápido
+de un controlador central y proporciona un intercambio de datos rápido
 y confiable.
 
 En este protocolo, la transmisión de datos se realiza a través de un
-par de conductores denominado CAN H y CAN L, utilizando señalización
+par de conductores denominado CAN H y CAN L, en donde se emplea una señalización
 diferencial. Esta técnica consiste en transmitir la información como
 la diferencia de tensión entre ambos conductores, lo que proporciona
 una alta inmunidad a interferencias electromagnéticas, ya que el ruido
@@ -39,7 +39,7 @@ En cuanto a la representación lógica, un bit dominante (0 lógico) se
 caracteriza por una diferencia de tensión significativa entre CAN H y
 CAN L (normalmente un conductor adquiere un valor de tensión igual a la fuente y el otro a GND), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el que ambos conductores presentan niveles de tensión
 similares.
-
+\newpage
 Por otra parte, la comunicación en una red CAN se basa en un esquema de
 difusión, donde todos los nodos reciben los mensajes transmitidos. Cada
 mensaje incluye un identificador que permite a los dispositivos
@@ -53,7 +53,7 @@ El protocolo Modbus es uno de los protocolos mas utilizados en la industria de l
 En una red Modbus, exite una relación maestro-esclavo entre los dispositivos. El dispositivo maestro es el encargado de iniciar una comunicación y solicitar información. El esclavo se encarga de atender estas solicitudes y entregar los datos que el maestro requiera.
 
 En el caso de Modbus TCP, este protocolo se implementa sobre redes
-Ethernet, utilizando el protocolo TCP/IP como medio de transporte. Esto
+Ethernet, donde emplea el protocolo TCP/IP \citep{web_tcpip} como medio de transporte. Esto
 permite que los dispositivos puedan comunicarse a través de redes
 locales, identificándose mediante direcciones IP.
 
@@ -91,7 +91,7 @@ método POST, utilizado para enviar datos y generar cambios en
 el estado del sistema. Otros métodos relevantes incluyen
 PUT, orientado a la actualización de recursos, y
 DELETE, destinado a su eliminación.
-
+\newpage
 En el contexto de este trabajo, las solicitudes HTTP son utilizadas
 como mecanismo de comunicación entre la aplicación móvil y el
 dispositivo basado en ESP32, lo que permite el envío de comandos de
@@ -175,7 +175,7 @@ equipos del ecosistema Victron.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.9]{./Figures/w5100.jpg}
+	\includegraphics[scale=0.7]{./Figures/w5100.jpg}
 	\caption{Módulo W5100.}
 	\label{fig:im_w5100}
 \end{figure}
@@ -246,15 +246,17 @@ gestión de la comunicación Wi-Fi, donde el ESP32 opera en modo
 móvil y permite al dispositivo funcionar como servidor HTTP para la
 recepción de solicitudes.
 
-Por otra parte, se desarrolló una tarea dedicada a la recepción de
-mensajes provenientes de la red CAN, que se encarga de procesar la
-información recibida desde los distintos dispositivos conectados a la
-red de domótica.
+Por otra parte, se desarrollaron tareas dedicadas a la recepción de
+mensajes provenientes de la red CAN y a la atención de la comunicación
+Modbus TCP. Estas tareas se encargan de procesar la información
+recibida desde los distintos dispositivos conectados a la red de
+domótica.
 
-Finalmente, se implementó una tarea central de procesamiento, cuya
-función es interpretar la información recibida tanto desde la red CAN
-como desde la interfaz HTTP, y tomar las decisiones correspondientes
-para el control del sistema.
+Finalmente, se implementó una tarea central de procesamiento cuya
+función consiste en interpretar la información recibida desde la red
+CAN, desde la interfaz HTTP y desde el módulo de comunicación Modbus
+TCP, y en función de ello tomar las decisiones necesarias para el
+control del sistema.
 
 
 \subsection{Desarrollo de la aplicación móvil}
@@ -295,7 +297,9 @@ configuración.
 
 Ionic dispone de un amplio conjunto de bibliotecas que pueden ser
 utilizadas en el desarrollo de aplicaciones. Entre ellas, se encuentra
-una biblioteca destinada a la gestión de solicitudes HTTP. En este
+una biblioteca destinada a la gestión de solicitudes HTTP. 
+
+En este
 contexto, se optó por utilizar dicha biblioteca como base para el
 desarrollo de funciones propias orientadas a la comunicación entre la
 aplicación y el ESP32.
