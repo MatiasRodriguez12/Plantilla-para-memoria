@@ -49,6 +49,22 @@
     \endverb
   \endentry
 
+  \entry{BOOK:manual_prc10}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=AE}{%
+         family={Argentina},
+         familyi={A\bibinitperiod},
+         given={Enertik},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AE1}
+    \strng{fullhash}{AE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{PRC10: manual para el usuario.}
+  \endentry
+
   \entry{web_espressif}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=E}{%
@@ -147,6 +163,24 @@
     \endverb
   \endentry
 
+  \entry{web_arduino}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-25}
+    \field{title}{Arduino}
+    \verb{url}
+    \verb https://docs.arduino.cc/software/ide-v1/tutorials/PortableIDE/
+    \endverb
+  \endentry
+
+  \entry{biblioteca_modbus}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-25}
+    \field{title}{Github: modbus-esp8266}
+    \verb{url}
+    \verb https://github.com/emelianov/modbus-esp8266
+    \endverb
+  \endentry
+
   \entry{web_freertos}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-19}
@@ -162,6 +196,33 @@
     \field{title}{Introduction to Ionic}
     \verb{url}
     \verb https://ionicframework.com/docs
+    \endverb
+  \endentry
+
+  \entry{web_angular}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-25}
+    \field{title}{Arduino}
+    \verb{url}
+    \verb https://angular.dev/
+    \endverb
+  \endentry
+
+  \entry{web_capacitor}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-25}
+    \field{title}{Capacitor web}
+    \verb{url}
+    \verb https://capacitorjs.com/
+    \endverb
+  \endentry
+
+  \entry{web_androidstudio}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-25}
+    \field{title}{Android Studio}
+    \verb{url}
+    \verb https://developer.android.com/studio?hl=es-419
     \endverb
   \endentry
 \enddatalist

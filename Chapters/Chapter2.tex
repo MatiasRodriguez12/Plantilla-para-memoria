@@ -37,7 +37,7 @@ tanto, es cancelado al evaluar la diferencia entre ellos.
 
 En cuanto a la representación lógica, un bit dominante (0 lógico) se
 caracteriza por una diferencia de tensión significativa entre CAN H y
-CAN L (normalmente un conductor adquiere una tensión igual a la fuente y el otro a 0 V), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el que ambos conductores presentan niveles de tensión
+CAN L (normalmente un conductor adquiere un valor de tensión igual a la fuente y el otro a GND), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el que ambos conductores presentan niveles de tensión
 similares.
 
 Por otra parte, la comunicación en una red CAN se basa en un esquema de
@@ -69,11 +69,11 @@ establecer la comunicación con el módulo Cerbo GX, que expone diferentes
 registros que pueden ser consultados y controlados de forma remota.
 
 \subsection{Solicitudes HTTP}
-
+\label{sec:http}
 El protocolo HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}
 es un protocolo de aplicación ampliamente utilizado para la comunicación
 entre clientes y servidores. Su funcionamiento se
-basa en un modelo de tipo \textit{request response}, donde un cliente
+basa en un modelo de tipo \textit{request-response}, donde un cliente
 envía una solicitud (request) a un servidor, este procesa la
 petición y devuelve una respuesta (response) con la información
 requerida.
@@ -94,7 +94,7 @@ DELETE, destinado a su eliminación.
 
 En el contexto de este trabajo, las solicitudes HTTP son utilizadas
 como mecanismo de comunicación entre la aplicación móvil y el
-dispositivo basado en ESP32, permitiendo el envío de comandos de
+dispositivo basado en ESP32, lo que permite el envío de comandos de
 control y la obtención de información del sistema.
 
 \section{Componentes de hardware}
@@ -143,10 +143,10 @@ Como se puede apreciar en la figura \ref{fig:im_transceiver}, este módulo
 realiza la conversión de la red CAN, proveniente del sistema de domótica,
 a una interfaz de comunicación serial UART, compatible con el ESP32.
 
-Esta solución permite desacoplar la gestión del protocolo de comunicación
-del procesamiento principal del sistema, simplificando el desarrollo del
-firmware y facilitando la integración del dispositivo dentro de la red
-de domótica existente.
+Esta solución permite desacoplar la gestión del protocolo de
+comunicación del procesamiento principal del sistema, lo que simplifica
+el desarrollo del firmware y facilita la integración del dispositivo en
+la red de domótica existente.
 
 \begin{figure}[h]
 	\centering
@@ -169,7 +169,7 @@ a través de una interfaz SPI, lo que facilita su integración en
 plataformas como el ESP32.
 
 Mediante el uso de este módulo, el dispositivo desarrollado puede
-establecer conexiones sobre redes Ethernet, permitiendo así la
+establecer conexiones sobre redes Ethernet, lo que permite la
 implementación del protocolo Modbus TCP para la comunicación con
 equipos del ecosistema Victron.
 
@@ -188,11 +188,10 @@ de desarrollo integrado (IDE) como el lenguaje de programación a emplear.
 Asimismo, se evaluaron las herramientas necesarias para el desarrollo de
 la aplicación móvil.
 
-\subsection{IDE arduino}
+\subsection{Entorno de desarrollo Arduino}
 
 El microcontrolador ESP32 es compatible con el entorno de desarrollo
-Arduino, lo que permitió utilizar este IDE como plataforma principal
-para el desarrollo del firmware. La elección de este entorno se basó en
+Arduino \citep{web_arduino}, lo que permitió utilizar este IDE (\textit{Integrated Development Environment}) como plataforma principal para el desarrollo del firmware. La elección de este entorno se basó en
 su facilidad de uso, amplia documentación y la disponibilidad de una gran
 cantidad de bibliotecas previamente desarrolladas.
 
@@ -207,6 +206,17 @@ programas sobre el dispositivo, así como el uso de herramientas de
 depuración básicas, lo que lo convierte en una opción adecuada para el
 desarrollo y prueba del sistema.
 
+Para la implementación de la comunicación Modbus TCP, se utilizó una
+biblioteca desarrollada por Andre Sarmento Barbosa y Alexander
+Emelianov \citep{biblioteca_modbus}. En conjunto con la biblioteca
+Ethernet provista por el entorno Arduino, esta herramienta permite la
+implementación del protocolo Modbus en distintas variantes, entre ellas
+Modbus TCP.
+
+Para el desarrollo de la comunicación UART y del servidor interno en el
+ESP32, se emplearon las bibliotecas estándar provistas por defecto en el
+entorno de desarrollo.
+
 \subsection{Funcionamiento del ESP32}
 
 Para la programación del microcontrolador se optó por el lenguaje C++,
@@ -218,10 +228,17 @@ proyecto.
 Como metodología de desarrollo, se utilizó FreeRTOS \citep{web_freertos},
 que se encuentra integrado en el ESP32. Este sistema operativo en
 tiempo real permite organizar el firmware mediante la ejecución de
-múltiples tareas de forma concurrente, mejorando la estructura del
-programa y facilitando la gestión de distintas funcionalidades en
-paralelo.
+múltiples tareas, cuya planificación da lugar a un comportamiento
+concurrente a nivel lógico. Esto mejora la estructura del programa y
+facilita la gestión de distintas funcionalidades en paralelo.
 
+Adicionalmente, FreeRTOS dispone de un planificador (\textit{scheduler})
+encargado de coordinar la ejecución de cada tarea. Este asigna el tiempo
+de procesamiento en función de su prioridad. Asimismo, proporciona
+mecanismos que permiten la comunicación y sincronización entre tareas,
+lo que facilita la correcta coordinación de las distintas
+funcionalidades implementadas en el sistema.
+\newpage
 En este contexto, el firmware fue dividido en distintas tareas
 principales. En primer lugar, se implementó una tarea encargada de la
 gestión de la comunicación Wi-Fi, donde el ESP32 opera en modo
@@ -238,23 +255,58 @@ función es interpretar la información recibida tanto desde la red CAN
 como desde la interfaz HTTP, y tomar las decisiones correspondientes
 para el control del sistema.
 
+
 \subsection{Desarrollo de la aplicación móvil}
 
-Para el desarrollo de la aplicación móvil se optó por utilizar el
-framework Ionic \citep{web_ionic}, ya que permite la creación de aplicaciones
-multiplataforma basadas en tecnologías web.
+Para el desarrollo de la aplicación móvil se optó por utilizar un
+conjunto de herramientas que trabajan de forma integrada. La figura
+\ref{fig:im_herramientas_app} presenta un esquema de la relación entre
+las distintas tecnologías empleadas.
 
-Ionic se apoya en el framework Angular, que proporciona una estructura
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{./Figures/esquema_herramientas_app.png}
+	\caption{Esquema de integración entre Angular, Ionic, Capacitor y Android Studio.}
+	\label{fig:im_herramientas_app}
+\end{figure}
+
+Se utilizó el framework Ionic \citep{web_ionic} como base para el
+desarrollo de la aplicación, debido a que permite la creación de
+interfaces móviles multiplataforma a partir de tecnologías web.
+
+Ionic se apoya en el framework Angular \citep{web_angular}, que proporciona una estructura
 robusta para el desarrollo de interfaces de usuario dinámicas y
 organizadas en componentes. Angular utiliza lenguajes como TypeScript,
 HTML y CSS, lo que facilita la construcción de aplicaciones
 modulares y escalables.
 
 Para la adaptación de la aplicación a dispositivos móviles se utilizó
-Capacitor, herramienta que permite empaquetar la aplicación web como
+Capacitor \citep{web_capacitor}, herramienta que permite empaquetar la aplicación web como
 una aplicación nativa y facilita el acceso a funcionalidades propias
 del dispositivo.
 
-Finalmente, se empleó Android Studio para la compilación y generación
-del archivo APK, permitiendo la instalación de la aplicación en
-dispositivos móviles con sistema operativo Android.
+Finalmente, se empleó Android Studio \citep{web_androidstudio} para la compilación y generación
+del archivo APK (\textit{Android Package Kit}), que constituye el
+paquete instalable de la aplicación en sistemas Android. Este archivo
+contiene todos los recursos necesarios para su ejecución, tales como el
+código compilado, las bibliotecas utilizadas y los archivos de
+configuración.
+
+Ionic dispone de un amplio conjunto de bibliotecas que pueden ser
+utilizadas en el desarrollo de aplicaciones. Entre ellas, se encuentra
+una biblioteca destinada a la gestión de solicitudes HTTP. En este
+contexto, se optó por utilizar dicha biblioteca como base para el
+desarrollo de funciones propias orientadas a la comunicación entre la
+aplicación y el ESP32.
+
+Como se mencionó en la sección \ref{sec:http}, la solicitud GET es
+utilizada para la realización de peticiones destinadas a la obtención
+de datos desde el servidor. A través de este mecanismo es posible
+consultar el estado de las distintas variables del sistema en el
+motorhome.
+
+Por otra parte, mediante solicitudes POST es posible enviar datos desde
+la aplicación hacia el ESP32. Esto permite el control de las distintas
+variables del sistema y la ejecución de comandos sobre los dispositivos.
+
+

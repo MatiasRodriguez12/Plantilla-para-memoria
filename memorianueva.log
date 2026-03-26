@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  24 MAR 2026 19:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  25 MAR 2026 22:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1127,7 +1127,7 @@ l.63 L
 
 
 ]
-<./Figures/esquema_domotica.png, id=236, 623.32875pt x 295.1025pt>
+<./Figures/esquema_domotica.png, id=240, 623.32875pt x 295.1025pt>
 File: ./Figures/esquema_domotica.png Graphic file (type png)
 <use ./Figures/esquema_domotica.png>
 Package pdftex.def Info: ./Figures/esquema_domotica.png  used on input line 111
@@ -1151,7 +1151,7 @@ l.116 \newpage
 LaTeX Info: Redefining \. on input line 141.
 LaTeX Info: Redefining \% on input line 141.
  [3 <./Figures/esquema_domotica.png>]
-<./Figures/esquema.png, id=254, 2547.5175pt x 1409.265pt>
+<./Figures/esquema.png, id=259, 2547.5175pt x 1409.265pt>
 File: ./Figures/esquema.png Graphic file (type png)
 <use ./Figures/esquema.png>
 Package pdftex.def Info: ./Figures/esquema.png  used on input line 192.
@@ -1180,7 +1180,7 @@ Cap\'{\i }tulo 2.
 LaTeX Info: Redefining \. on input line 103.
 LaTeX Info: Redefining \% on input line 103.
  [8]
-<./Figures/esp32.png, id=285, 148.30406pt x 289.08pt>
+<./Figures/esp32.png, id=290, 148.30406pt x 289.08pt>
 File: ./Figures/esp32.png Graphic file (type png)
 <use ./Figures/esp32.png>
 Package pdftex.def Info: ./Figures/esp32.png  used on input line 119.
@@ -1188,12 +1188,12 @@ Package pdftex.def Info: ./Figures/esp32.png  used on input line 119.
 LaTeX Info: Redefining \. on input line 141.
 LaTeX Info: Redefining \% on input line 141.
  [9 <./Figures/esp32.png>]
-<./Figures/transceiver.png, id=294, 623.32875pt x 100.12407pt>
+<./Figures/transceiver.png, id=299, 623.32875pt x 100.12407pt>
 File: ./Figures/transceiver.png Graphic file (type png)
 <use ./Figures/transceiver.png>
 Package pdftex.def Info: ./Figures/transceiver.png  used on input line 153.
 (pdftex.def)             Requested size: 374.00014pt x 60.07489pt.
-<./Figures/w5100.jpg, id=296, 253.94875pt x 199.74625pt>
+<./Figures/w5100.jpg, id=301, 253.94875pt x 199.74625pt>
 File: ./Figures/w5100.jpg Graphic file (type jpg)
 <use ./Figures/w5100.jpg>
 Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 178.
@@ -1201,15 +1201,30 @@ Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 178.
 LaTeX Info: Redefining \. on input line 190.
 LaTeX Info: Redefining \% on input line 190.
  [10 <./Figures/transceiver.png> <./Figures/w5100.jpg>]
-LaTeX Info: Redefining \. on input line 247.
-LaTeX Info: Redefining \% on input line 247.
- [11])
+LaTeX Info: Redefining \. on input line 241.
+LaTeX Info: Redefining \% on input line 241.
+ [11]
+<./Figures/esquema_herramientas_app.png, id=322, 779.16093pt x 167.87718pt>
+File: ./Figures/esquema_herramientas_app.png Graphic file (type png)
+<use ./Figures/esquema_herramientas_app.png>
+Package pdftex.def Info: ./Figures/esquema_herramientas_app.png  used on input 
+line 268.
+(pdftex.def)             Requested size: 389.57951pt x 83.93839pt.
+LaTeX Info: Redefining \. on input line 307.
+LaTeX Info: Redefining \% on input line 307.
+ [12 <./Figures/esquema_herramientas_app.png>])
 LaTeX Info: Redefining \. on input line 118.
 LaTeX Info: Redefining \% on input line 118.
- [12]
+ [13]
 \openout2 = `Chapters/Chapter3.aux'.
 
- (Chapters/Chapter3.tex
+
+(Chapters/Chapter3.tex [14
+
+
+
+
+]
 Cap\'{\i }tulo 3.
 (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
@@ -1225,21 +1240,16 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 62.
- [13
-
-
-
-
-])
+ [15])
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
- [14]
+ [16]
 \openout2 = `Chapters/Chapter4.aux'.
 
 
 (Chapters/Chapter4.tex
 Cap\'{\i }tulo 4.
-) [15
+) [17
 
 
 
@@ -1247,14 +1257,14 @@ Cap\'{\i }tulo 4.
 ]
 \openout2 = `Chapters/Chapter5.aux'.
 
- (Chapters/Chapter5.tex [16
+ (Chapters/Chapter5.tex [18
 
 
 
 
 ]
 Cap\'{\i }tulo 5.
-) [17] [18
+) [19] [20
 
 
 
@@ -1277,7 +1287,14 @@ Overfull \hbox (17.47052pt too wide) in paragraph at lines 139--139
 icframework .
  []
 
-[19] (memorianueva.aux (portada.aux)
+
+Overfull \hbox (6.59753pt too wide) in paragraph at lines 139--139
+[]\T1/ppl/m/it/10.95 Android Stu-dio\T1/ppl/m/n/10.95 . Úl-ti-ma con-sul-ta: 20
+25-03-25. \T1/ppl/m/sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / developer 
+. android .
+ []
+
+[21] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -1293,7 +1310,7 @@ L3 programming layer <2026-01-19>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: 8C5790BFCF8215DDBB52BACC87633A73;4332.
+(rerunfilecheck)             Checksum: 797672D3CA0FD0190E4710EE5C6A7C59;4428.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1304,10 +1321,10 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31554 strings out of 467828
- 676401 string characters out of 5427024
- 1492553 words of memory out of 5000000
- 59967 multiletter control sequences out of 15000+600000
+ 31597 strings out of 467828
+ 678054 string characters out of 5427024
+ 1494417 words of memory out of 5000000
+ 60001 multiletter control sequences out of 15000+600000
  686124 words of font info for 105 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,20n,95p,1971b,1929s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1319,9 +1336,9 @@ ase35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.
 pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Progr
 am Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKT
 eX/fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (33 pages, 1174737 bytes).
+Output written on memorianueva.pdf (35 pages, 1201066 bytes).
 PDF statistics:
- 470 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
- 247 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 507 PDF objects out of 1000 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
+ 252 words of extra memory for PDF output out of 10000 (max. 10000000)
 
