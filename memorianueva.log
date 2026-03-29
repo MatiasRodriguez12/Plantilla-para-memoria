@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  29 MAR 2026 20:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  29 MAR 2026 20:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1397,7 +1397,7 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 Here is how much of TeX's memory you used:
  31204 strings out of 467828
  675391 string characters out of 5427024
- 1295650 words of memory out of 5000000
+ 1295649 words of memory out of 5000000
  59626 multiletter control sequences out of 15000+600000
  682291 words of font info for 99 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1409,7 +1409,7 @@ Here is how much of TeX's memory you used:
 ase35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.
 pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Progr
 am Files/MiKTeX/fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (42 pages, 5122688 bytes).
+Output written on memorianueva.pdf (42 pages, 5122695 bytes).
 PDF statistics:
  574 PDF objects out of 1000 (max. 8388607)
  115 named destinations out of 1000 (max. 500000)
