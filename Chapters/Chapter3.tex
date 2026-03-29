@@ -2,12 +2,26 @@
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-En este capítulo se explican como se diseño el dispositivo, como esta conformado el hardware y software del equipo y como se desarrolló la aplicación para control del motorhome.
+En este capítulo se explica como se diseño el dispositivo, como esta conformado el hardware y software del equipo y como se desarrolló la aplicación para control del motorhome. 
+
 
 \section{Desarrollo de hardware}
 \label{sec:desarrollo_hardware}
 
-A continuación, se explicarán como se desarrollaron los distintos módulos de hardware del equipo y como se relacionan unos con otros.
+A continuación, se explicarán como se desarrollaron los distintos módulos de hardware del equipo y como se relacionan unos con otros. Como se mencionó anteriormente, el ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
+
+La figura \ref{fig:esquema_hw_general} muestra una estructura del flujo o camino que debe seguir el ESP32 para llegar a cada una de estas partes.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{./Figures/esquema_hw_general.png}
+	\caption{Trayecto que sigue el ESP32 para llegar a cada uno de los módulos.}
+	\label{fig:esquema_hw_general}
+\end{figure}
+
+La columna celeste representa la forma de comunicar el ESP32 con el módulo PRC10. Asimismo, las columnas gris y verde representan los caminos hacia el Cerbo GX y aplicación móvil respectivamente.
+
 
 \subsection{Comunicación con la red Enertik}
 
@@ -47,7 +61,7 @@ Basado en esta premisa, se decidió replicar y adaptar este módulo transceiver
 para que sea compatible con el dispositivo basado en ESP32. Este
 módulo se compone de un microcontrolador PIC y de un transceptor CAN
 MCP2551.
-\newpage
+
 La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre como fue la implementación de este módulo transceiver.
 
 \begin{figure}[h]
@@ -56,7 +70,7 @@ La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre como fu
 	\caption{Diagrama de como se estable la comunicación CAN entre la red del motorhome y el ESP32.}
 	\label{fig:im_hw_transceiver}
 \end{figure}
-
+\newpage
 El microcontrolador PIC dispone de la biblioteca de comunicación
 propia desarrollada por Enertik, lo que le permite interactuar de forma
 nativa con la red de domótica del motorhome. Por su parte, el
@@ -86,7 +100,7 @@ utilizado, junto con el cálculo correspondiente a la tensión de salida.
 Mediante el uso de tres resistencias de igual valor, se logró reducir la
 tensión de 5 V a 3,3 V en la línea de transmisión hacia el ESP32,
 lo que permitió una comunicación segura entre ambos dispositivos.
-
+\newpage
 Este divisor fue implementado en la conexión correspondiente a la línea
 de transmisión UART (Tx) del microcontrolador PIC hacia la línea de
 recepción UART (Rx) del ESP32. En el sentido contrario no fue necesaria
@@ -102,5 +116,171 @@ protocolo CAN utilizado por Enertik.
 
 \subsection{Comunicación con la red Victron}
 
+La comunicación con la red Victron se realizó mediante el protocolo
+Modbus TCP. Desde el punto de vista del hardware, el microcontrolador
+ESP32 no dispone de una interfaz Ethernet integrada, por lo que fue
+necesario incorporar un módulo externo que permita este tipo de
+conectividad.
 
-dasdsadsa
+Durante la etapa de investigación se analizaron distintas alternativas
+para implementar la comunicación Ethernet. Como resultado, se optó por
+utilizar el módulo W5100, debido a su amplia disponibilidad en el
+mercado, su bajo costo y su compatibilidad con entornos de desarrollo
+basados en Arduino.
+
+Adicionalmente, el IDE Arduino dispone de bibliotecas específicas para
+la comunicación Ethernet que resultan compatibles con este módulo, lo
+que facilitó su integración dentro del sistema. Estas características
+hicieron del W5100 una opción adecuada para la implementación de la
+comunicación Modbus TCP con los equipos del ecosistema Victron.
+
+Otra ventaja de este componente es que utiliza el protocolo de
+comunicación SPI. El ESP32 dispone de periféricos compatibles con este
+protocolo, lo que facilitó su integración dentro del sistema.
+
+Más allá del conexionado SPI (pines MOSI, MISO, SCK y CS), la conexión
+entre el ESP32 y el W5100 no requirió hardware adicional.
+
+Este módulo funciona con una tensión de alimentación de 5 V, lo que lo
+vuelve compatible con el diseño implementado, ya que se aprovecha la
+misma fuente utilizada para energizar el microcontrolador PIC del
+módulo transceiver.
+
+La conexión Ethernet que parte desde el módulo W5100 se realiza a
+través de un conector RJ45. Este conector permite la utilización de
+cables de red estándar, compuestos por pares trenzados de conductores,
+diseñados para la transmisión de datos a alta velocidad.
+
+Estos cables emplean una transmisión diferencial sobre cada par, lo que
+reduce la susceptibilidad a interferencias electromagnéticas y mejora
+la integridad de la señal. De esta manera, se garantiza una comunicación
+confiable entre el dispositivo desarrollado y la red del sistema
+Victron.
+
+Mediante este tipo de conexión, el módulo W5100 puede integrarse
+directamente a la red Ethernet donde se encuentra el módulo Cerbo GX,
+permitiendo el intercambio de datos necesario para la implementación
+del protocolo Modbus TCP.
+
+Para lograr la comunicación, resta definir qué dispositivo cumplirá el
+rol de maestro y cuál el de esclavo. Esta definición se abordará en la
+sección de firmware, donde se detallará su implementación.
+
+\subsection{Prototipo experimental}
+
+Para realizar los primeros ensayos, se decidió montar un primer
+prototipo del equipo. Para ello, se utilizó como base un PCB perforado
+de tipo experimental, sobre el que se soldaron diversos conectores,
+cableados y componentes de forma manual.
+
+La figura \ref{fig:prototipo_experimental} muestra el resultado del
+montaje del prototipo utilizado para los ensayos iniciales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.27]{./Figures/prototipo_experimental.png}
+	\caption{Prototipo experimental del equipo.}
+	\label{fig:prototipo_experimental}
+\end{figure}
+
+Como se puede apreciar, el prototipo cuenta con cada uno de los módulos
+explicados en secciones anteriores, donde:
+
+\begin{itemize}
+    \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
+    
+    \item Componente 2: regulador de tensión 7805 \citep{7805_datasheet}. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
+    
+    \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
+    
+    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
+    
+    \item Componente 5: módulo transceiver. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
+    
+    \item Componente 6: módulo W5100. De manera similar al módulo transceiver, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
+\end{itemize}
+
+Este prototipo permitió validar el funcionamiento general del sistema
+y realizar pruebas iniciales de integración entre los distintos módulos
+de hardware.
+
+\subsection{Desarrollo de PCB final y listado de componentes}
+
+El diseño del PCB final se desarrolló mediante el software Altium
+Designer \citep{web_altium}. Este software es ampliamente utilizado en la industria, ya
+que permite crear esquemáticos de circuitos de forma sencilla. Estos
+esquemáticos sirven como base para el diseño de placas de circuito
+impreso.
+
+Para la creación de este PCB, se tomó como referencia el conexionado
+utilizado en el prototipo experimental.
+
+Dado que se espera que este desarrollo se convierta en un producto
+comercial, fue necesario realizar modificaciones en la selección de
+componentes durante el diseño de este prototipo.
+
+La primera diferencia se encuentra en el microcontrolador ESP32. Para
+el prototipo experimental y los ensayos iniciales se utilizó una placa
+de desarrollo comercial basada en este dispositivo.
+
+En el diseño del PCB final, se optó por reemplazar dicha placa por el
+chip del microcontrolador en sí. Esta decisión permitió descartar los
+componentes adicionales presentes en la placa de desarrollo. De esta
+forma, se eliminó hardware innecesario, se redujeron costos y se
+optimizó el espacio disponible en el PCB.
+
+Por otra parte, fue necesaria la incorporación de un regulador de
+tensión ACAAAAAAA. Este dispositivo permite adaptar el nivel de tensión
+de 12 V proveniente de la red del motorhome a un valor de 3,3 V,
+compatible con el chip ESP32.
+
+En el caso del módulo transceiver, dado que se conocía completamente su
+diseño, se optó por integrarlo directamente en el PCB. Para ello, se
+incorporaron el microcontrolador PIC18F26K60 y el transceptor MCP2551
+en la placa. Esta decisión permitió optimizar el espacio disponible y
+reducir costos al unificar todos los componentes en una única placa.
+
+En cuanto al módulo W5100, se optó por utilizar la versión comercial
+disponible en el mercado. Inicialmente se evaluó realizar un proceso de
+ingeniería inversa para analizar su diseño interno, pero se descartó
+esta alternativa debido al tiempo requerido.
+
+Como consecuencia, en el PCB se reservó un espacio para la colocación
+de un conector compatible con el módulo W5100, lo que permite su
+montaje manual de forma sencilla.
+
+En la figura PONER REFERENCIA se puede observar el diseño final del PCB.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.27]{./Figures/prototipo_experimental.png}
+	\caption{Prototipo experimental del equipo.}
+	\label{fig:prototipo_experimental}
+\end{figure}
+
+Como se puede apreciar, el PCB esta compuesto por los siguentes componentes:
+
+\begin{itemize}
+    \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
+    
+    \item Componente 2: regulador de tensión 7805 \citep{7805_datasheet}. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
+    
+    \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
+    
+    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
+    
+    \item Componente 5: módulo transceiver. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
+    
+    \item Componente 6: módulo W5100. De manera similar al módulo transceiver, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
+\end{itemize}
+
+Para el proceso de fabricación, fue necesaria la contratación de
+servicios de un fabricante especializado en este campo. Para ello, se
+generaron los denominados archivos Gerber \citep{web_altiu_gerber}.
+
+Los archivos Gerber constituyen el estándar utilizado en la industria
+para describir las distintas capas de una placa de circuito impreso.
+Cada archivo representa una capa específica del PCB, como las pistas de
+cobre, la máscara de soldadura, la serigrafía o el plano de taladros.
+A partir de esta información, el fabricante puede interpretar el diseño
+y llevar a cabo la fabricación física de la placa con precisión.

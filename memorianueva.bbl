@@ -235,5 +235,35 @@
     \verb https://developer.android.com/studio?hl=es-419
     \endverb
   \endentry
+
+  \entry{7805_datasheet}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{LM340, LM340A and LM7805 Family Wide VIN 1.5-A Fixed Voltage
+  Regulators}
+    \verb{url}
+    \verb https://www.ti.com/lit/ds/symlink/lm340.pdf
+    \endverb
+  \endentry
+
+  \entry{web_altium}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{Altium Designer}
+    \verb{url}
+    \verb https://www.altium.com/es/altium-designer
+    \endverb
+  \endentry
+
+  \entry{web_altiu_gerber}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{What is a gerber file and how are they used in the PCB
+  fabrication process}
+    \verb{url}
+    \verb https://resources.altium.com/es/p/what-gerber-file-pcb-fabrication-pr
+    \verb ocess
+    \endverb
+  \endentry
 \enddatalist
 \endinput
