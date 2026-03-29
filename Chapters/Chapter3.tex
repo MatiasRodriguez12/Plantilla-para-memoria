@@ -284,3 +284,30 @@ Cada archivo representa una capa específica del PCB, como las pistas de
 cobre, la máscara de soldadura, la serigrafía o el plano de taladros.
 A partir de esta información, el fabricante puede interpretar el diseño
 y llevar a cabo la fabricación física de la placa con precisión.
+
+A modo de resumen, se deja una tabla que lista los principales componentes empleados para la fabricación del PCB.
+
+\begin{table}[h]
+	\centering
+	\caption[Características de los puertos del DUT.]{Características de los puertos del DUT.}
+	\begin{tabular}{m{2cm} m{8cm}}   
+		\toprule
+		\textbf{Componente} 	 & \textbf{Descripción} \\
+		\midrule
+		ESP32		&	Microcontrolador principal del equipo. \\		
+		PIC18F26K80		&	Encargado de la comunicación CAN. \\
+		MCP2551		&	Encargado de adaptación de niveles en la comunicación CAN.\\
+		7805		&	Regulador de tensión de 5 V.\\
+		djskah		&	Regulador de tensión de 3,3 V.\\
+		Resistencias		&	Arreglo para el divisor de tensión.\\
+		W5100		&	Módulo para comunicación Ethernet.\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:dut}
+\end{table}
+
+\section{Desarrollo de firmware}
+\label{sec:desarrollo_firmware}
+
+A continuación, se explicará como fue implementado el firmware del equipo. Que metodología fue utilizada para su diseño y la manera en que esta esta asociada a los distintos componentes del hardware.

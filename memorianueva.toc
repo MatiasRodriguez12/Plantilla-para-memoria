@@ -24,9 +24,10 @@
 \contentsline {subsection}{\numberline {3.1.2}Comunicación con la red Victron}{18}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}Prototipo experimental}{19}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Desarrollo de PCB final y listado de componentes}{20}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Desarrollo de firmware}{22}{section.3.2}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{23}{section.4.1}%
 \contentsline {chapter}{\numberline {5}Conclusiones}{25}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Conclusiones generales }{25}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Próximos pasos}{25}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{27}{appendix*.20}%
+\contentsline {chapter}{Bibliografía}{27}{appendix*.21}%
