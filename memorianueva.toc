@@ -19,10 +19,12 @@
 \contentsline {subsection}{\numberline {2.3.2}Funcionamiento del ESP32}{11}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Desarrollo de la aplicación móvil}{12}{subsection.2.3.3}%
 \contentsline {chapter}{\numberline {3}Diseño e implementación}{15}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Análisis del software}{15}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{17}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{19}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{19}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{21}{appendix*.14}%
+\contentsline {section}{\numberline {3.1}Desarrollo de hardware}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Comunicación con la red Enertik}{15}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Comunicación con la red Victron}{17}{subsection.3.1.2}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{19}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{21}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{21}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{23}{appendix*.17}%

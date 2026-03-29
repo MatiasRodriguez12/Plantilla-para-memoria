@@ -2,93 +2,105 @@
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+En este capítulo se explican como se diseño el dispositivo, como esta conformado el hardware y software del equipo y como se desarrolló la aplicación para control del motorhome.
 
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\section{Desarrollo de hardware}
+\label{sec:desarrollo_hardware}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% parámetros para configurar el formato del código en los entornos lstlisting
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\lstset{ %
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  %escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  %extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  %frame=single,	                % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  language=[ANSI]C,                % the language of the code
-  %otherkeywords={*,...},           % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
-  morecomment=[s]{/*}{*/}
-}
+A continuación, se explicarán como se desarrollaron los distintos módulos de hardware del equipo y como se relacionan unos con otros.
+
+\subsection{Comunicación con la red Enertik}
+
+Como se mencionó en la sección \ref{sec:protocolo_can}, la red de
+domótica de Enertik utiliza una biblioteca propia basada en el
+protocolo CAN. A su vez, todos los dispositivos de la red se conectan
+a través de un cableado de cuatro conductores: dos destinados a la
+alimentación de los equipos y dos destinados a la comunicación CAN
+(CAN H y CAN L).
+
+Para el desarrollo de la comunicación del ESP32 mediante este
+protocolo, se consideró en primer lugar la adaptación de la biblioteca
+de Enertik dentro del firmware del dispositivo. Durante la etapa de
+investigación se identificaron bibliotecas disponibles que permiten al
+ESP32 implementar comunicación CAN a través de sus puertos GPIO.
+
+Sin embargo, los intentos de establecer una comunicación básica entre
+el ESP32 y el módulo PRC10 no arrojaron resultados satisfactorios.
+Esto se debe a la complejidad de la biblioteca propia desarrollada por
+Enertik, cuyas condiciones y configuraciones no pudieron ser
+replicadas en el ESP32.
+
+Ante esta situación, se analizaron alternativas disponibles dentro de
+los equipos comercializados por Enertik. En este contexto, se identificó
+un módulo transceiver (mostrado en la figura \ref{fig:im_hw_transceiver}) utilizado en conjunto con la pantalla HMI de control. Esta placa tiene como función realizar la conversión del
+protocolo CAN, proveniente de la red del motorhome, a una interfaz de
+comunicación UART, compatible con la pantalla.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{./Figures/divisor_resistivo.png}
+	\caption{Módulo transceiver comercial perteneciente a Enertik.}
+	\label{fig:divisor_resistivo}
+\end{figure}
+
+Basado en esta premisa, se decidió replicar y adaptar este módulo transceiver
+para que sea compatible con el dispositivo basado en ESP32. Este
+módulo se compone de un microcontrolador PIC y de un transceptor CAN
+MCP2551.
+\newpage
+La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre como fue la implementación de este módulo transceiver.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{./Figures/esquema_hw_transceiver.png}
+	\caption{Diagrama de como se estable la comunicación CAN entre la red del motorhome y el ESP32.}
+	\label{fig:im_hw_transceiver}
+\end{figure}
+
+El microcontrolador PIC dispone de la biblioteca de comunicación
+propia desarrollada por Enertik, lo que le permite interactuar de forma
+nativa con la red de domótica del motorhome. Por su parte, el
+transceptor MCP2551 se encarga de la adaptación de niveles eléctricos
+necesarios para la transmisión diferencial sobre el bus CAN.
+
+El microcontrolador PIC funciona con una tensión de alimentación de
+5 V, mientras que el ESP32 opera con 3,3 V. Esto implica que los niveles
+de tensión utilizados en los puertos UART de cada dispositivo son
+diferentes.
+
+Esta diferencia generó la necesidad de adaptar los niveles de tensión
+en la comunicación UART, ya que una conexión directa podría dañar los
+puertos del ESP32 debido a su menor tolerancia de voltaje.
+
+La solución adoptada fue la implementación de un divisor resistivo. La
+figura \ref{fig:divisor_resistivo} muestra un diagrama del circuito
+utilizado, junto con el cálculo correspondiente a la tensión de salida.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{./Figures/divisor_resistivo.png}
+	\caption{Diseño de divisor resistivo para adaptación UART.}
+	\label{fig:divisor_resistivo}
+\end{figure}
+
+Mediante el uso de tres resistencias de igual valor, se logró reducir la
+tensión de 5 V a 3,3 V en la línea de transmisión hacia el ESP32,
+lo que permitió una comunicación segura entre ambos dispositivos.
+
+Este divisor fue implementado en la conexión correspondiente a la línea
+de transmisión UART (Tx) del microcontrolador PIC hacia la línea de
+recepción UART (Rx) del ESP32. En el sentido contrario no fue necesaria
+esta adaptación, ya que el nivel lógico de 3,3 V proveniente del ESP32
+es reconocido correctamente por el PIC.
+
+De esta manera, el módulo transceiver actúa como un intermediario que
+realiza la conversión entre la red CAN y una interfaz UART. Esto
+permite que el ESP32 pueda enviar y recibir información de la red de
+domótica sin necesidad de implementar directamente la complejidad del
+protocolo CAN utilizado por Enertik.
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-\section{Análisis del software}
- 
-La idea de esta sección es resaltar los problemas encontrados, los criterios utilizados y la justificación de las decisiones que se hayan tomado.
-
-Se puede agregar código o pseudocódigo dentro de un entorno lstlisting con el siguiente código:
-
-\begin{verbatim}
-\begin{lstlisting}[caption= "un epígrafe descriptivo"]
-	las líneas de código irían aquí...
-\end{lstlisting}
-\end{verbatim}
-
-A modo de ejemplo, se muestra el fragmento de código \ref{cod:vControl}:
-
-\begin{lstlisting}[label=cod:vControl,caption=Pseudocódigo del lazo principal de control.]  % Start your code-block
-
-#define MAX_SENSOR_NUMBER 3
-#define MAX_ALARM_NUMBER  6
-#define MAX_ACTUATOR_NUMBER 6
-
-uint32_t sensorValue[MAX_SENSOR_NUMBER];		
-FunctionalState alarmControl[MAX_ALARM_NUMBER];	//ENABLE or DISABLE
-state_t alarmState[MAX_ALARM_NUMBER];						//ON or OFF
-state_t actuatorState[MAX_ACTUATOR_NUMBER];			//ON or OFF
-
-void vControl() {
-
-	initGlobalVariables();
-	
-	period = 500 ms;
-		
-	while(1) {
-
-		ticks = xTaskGetTickCount();
-		
-		updateSensors();
-		
-		updateAlarms();
-		
-		controlActuators();
-		
-		vTaskDelayUntil(&ticks, period);
-	}
-}
-\end{lstlisting}
+\subsection{Comunicación con la red Victron}
 
 
-
+dasdsadsa
