@@ -52,7 +52,7 @@ comunicación UART, compatible con la pantalla.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{./Figures/divisor_resistivo.png}
+	\includegraphics[scale=0.6]{./Figures/placa_transceiver.png}
 	\caption{Módulo transceiver comercial perteneciente a Enertik.}
 	\label{fig:divisor_resistivo}
 \end{figure}
@@ -230,7 +230,7 @@ forma, se eliminó hardware innecesario, se redujeron costos y se
 optimizó el espacio disponible en el PCB.
 
 Por otra parte, fue necesaria la incorporación de un regulador de
-tensión ACAAAAAAA. Este dispositivo permite adaptar el nivel de tensión
+tensión AP63203 \citep{AP63203_datasheet}. Este dispositivo permite adaptar el nivel de tensión
 de 12 V proveniente de la red del motorhome a un valor de 3,3 V,
 compatible con el chip ESP32.
 
@@ -249,29 +249,26 @@ Como consecuencia, en el PCB se reservó un espacio para la colocación
 de un conector compatible con el módulo W5100, lo que permite su
 montaje manual de forma sencilla.
 
-En la figura PONER REFERENCIA se puede observar el diseño final del PCB.
+En la figura \ref{fig:pcb_final} se puede observar el diseño final del PCB.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.27]{./Figures/prototipo_experimental.png}
-	\caption{Prototipo experimental del equipo.}
-	\label{fig:prototipo_experimental}
+	\includegraphics[scale=0.4]{./Figures/pcb_pca10.png}
+	\caption{Diseño final para PCB del equipo.}
+	\label{fig:pcb_final}
 \end{figure}
 
-Como se puede apreciar, el PCB esta compuesto por los siguentes componentes:
+Como se puede apreciar, el PCB esta compuesto por los siguientes componentes:
 
 \begin{itemize}
-    \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
-    
-    \item Componente 2: regulador de tensión 7805 \citep{7805_datasheet}. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
-    
-    \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
-    
-    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
-    
-    \item Componente 5: módulo transceiver. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
-    
-    \item Componente 6: módulo W5100. De manera similar al módulo transceiver, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
+	\item Componente 1: conector principal. Terminal sobre que se conecta el cableado de cuatro hilos proveniente del motorhome.
+	\item Componente 2: MCP2551. Forma parte del módulo transceiver, encargado de adaptar los niveles de tensión de la linea CAN.
+	\item Componente 3: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
+	\item Componente 4: PIC18F26K80. Microcontrolador que contiene la biblioteca desarrollada por Enertik para la comunicación entre equipos.
+	\item Componente 5: módulo ESP32. Microcontrolador que contiene el firmware principal del equipo.    
+    \item Componente 6: regulador de tensión AP63203. Fuente de tensión de 3,3 V encargado alimentar el ESP32.
+    \item Componente 7: regulador de tensión 7805. Componente responsable de suministrar una tensión estable de 5 V para alimentar el PIC y el W5100.   
+    \item Componente 8: conector de diez pines. Conector compatible con el módulo W5100. En este lugar se montará dicho componente.
 \end{itemize}
 
 Para el proceso de fabricación, fue necesaria la contratación de
@@ -298,7 +295,7 @@ A modo de resumen, se deja una tabla que lista los principales componentes emple
 		PIC18F26K80		&	Encargado de la comunicación CAN. \\
 		MCP2551		&	Encargado de adaptación de niveles en la comunicación CAN.\\
 		7805		&	Regulador de tensión de 5 V.\\
-		djskah		&	Regulador de tensión de 3,3 V.\\
+		AP63203		&	Regulador de tensión de 3,3 V.\\
 		Resistencias		&	Arreglo para el divisor de tensión.\\
 		W5100		&	Módulo para comunicación Ethernet.\\
 		\bottomrule
