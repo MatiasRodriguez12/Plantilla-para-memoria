@@ -4,7 +4,7 @@
 
 En este capítulo se describen los distintos protocolos de comunicación
 empleados en el desarrollo del trabajo, los componentes de hardware
-implementados para cumplir con los objetivos planteados y las
+empleados para cumplir con los objetivos planteados y las
 herramientas utilizadas para el desarrollo del software.
 
 \section{Protocolos de comunicación}
@@ -19,11 +19,11 @@ sistema.
 Para lograr este objetivo, fue necesario implementar distintos protocolos
 de comunicación que permitan el intercambio de información entre los
 subsistemas involucrados, incluyendo CAN, Modbus TCP y una interfaz basada
-en HTTP.
+en HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}.
 
 \subsection{Protocolo CAN}
 \label{sec:protocolo_can}
-El protocolo CAN es un protocolo serie ampliamente utilizado en la industria automotriz.
+El protocolo CAN es un protocolo serie ampliamente utilizado en la industria automotriz \citep{web_intro_can}.
 Permite la comunicación entre múltiples dispositivos sin la necesidad
 de un controlador central y proporciona un intercambio de datos rápido
 y confiable.
@@ -36,11 +36,6 @@ una alta inmunidad a interferencias electromagnéticas, ya que el ruido
 externo tiende a afectar a ambos cables de manera similar y, por lo
 tanto, es cancelado al evaluar la diferencia entre ellos.
 
-En cuanto a la representación lógica, un bit dominante (0 lógico) se
-caracteriza por una diferencia de tensión significativa entre CAN H y
-CAN L (normalmente un conductor adquiere un valor de tensión igual a la fuente y el otro a GND), mientras que un bit recesivo (1 lógico) se corresponde con un estado en el que ambos conductores presentan niveles de tensión
-similares.
-\newpage
 Por otra parte, la comunicación en una red CAN se basa en un esquema de
 difusión, donde todos los nodos reciben los mensajes transmitidos. Cada
 mensaje incluye un identificador que permite a los dispositivos
@@ -49,7 +44,7 @@ mensajes que no corresponden a su funcionamiento.
 
 \subsection{Protocolo Modbus TCP}
 
-El protocolo Modbus es uno de los protocolos mas utilizados en la industria de la automatización. Su función principal es permitir que distintos dispositivos electrónicos se comuniquen entre sí de una forma sencilla y entandarizada.
+El protocolo Modbus es uno de los protocolos más utilizados en la industria de la automatización. Su función principal es permitir que distintos dispositivos electrónicos se comuniquen entre sí de una forma sencilla y entandarizada.
 
 En una red Modbus, exite una relación maestro-esclavo entre los dispositivos. El dispositivo maestro es el encargado de iniciar una comunicación y solicitar información. El esclavo se encarga de atender estas solicitudes y entregar los datos que el maestro requiera.
 
@@ -60,7 +55,7 @@ locales, identificándose mediante direcciones IP.
 
 La comunicación se basa en un esquema de tipo \textit{request-response},
 donde el cliente (maestro) envía una solicitud a un servidor (esclavo),
-y este último procesa la petición y devuelve una respuesta. Dentro de
+y este último procesa la petición y devuelve una respuesta \citep{web_intro_modbus}. Dentro de
 estas solicitudes se incluyen funciones específicas que permiten leer o
 escribir distintos tipos de registros, tales como \textit{holding
 registers} o \textit{input registers}.
@@ -71,8 +66,7 @@ registros que pueden ser consultados y controlados de forma remota.
 
 \subsection{Solicitudes HTTP}
 \label{sec:http}
-El protocolo HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}
-es un protocolo de aplicación ampliamente utilizado para la comunicación
+El protocolo HTTP es un protocolo de aplicación ampliamente utilizado para la comunicación
 entre clientes y servidores. Su funcionamiento se
 basa en un modelo de tipo \textit{request-response}, donde un cliente
 envía una solicitud (request) a un servidor, este procesa la
@@ -91,8 +85,8 @@ GET, empleado para solicitar información al servidor, y el
 método POST, utilizado para enviar datos y generar cambios en
 el estado del sistema. Otros métodos relevantes incluyen
 PUT, orientado a la actualización de recursos, y
-DELETE, destinado a su eliminación.
-\newpage
+DELETE, destinado a su eliminación \citep{web_solicitudes_http}.
+
 En el contexto de este trabajo, las solicitudes HTTP son utilizadas
 como mecanismo de comunicación entre la aplicación móvil y el
 dispositivo basado en ESP32, lo que permite el envío de comandos de
@@ -117,11 +111,11 @@ el desarrollo de aplicaciones orientadas al campo IoT (\textit{Internet of Thing
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{./Figures/esp32.png}
-	\caption{Microcontrolador ESP32.}
+	\includegraphics[scale=0.5]{./Figures/esp32.png}
+	\caption{Microcontrolador ESP32\protect\footnotemark.}
 	\label{fig:im_esp32}
 \end{figure}
-
+\footnotetext{Imagen tomada de \href{https://robu.in/product/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core/}{https://robu.in/product/esp32-38pin-development-board-\linebreak wifibluetooth-ultra-low-power-consumption-dual-core/}.}
 \subsection{Módulo transceiver}
 
 Todos los dispositivos que pertenecen a la red de domótica de Enertik se
@@ -142,7 +136,7 @@ eléctricos para la transmisión diferencial sobre el bus.
 
 Como se puede apreciar en la figura \ref{fig:im_transceiver}, este módulo
 realiza la conversión de la red CAN, proveniente del sistema de domótica,
-a una interfaz de comunicación serial UART, compatible con el ESP32.
+a una interfaz de comunicación serial UART (\textit{Universal Asynchronous Receiver-Transmitter}) \citep{web_uart}, compatible con el ESP32.
 
 Esta solución permite desacoplar la gestión del protocolo de
 comunicación del procesamiento principal del sistema, lo que simplifica
@@ -166,8 +160,7 @@ W5100 \citep{w5100_datasheet}.
 El W5100 es un controlador Ethernet que permite dotar de conectividad
 de red a sistemas embebidos, gestionando internamente la pila de
 protocolos TCP/IP. La comunicación con el microcontrolador se realiza
-a través de una interfaz SPI, lo que facilita su integración en
-plataformas como el ESP32.
+a través de una interfaz SPI (\textit{Serial Peripheral Interface})\citep{web_spi} , lo que facilita su integración en plataformas como el ESP32.
 
 Mediante el uso de este módulo, el dispositivo desarrollado puede
 establecer conexiones sobre redes Ethernet, lo que permite la
@@ -177,9 +170,11 @@ equipos del ecosistema Victron.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{./Figures/w5100.jpg}
-	\caption{Módulo W5100.}
+	\caption{Módulo W5100\protect\footnotemark.}
 	\label{fig:im_w5100}
 \end{figure}
+
+\footnotetext{Imagen tomada de \url{https://grobotronics.com/wiznet-w5100-ethernet-network-module.html}}
 
 \section{Herramientas de software}
 \label{sec:componentes_software}
@@ -197,7 +192,7 @@ su facilidad de uso, amplia documentación y la disponibilidad de una gran
 cantidad de bibliotecas previamente desarrolladas.
 
 En particular, el uso del IDE Arduino facilitó la implementación de los
-distintos protocolos de comunicación requeridos en el proyecto, tales
+distintos protocolos de comunicación requeridos en el trabajo, tales
 como HTTP y Modbus TCP. Para este último, se emplearon bibliotecas
 específicas que fueron adaptadas para su funcionamiento sobre el módulo
 Ethernet W5100.
@@ -224,7 +219,7 @@ Para la programación del microcontrolador se optó por el lenguaje C++,
 debido a que es el lenguaje en el que se encuentran desarrolladas la
 mayoría de las bibliotecas disponibles en el entorno Arduino, lo que
 facilitó la integración de distintas funcionalidades requeridas en el
-proyecto.
+trabajo.
 
 Como metodología de desarrollo, se utilizó FreeRTOS \citep{web_freertos},
 que se encuentra integrado en el ESP32. Este sistema operativo en
@@ -240,24 +235,6 @@ mecanismos que permiten la comunicación y sincronización entre tareas,
 lo que facilita la correcta coordinación de las distintas
 funcionalidades implementadas en el sistema.
 \newpage
-En este contexto, el firmware fue dividido en distintas tareas
-principales. En primer lugar, se implementó una tarea encargada de la
-gestión de la comunicación Wi-Fi, donde el ESP32 opera en modo
-\textit{Access Point}. Este modo habilita la conexión de la aplicación
-móvil y permite al dispositivo funcionar como servidor HTTP para la
-recepción de solicitudes.
-
-Por otra parte, se desarrollaron tareas dedicadas a la recepción de
-mensajes provenientes de la red CAN y a la atención de la comunicación
-Modbus TCP. Estas tareas se encargan de procesar la información
-recibida desde los distintos dispositivos conectados a la red de
-domótica.
-
-Finalmente, se implementó una tarea central de procesamiento cuya
-función consiste en interpretar la información recibida desde la red
-CAN, desde la interfaz HTTP y desde el módulo de comunicación Modbus
-TCP, y en función de ello tomar las decisiones necesarias para el
-control del sistema.
 
 
 \subsection{Desarrollo de la aplicación móvil}
@@ -280,8 +257,8 @@ interfaces móviles multiplataforma a partir de tecnologías web.
 
 Ionic se apoya en el framework Angular \citep{web_angular}, que proporciona una estructura
 robusta para el desarrollo de interfaces de usuario dinámicas y
-organizadas en componentes. Angular utiliza lenguajes como TypeScript,
-HTML y CSS, lo que facilita la construcción de aplicaciones
+organizadas en componentes. Angular utiliza lenguajes como TypeScript \citep{web_ts},
+HTML \citep{web_html} y CSS \citep{web_css}, lo que facilita la construcción de aplicaciones
 modulares y escalables.
 
 Para la adaptación de la aplicación a dispositivos móviles se utilizó
@@ -296,23 +273,5 @@ contiene todos los recursos necesarios para su ejecución, tales como el
 código compilado, las bibliotecas utilizadas y los archivos de
 configuración.
 
-Ionic dispone de un amplio conjunto de bibliotecas que pueden ser
-utilizadas en el desarrollo de aplicaciones. Entre ellas, se encuentra
-una biblioteca destinada a la gestión de solicitudes HTTP. 
-
-En este
-contexto, se optó por utilizar dicha biblioteca como base para el
-desarrollo de funciones propias orientadas a la comunicación entre la
-aplicación y el ESP32.
-
-Como se mencionó en la sección \ref{sec:http}, la solicitud GET es
-utilizada para la realización de peticiones destinadas a la obtención
-de datos desde el servidor. A través de este mecanismo es posible
-consultar el estado de las distintas variables del sistema en el
-motorhome.
-
-Por otra parte, mediante solicitudes POST es posible enviar datos desde
-la aplicación hacia el ESP32. Esto permite el control de las distintas
-variables del sistema y la ejecución de comandos sobre los dispositivos.
 
 

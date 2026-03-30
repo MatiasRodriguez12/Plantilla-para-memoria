@@ -125,6 +125,15 @@
     \endverb
   \endentry
 
+  \entry{web_intro_http}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{Overview of HTTP}
+    \verb{url}
+    \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
+    \endverb
+  \endentry
+
   \entry{web_tcpip}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-25}
@@ -135,12 +144,12 @@
     \endverb
   \endentry
 
-  \entry{web_intro_http}{misc}{}{}
+  \entry{web_solicitudes_http}{misc}{}{}
     \field{labeltitlesource}{title}
-    \field{note}{Última consulta: 2025-03-19}
-    \field{title}{Overview of HTTP}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{¿Qué es una Petición HTTP?}
     \verb{url}
-    \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
+    \verb https://kinsta.com/es/blog/que-es-una-peticion-http/
     \endverb
   \endentry
 
@@ -164,12 +173,31 @@
     \endverb
   \endentry
 
+  \entry{web_uart}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{Serial Communication}
+    \verb{url}
+    \verb https://learn.sparkfun.com/tutorials/serial-communication/all
+    \endverb
+  \endentry
+
   \entry{w5100_datasheet}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-19}
     \field{title}{W5100}
     \verb{url}
     \verb https://cdn.sparkfun.com/assets/e/2/f/c/2/W5100_Datasheet_v1_1_6.pdf
+    \endverb
+  \endentry
+
+  \entry{web_spi}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{Serial Peripheral Interface (SPI)}
+    \verb{url}
+    \verb https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/
+    \verb all
     \endverb
   \endentry
 
@@ -215,6 +243,33 @@
     \field{title}{Arduino}
     \verb{url}
     \verb https://angular.dev/
+    \endverb
+  \endentry
+
+  \entry{web_ts}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{What is TypeScript?}
+    \verb{url}
+    \verb https://www.typescriptlang.org/
+    \endverb
+  \endentry
+
+  \entry{web_html}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{HTML: HyperText Markup Language}
+    \verb{url}
+    \verb https://developer.mozilla.org/en-US/docs/Web/HTML
+    \endverb
+  \endentry
+
+  \entry{web_css}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-29}
+    \field{title}{CSS: Cascading Style Sheets}
+    \verb{url}
+    \verb https://developer.mozilla.org/en-US/docs/Web/CSS
     \endverb
   \endentry
 

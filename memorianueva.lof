@@ -3,16 +3,16 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Arquitectura centralizada de la red de domótica con el módulo PRC10 como unidad de control.}}{3}{figure.caption.7}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Arquitectura de comunicación del sistema con el ESP32 como intermediario entre PRC10, Cerbo GX y la aplicación móvil.}}{5}{figure.caption.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Microcontrolador ESP32.}}{9}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Microcontrolador ESP32\footnotemark .}}{9}{figure.caption.9}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Funcionamiento del módulo transceiver.}}{10}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Módulo W5100.}}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Módulo W5100\footnotemark .}}{10}{figure.caption.11}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Esquema de integración entre Angular, Ionic, Capacitor y Android Studio.}}{12}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Trayecto que sigue el ESP32 para llegar a cada uno de los módulos.}}{15}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Módulo transceiver comercial perteneciente a Enertik.}}{16}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de como se estable la comunicación CAN entre la red del motorhome y el ESP32.}}{17}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diseño de divisor resistivo para adaptación UART.}}{17}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Prototipo experimental del equipo.}}{19}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Prototipo experimental del equipo.}}{21}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Trayecto que sigue el ESP32 para llegar a cada uno de los módulos.}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Módulo transceiver comercial perteneciente a Enertik.}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de como se estable la comunicación CAN entre la red del motorhome y el ESP32.}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diseño de divisor resistivo para adaptación UART.}}{15}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Prototipo experimental del equipo.}}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Prototipo experimental del equipo.}}{19}{figure.caption.18}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

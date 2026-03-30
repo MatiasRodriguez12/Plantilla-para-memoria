@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  29 MAR 2026 20:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  29 MAR 2026 21:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1134,7 +1134,7 @@ l.63 L
 
 
 ]
-<./Figures/esquema_domotica.png, id=280, 623.32875pt x 295.1025pt>
+<./Figures/esquema_domotica.png, id=284, 623.32875pt x 295.1025pt>
 File: ./Figures/esquema_domotica.png Graphic file (type png)
 <use ./Figures/esquema_domotica.png>
 Package pdftex.def Info: ./Figures/esquema_domotica.png  used on input line 111
@@ -1158,7 +1158,7 @@ l.116 \newpage
 LaTeX Info: Redefining \. on input line 141.
 LaTeX Info: Redefining \% on input line 141.
  [3 <./Figures/esquema_domotica.png>]
-<./Figures/esquema.png, id=299, 2547.5175pt x 1409.265pt>
+<./Figures/esquema.png, id=303, 2547.5175pt x 1409.265pt>
 File: ./Figures/esquema.png Graphic file (type png)
 <use ./Figures/esquema.png>
 Package pdftex.def Info: ./Figures/esquema.png  used on input line 192.
@@ -1184,69 +1184,78 @@ LaTeX Info: Redefining \% on input line 117.
 ]
 Cap\'{\i }tulo 2.
 [7]
-LaTeX Info: Redefining \. on input line 95.
-LaTeX Info: Redefining \% on input line 95.
+LaTeX Info: Redefining \. on input line 98.
+LaTeX Info: Redefining \% on input line 98.
  [8]
-<./Figures/esp32.png, id=332, 148.30406pt x 289.08pt>
+<./Figures/esp32.png, id=340, 148.30406pt x 289.08pt>
 File: ./Figures/esp32.png Graphic file (type png)
 <use ./Figures/esp32.png>
-Package pdftex.def Info: ./Figures/esp32.png  used on input line 120.
-(pdftex.def)             Requested size: 103.81212pt x 202.35461pt.
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
- [9 <./Figures/esp32.png>]
-<./Figures/transceiver.png, id=341, 623.32875pt x 100.12407pt>
+Package pdftex.def Info: ./Figures/esp32.png  used on input line 114.
+(pdftex.def)             Requested size: 74.15184pt x 144.53964pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 115.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 115.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 118.
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--118
+[][][]\T1/ppl/m/n/9 Imagen to-ma-da de [][]https://robu.in/product/esp32-38pin-
+development-board-
+ []
+
+LaTeX Info: Redefining \. on input line 136.
+LaTeX Info: Redefining \% on input line 136.
+[9 <./Figures/esp32.png>]
+<./Figures/transceiver.png, id=354, 623.32875pt x 100.12407pt>
 File: ./Figures/transceiver.png Graphic file (type png)
 <use ./Figures/transceiver.png>
-Package pdftex.def Info: ./Figures/transceiver.png  used on input line 154.
+Package pdftex.def Info: ./Figures/transceiver.png  used on input line 148.
 (pdftex.def)             Requested size: 374.00014pt x 60.07489pt.
-<./Figures/w5100.jpg, id=343, 253.94875pt x 199.74625pt>
+<./Figures/w5100.jpg, id=357, 253.94875pt x 199.74625pt>
 File: ./Figures/w5100.jpg Graphic file (type jpg)
 <use ./Figures/w5100.jpg>
-Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 179.
+Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 172.
 (pdftex.def)             Requested size: 177.76291pt x 139.82141pt.
-LaTeX Info: Redefining \. on input line 191.
-LaTeX Info: Redefining \% on input line 191.
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
  [10 <./Figures/transceiver.png> <./Figures/w5100.jpg>]
-LaTeX Info: Redefining \. on input line 242.
-LaTeX Info: Redefining \% on input line 242.
+LaTeX Info: Redefining \. on input line 237.
+LaTeX Info: Redefining \% on input line 237.
  [11]
-<./Figures/esquema_herramientas_app.png, id=364, 779.16093pt x 167.87718pt>
+<./Figures/esquema_herramientas_app.png, id=383, 779.16093pt x 167.87718pt>
 File: ./Figures/esquema_herramientas_app.png Graphic file (type png)
 <use ./Figures/esquema_herramientas_app.png>
 Package pdftex.def Info: ./Figures/esquema_herramientas_app.png  used on input 
-line 272.
+line 249.
 (pdftex.def)             Requested size: 389.57951pt x 83.93839pt.
-LaTeX Info: Redefining \. on input line 308.
-LaTeX Info: Redefining \% on input line 308.
- [12 <./Figures/esquema_herramientas_app.png>])
+)
 LaTeX Info: Redefining \. on input line 118.
 LaTeX Info: Redefining \% on input line 118.
- [13]
+ [12 <./Figures/esquema_herramientas_app.png>]
 \openout2 = `Chapters/Chapter3.aux'.
 
-
-(Chapters/Chapter3.tex [14
-
-
-
-
-]
+ (Chapters/Chapter3.tex
 Cap\'{\i }tulo 3.
-<./Figures/esquema_hw_general.png, id=388, 485.56406pt x 554.82281pt>
+<./Figures/esquema_hw_general.png, id=404, 485.56406pt x 554.82281pt>
 File: ./Figures/esquema_hw_general.png Graphic file (type png)
 <use ./Figures/esquema_hw_general.png>
 Package pdftex.def Info: ./Figures/esquema_hw_general.png  used on input line 1
 8.
 (pdftex.def)             Requested size: 267.06105pt x 305.15349pt.
-[15 <./Figures/esquema_hw_general.png>]
-<./Figures/divisor_resistivo.png, id=396, 326.72063pt x 240.14719pt>
+[13
+
+
+
+
+ <./Figures/esquema_hw_general.png>]
+<./Figures/divisor_resistivo.png, id=412, 326.72063pt x 240.14719pt>
 File: ./Figures/divisor_resistivo.png Graphic file (type png)
 <use ./Figures/divisor_resistivo.png>
 Package pdftex.def Info: ./Figures/divisor_resistivo.png  used on input line 55
 .
 (pdftex.def)             Requested size: 196.03387pt x 144.0894pt.
-<./Figures/esquema_hw_transceiver.png, id=398, 625.58719pt x 242.40562pt>
+<./Figures/esquema_hw_transceiver.png, id=414, 625.58719pt x 242.40562pt>
 File: ./Figures/esquema_hw_transceiver.png Graphic file (type png)
 <use ./Figures/esquema_hw_transceiver.png>
 Package pdftex.def Info: ./Figures/esquema_hw_transceiver.png  used on input li
@@ -1258,7 +1267,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 73.
 LaTeX Info: Redefining \% on input line 73.
-[16 <./Figures/divisor_resistivo.png>]
+[14 <./Figures/divisor_resistivo.png>]
 File: ./Figures/divisor_resistivo.png Graphic file (type png)
 <use ./Figures/divisor_resistivo.png>
 Package pdftex.def Info: ./Figures/divisor_resistivo.png  used on input line 95
@@ -1266,11 +1275,11 @@ Package pdftex.def Info: ./Figures/divisor_resistivo.png  used on input line 95
 (pdftex.def)             Requested size: 196.03387pt x 144.0894pt.
 LaTeX Info: Redefining \. on input line 103.
 LaTeX Info: Redefining \% on input line 103.
- [17 <./Figures/esquema_hw_transceiver.png>]
+ [15 <./Figures/esquema_hw_transceiver.png>]
 LaTeX Info: Redefining \. on input line 169.
 LaTeX Info: Redefining \% on input line 169.
- [18]
-<./Figures/prototipo_experimental.png, id=416, 1388.93906pt x 1156.32pt>
+ [16]
+<./Figures/prototipo_experimental.png, id=431, 1388.93906pt x 1156.32pt>
 File: ./Figures/prototipo_experimental.png Graphic file (type png)
 <use ./Figures/prototipo_experimental.png>
 Package pdftex.def Info: ./Figures/prototipo_experimental.png  used on input li
@@ -1278,7 +1287,7 @@ ne 181.
 (pdftex.def)             Requested size: 375.01855pt x 312.21057pt.
 LaTeX Info: Redefining \. on input line 195.
 LaTeX Info: Redefining \% on input line 195.
- [19 <./Figures/prototipo_experimental.png>]
+ [17 <./Figures/prototipo_experimental.png>]
 Overfull \hbox (34.41765pt too wide) in paragraph at lines 232--236
 []\T1/ppl/m/n/10.95 Por otra par-te, fue ne-ce-sa-ria la in-cor-po-ra-ción de u
 n re-gu-la-dor de ten-sión ACAAAAAAA.
@@ -1286,7 +1295,7 @@ n re-gu-la-dor de ten-sión ACAAAAAAA.
 
 LaTeX Info: Redefining \. on input line 247.
 LaTeX Info: Redefining \% on input line 247.
-[20]
+[18]
 File: ./Figures/prototipo_experimental.png Graphic file (type png)
 <use ./Figures/prototipo_experimental.png>
 Package pdftex.def Info: ./Figures/prototipo_experimental.png  used on input li
@@ -1294,7 +1303,7 @@ ne 256.
 (pdftex.def)             Requested size: 375.01855pt x 312.21057pt.
 LaTeX Info: Redefining \. on input line 272.
 LaTeX Info: Redefining \% on input line 272.
- [21]
+ [19]
 Overfull \hbox (7.5786pt too wide) in paragraph at lines 295--295
 []|\T1/ppl/b/n/10.95 Componente| 
  []
@@ -1312,12 +1321,12 @@ Overfull \hbox (1.47906pt too wide) in paragraph at lines 302--302
 )
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
- [22]
+ [20]
 \openout2 = `Chapters/Chapter4.aux'.
 
  (Chapters/Chapter4.tex
 Cap\'{\i }tulo 4.
-) [23
+) [21
 
 
 
@@ -1325,14 +1334,14 @@ Cap\'{\i }tulo 4.
 ]
 \openout2 = `Chapters/Chapter5.aux'.
 
- (Chapters/Chapter5.tex [24
+ (Chapters/Chapter5.tex [22
 
 
 
 
 ]
 Cap\'{\i }tulo 5.
-) [25] [26
+) [23] [24
 
 
 
@@ -1356,16 +1365,22 @@ icframework .
  []
 
 
+Overfull \hbox (34.55379pt too wide) in paragraph at lines 139--139
+[]\T1/ppl/m/it/10.95 What is Ty-peS-cript? \T1/ppl/m/n/10.95 Úl-ti-ma con-sul-t
+a: 2025-03-29. \T1/ppl/m/sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / www .
+ typescriptlang .
+ []
+
+[25]
 Overfull \hbox (6.59753pt too wide) in paragraph at lines 139--139
 []\T1/ppl/m/it/10.95 Android Stu-dio\T1/ppl/m/n/10.95 . Úl-ti-ma con-sul-ta: 20
 25-03-25. \T1/ppl/m/sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / developer 
 . android .
  []
 
-[27]
 LaTeX Info: Redefining \. on input line 141.
 LaTeX Info: Redefining \% on input line 141.
- [28] (memorianueva.aux (portada.aux)
+[26] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -1395,23 +1410,31 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31204 strings out of 467828
- 675391 string characters out of 5427024
- 1295649 words of memory out of 5000000
- 59626 multiletter control sequences out of 15000+600000
- 682291 words of font info for 99 fonts, out of 8000000 for 9000
+ 31252 strings out of 467828
+ 676698 string characters out of 5427024
+ 1295999 words of memory out of 5000000
+ 59660 multiletter control sequences out of 15000+600000
+ 688021 words of font info for 108 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,20n,95p,1971b,2144s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uhvb8a.pfb><C:/Program
- Files/MiKTeX/fonts/type1/public/urw-base35/uhvr8a.pfb><C:/Program Files/MiKTeX
-/fonts/type1/public/urw-base35/uhvro8a.pfb><C:/Program Files/MiKTeX/fonts/type1
-/public/urw-base35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-b
-ase35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.
-pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Progr
-am Files/MiKTeX/fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (42 pages, 5122695 bytes).
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+<C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uhvb8a.pfb><C:/Program F
+iles/MiKTeX/fonts/type1/public/urw-base35/uhvr8a.pfb><C:/Program Files/MiKTeX/f
+onts/type1/public/urw-base35/uhvro8a.pfb><C:/Program Files/MiKTeX/fonts/type1/p
+ublic/urw-base35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-bas
+e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pf
+b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
+ Files/MiKTeX/fonts/type1/public/urw-base35/uplri8a.pfb>
+Output written on memorianueva.pdf (40 pages, 5128308 bytes).
 PDF statistics:
- 574 PDF objects out of 1000 (max. 8388607)
- 115 named destinations out of 1000 (max. 500000)
+ 603 PDF objects out of 1000 (max. 8388607)
+ 123 named destinations out of 1000 (max. 500000)
  312 words of extra memory for PDF output out of 10000 (max. 10000000)
 
