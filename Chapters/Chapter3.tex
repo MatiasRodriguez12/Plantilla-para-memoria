@@ -307,4 +307,62 @@ A modo de resumen, se deja una tabla que lista los principales componentes emple
 \section{Desarrollo de firmware}
 \label{sec:desarrollo_firmware}
 
-A continuación, se explicará como fue implementado el firmware del equipo. Que metodología fue utilizada para su diseño y la manera en que esta esta asociada a los distintos componentes del hardware.
+Como se mencionó en la sección \ref{sec:rtos}, se optó por utilizar
+FreeRTOS como base para el desarrollo del firmware.
+
+FreeRTOS permite estructurar el firmware mediante la ejecución de
+múltiples tareas. La planificación de estas tareas genera un
+comportamiento concurrente a nivel lógico, lo que mejora la organización
+del sistema y facilita la gestión de sus funcionalidades.
+
+En este contexto, en el presente trabajo se implementaron seis tareas
+principales.
+
+\subsection{Tarea: recepción UART}
+
+Esta tarea se encarga de escuchar constantemente el puerto UART del
+ESP32. Cada vez que se detecta una señal en sus puertos, la tarea
+almacena la información recibida en un buffer de tipo circular \citep{ringbuffer}.
+
+Un buffer circular, también conocido como \textit{ring buffer}, es una
+estructura de datos que utiliza una región de memoria de tamaño fijo y
+organiza los datos de forma continua. Cuando se alcanza el final del
+buffer, la escritura continúa desde el inicio, lo que permite reutilizar
+la memoria de manera eficiente sin necesidad de realizar desplazamientos
+de datos.
+
+Se opt[o por este tipo de estructura porque resulta especialmente adecuado para la recepción
+de datos en tiempo real, ya que permite desacoplar la velocidad de llegada
+de la información respecto de su procesamiento. De esta forma, se evita la
+pérdida de datos ante ráfagas de información y se garantiza un manejo más
+robusto de la comunicación UART.
+
+
+\subsection{Tarea: decodificación de comando CAN}
+
+Esta tarea se encarga de decodificar los comandos recibidos desde la
+red CAN. Para ello, realiza la lectura de los datos almacenados en el
+buffer circular.
+
+La información transmitida en la red CAN sigue un formato
+predefinido. El primer byte corresponde a una marca de inicio, que
+permite identificar el comienzo de cada trama. Por otro lado, el último
+byte corresponde a un valor de control CRC (\textit{Cyclic Redundancy Check}),
+utilizado para verificar la integridad de los datos recibidos mediante
+un cálculo basado en el contenido del mensaje.
+
+Dentro de la trama de datos se incluyen los campos de dirección de
+origen, que identifica el dispositivo emisor, dirección de destino,
+que indica el dispositivo receptor, un campo de comando asociado a la
+acción a ejecutar y un conjunto de bytes de datos.
+
+Esta tarea se encarga de analizar cada trama completa. Para ello, recorre el buffer
+circular hasta encontrar el byte de marca de inicio.
+
+A continuación, extrae la trama completa y realiza el cálculo del CRC,
+lo que permite determinar si la trama es válida o no. En caso afirmativo, se
+procede a identificar los campos que componen el mensaje.
+
+Cuando se detecta una trama válida, la información útil se transfiere a
+la siguiente tarea, encargada de procesar la instrucción correspondiente.
+

@@ -330,5 +330,14 @@
     \verb ocess
     \endverb
   \endentry
+
+  \entry{ringbuffer}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-30}
+    \field{title}{What is RingBuffer?}
+    \verb{url}
+    \verb https://medium.com/@kolheankita15/what-is-ringbuffer-7b6b808f33e0
+    \endverb
+  \endentry
 \enddatalist
 \endinput
