@@ -339,7 +339,7 @@ robusto de la comunicación UART.
 
 
 \subsection{Tarea: decodificación de comando CAN}
-
+\label{sec:comando_can}
 Esta tarea se encarga de decodificar los comandos recibidos desde la
 red CAN. Para ello, realiza la lectura de los datos almacenados en el
 buffer circular.
@@ -366,3 +366,189 @@ procede a identificar los campos que componen el mensaje.
 Cuando se detecta una trama válida, la información útil se transfiere a
 la siguiente tarea, encargada de procesar la instrucción correspondiente.
 
+
+\subsection{Tarea: comunicación Modbus TCP}
+\label{sec:comando_modbus}
+Esta tarea se encarga de gestionar de manera completa la comunicación
+Modbus TCP y, por lo tanto, es responsable del control del módulo
+Cerbo GX.
+
+Para establecer la comunicación mediante este protocolo, fue necesario
+realizar una serie de configuraciones iniciales.
+
+Se definió que el ESP32 ejerza el rol de maestro, encargado de
+solicitar datos y enviar comandos al Cerbo GX.
+
+La comunicación entre ambos dispositivos se realiza a través de un
+cable Ethernet con conector RJ45, que vincula el Cerbo GX con el
+módulo W5100 controlado por el ESP32.
+
+Para que esta comunicación sea posible, fue necesario definir
+direcciones IP estáticas para ambos dispositivos. Esto permite que cada
+equipo conozca la dirección del otro y mantenga una comunicación
+consistente en el tiempo. Además, ambos deben pertenecer a la misma red,
+lo que implica compartir la misma máscara de subred y una configuración
+de puerta de enlace (gateway) compatible.
+
+La dirección IP del Cerbo GX se configura desde el menú del propio
+equipo. Por otro lado, la dirección IP del ESP32 se definió por
+software dentro de esta tarea.
+
+Esta tarea utiliza un contador interno que cumple la función de
+temporizador. En primer lugar, establece la comunicación Modbus TCP y
+la mantiene activa durante el funcionamiento del sistema.
+
+Posteriormente, en intervalos periódicos, realiza la lectura de los
+registros que el Cerbo GX pone a disposición para la obtención de datos
+y el control del comportamiento del equipo.
+
+El equipo utilizado para los ensayos fue un Victron Multiplus II
+48/5000/70-50, provisto por la empresa Enertik. Si bien el desarrollo
+del firmware se realizó sobre este modelo, los registros utilizados
+resultan compatibles con otros equipos de la misma línea de
+inversores/cargadores Victron.
+
+En este contexto, los parámetros de interés fueron aquellos asociados
+al modo de operación del equipo, ya sea en modo inversor o cargador.
+
+Victron dispone de un registro que adopta distintos valores según el
+estado del equipo: modo inversor, modo cargador, funcionamiento
+combinado o estado apagado. A partir de la lectura de este registro es
+posible determinar el estado del equipo en todo momento.
+
+Además, este registro admite operaciones de lectura y escritura, lo que
+permite modificar el comportamiento del equipo mediante la asignación
+de valores adecuados.
+
+Otros parámetros relevantes incluyen la potencia suministrada por el
+equipo en modo inversor y la corriente de carga de entrada en modo
+cargador.
+
+\subsection{Tarea: pedido de datos}
+\label{sec:pedido_datos}
+Esta tarea se encarga de solicitar de forma periódica información al
+módulo PRC10.
+
+Dentro de la red de Enertik, el PRC10 actúa como unidad central de
+procesamiento. En este módulo se concentran los valores y estados de
+todas las variables del motorhome.
+
+Para que la aplicación pueda reflejar esta información en pantalla,
+resulta necesario que el ESP32 tenga acceso a dichos datos.
+
+Con este objetivo, fue necesario realizar una modificación en el
+firmware del módulo PRC10. Se incorporó una función que permite generar
+una serie de paquetes, cada uno asociado a un conjunto de variables del
+sistema.
+
+Entre las variables incluidas en estos paquetes se encuentran:
+
+\begin{itemize}
+    \item Tensión de batería.
+    \item Corriente suministrada por la batería.   
+    \item Tensión de entrada en alterna.
+    \item Frecuencia de la tensión de entrada.
+    \item Origen de la tensión de entrada (red domiciliaria, generador o inversor).
+    \item Nivel de llenado de los tanques de agua (limpia, gris y negra).
+    \item Estado del cargador.
+    \item Corriente de carga.
+    \item Estado del inversor.
+    \item Potencia suministrada por el inversor.
+    \item Estado de los pulsadores asociados a las distintas pantallas de la HMI.
+\end{itemize}
+
+Desde el lado del ESP32, esta tarea realiza solicitudes periódicas de
+cada uno de estos paquetes. El funcionamiento se basa en un ciclo en el
+que, cada 500 ms, se solicita un paquete distinto al PRC10.
+
+Una vez completado el recorrido de todos los paquetes, el proceso se
+reinicia desde el primero. Este comportamiento cíclico permite mantener
+actualizada la información correspondiente a todas las variables del
+sistema.
+
+\subsection{Tarea: procesamiento de comandos recibidos}
+\label{sec:procesamiento_comandos}
+Esta tarea constituye el núcleo del firmware. Su función principal es
+recibir los comandos provenientes de las tareas de comunicación CAN
+(\ref{sec:comando_can}) y Modbus TCP (\ref{sec:comando_modbus}), procesarlos
+y actualizar las variables internas del sistema.
+
+En relación con la comunicación CAN, esta tarea recibe las tramas ya
+validadas por la etapa de decodificación. A partir de estas tramas,
+extrae los distintos campos de datos y los interpreta según el tipo de
+paquete recibido. Los valores obtenidos se almacenan en estructuras de
+datos internas, que representan el estado actualizado de los distintos
+sensores y actuadores del motorhome.
+
+Adicionalmente, esta tarea realiza conversiones sobre los datos
+recibidos, ya que muchos de ellos se encuentran codificados. Estas conversiones permiten obtener magnitudes físicas en unidades reales, lo que facilita su posterior visualización y
+procesamiento.
+
+Por otra parte, la tarea también gestiona comandos destinados al módulo
+Cerbo GX a través de Modbus TCP. En función del comando recibido, se
+determinan las acciones a ejecutar, como la activación o desactivación
+del inversor o del cargador. Para ello, se realiza la escritura sobre
+los registros correspondientes del dispositivo Victron, lo que permite
+modificar su estado de operación.
+
+Finalmente, una vez procesada la información, los datos actualizados se
+envían a otras tareas del sistema a través de colas de FreeRTOS. Este
+mecanismo permite desacoplar el procesamiento de datos de su consumo,
+mejorando la organización y la escalabilidad del firmware.
+
+\subsection{Tarea: control de servidor}
+
+Esta tarea gestiona la implementación del servidor en el ESP32.
+
+En primer lugar, se encarga de configurar el dispositivo en modo
+\textit{Access Point}. En esta modalidad, el microcontrolador genera su
+propia red Wi-Fi, lo que permite la conexión directa de otros
+dispositivos. Además, se definen los parámetros de la red, tales como
+el nombre (SSID) y la contraseña de acceso.
+
+Una vez establecida la conectividad, se definió la estructura del
+servidor HTTP mediante la creación de distintos \textit{endpoints}.
+Estos representan puntos de acceso que permiten a los clientes
+interactuar con el sistema. Cada \textit{endpoint} se asocia a una ruta
+específica y a un tipo de solicitud, como GET o POST, lo que permite
+consultar información o enviar comandos.
+
+Se optó por implementar un \textit{endpoint} para cada una de las
+pantallas principales de la aplicación. Este enfoque permite que cada
+pantalla solicite únicamente la información necesaria, lo que reduce el
+tráfico de datos y mejora la eficiencia del sistema.
+
+En particular, se definieron cuatro \textit{endpoints} que admiten
+solicitudes de tipo GET:
+
+\begin{itemize}
+    \item \textit{Home}
+    \item Luces  
+    \item Motores
+    \item Energía
+\end{itemize}
+
+Cada uno de estos \textit{endpoints} genera y devuelve un archivo en
+formato JSON con la información requerida por la pantalla
+correspondiente, lo que permite actualizar la interfaz de usuario con
+los valores actuales del sistema.
+
+Por otra parte, la aplicación móvil dispone de distintos pulsadores que
+permiten controlar el funcionamiento del motorhome. Para ello, se
+implementó un quinto \textit{endpoint} que admite solicitudes de tipo
+POST, destinado a la recepción de comandos.
+
+Este \textit{endpoint} recibe un archivo JSON que contiene dos campos:
+uno que identifica el pulsador que originó la acción y otro que indica
+el nuevo estado asociado.
+
+A partir de esta información, el servidor interpreta el comando y lo
+traduce en una instrucción que es enviada al módulo PRC10 para así permitir
+la ejecución de la acción correspondiente dentro del sistema.
+
+De esta manera, el servidor implementado en el ESP32 actúa como
+intermediario entre la aplicación móvil y la red de domótica,
+centralizando tanto la consulta de información como el envío de
+comandos.
+
+\section{Desarrollo de la aplicación}
