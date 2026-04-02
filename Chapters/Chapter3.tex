@@ -316,8 +316,15 @@ comportamiento concurrente a nivel lógico, lo que mejora la organización
 del sistema y facilita la gestión de sus funcionalidades.
 
 En este contexto, en el presente trabajo se implementaron seis tareas
-principales.
+principales, ilustrados en la figura \ref{fig:relacion_rtos}.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{./Figures/tareas_rtos.png}
+	\caption{Relación entre las distintas tareas del firmware y su comunicación con el exterior.}
+	\label{fig:relacion_rtos}
+\end{figure}
+\newpage
 \subsection{Tarea: recepción UART}
 
 Esta tarea se encarga de escuchar constantemente el puerto UART del

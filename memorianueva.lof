@@ -14,5 +14,6 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Diseño de divisor resistivo para adaptación UART.}}{15}{figure.caption.16}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Prototipo experimental del equipo.}}{17}{figure.caption.17}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Diseño final para PCB del equipo.}}{19}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Relación entre las distintas tareas del firmware y su comunicación con el exterior.}}{21}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -25,15 +25,16 @@
 \contentsline {subsection}{\numberline {3.1.3}Prototipo experimental}{17}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Desarrollo de PCB final y listado de componentes}{18}{subsection.3.1.4}%
 \contentsline {section}{\numberline {3.2}Desarrollo de firmware}{20}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tarea: recepción UART}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Tarea: recepción UART}{21}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Tarea: decodificación de comando CAN}{21}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Tarea: comunicación Modbus TCP}{21}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Tarea: pedido de datos}{22}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.3}Tarea: comunicación Modbus TCP}{22}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Tarea: pedido de datos}{23}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{23}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{23}{subsection.3.2.6}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{25}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{25}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{27}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{29}{appendix*.21}%
+\contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{24}{subsection.3.2.6}%
+\contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{25}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{27}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{27}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{29}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{29}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{31}{appendix*.22}%
