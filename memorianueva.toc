@@ -32,9 +32,14 @@
 \contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{23}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{24}{subsection.3.2.6}%
 \contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{25}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{27}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{27}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{29}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{29}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{29}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{31}{appendix*.22}%
+\contentsline {subsection}{\numberline {3.3.1}Aplicación: pestaña principal}{25}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Aplicación: pestaña luces}{27}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Aplicación: pestaña motores}{27}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Aplicación: pestaña energía}{28}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Aplicación: generación de instalador para Android}{29}{subsection.3.3.5}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{31}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{31}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{33}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{35}{appendix*.26}%

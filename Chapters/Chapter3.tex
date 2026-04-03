@@ -2,13 +2,12 @@
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-En este capítulo se explica como se diseño el dispositivo, como esta conformado el hardware y software del equipo y como se desarrolló la aplicación para control del motorhome. 
-
+En este capítulo se explica cómo se diseñó el dispositivo, cómo está conformado el hardware y el software del equipo, y cómo se desarrolló la aplicación para el control del motorhome.
 
 \section{Desarrollo de hardware}
 \label{sec:desarrollo_hardware}
 
-A continuación, se explicarán como se desarrollaron los distintos módulos de hardware del equipo y como se relacionan unos con otros. Como se mencionó anteriormente, el ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
+Como se mencionó anteriormente, el ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
 
 La figura \ref{fig:esquema_hw_general} muestra una estructura del flujo o camino que debe seguir el ESP32 para llegar a cada una de estas partes.
 
@@ -46,7 +45,9 @@ replicadas en el ESP32.
 
 Ante esta situación, se analizaron alternativas disponibles dentro de
 los equipos comercializados por Enertik. En este contexto, se identificó
-un módulo transceiver (mostrado en la figura \ref{fig:im_hw_transceiver}) utilizado en conjunto con la pantalla HMI de control. Esta placa tiene como función realizar la conversión del
+el módulo transceiver (mostrado en la figura \ref{fig:placa_transceiver}) utilizado en conjunto con la pantalla HMI de control.
+
+Esta placa tiene como función realizar la conversión del
 protocolo CAN, proveniente de la red del motorhome, a una interfaz de
 comunicación UART, compatible con la pantalla.
 
@@ -54,7 +55,7 @@ comunicación UART, compatible con la pantalla.
 	\centering
 	\includegraphics[scale=0.6]{./Figures/placa_transceiver.png}
 	\caption{Módulo transceiver comercial perteneciente a Enertik.}
-	\label{fig:divisor_resistivo}
+	\label{fig:placa_transceiver}
 \end{figure}
 
 Basado en esta premisa, se decidió replicar y adaptar este módulo transceiver
@@ -239,7 +240,7 @@ diseño, se optó por integrarlo directamente en el PCB. Para ello, se
 incorporaron el microcontrolador PIC18F26K60 y el transceptor MCP2551
 en la placa. Esta decisión permitió optimizar el espacio disponible y
 reducir costos al unificar todos los componentes en una única placa.
-
+\newpage
 En cuanto al módulo W5100, se optó por utilizar la versión comercial
 disponible en el mercado. Inicialmente se evaluó realizar un proceso de
 ingeniería inversa para analizar su diseño interno, pero se descartó
@@ -282,7 +283,7 @@ cobre, la máscara de soldadura, la serigrafía o el plano de taladros.
 A partir de esta información, el fabricante puede interpretar el diseño
 y llevar a cabo la fabricación física de la placa con precisión.
 
-A modo de resumen, se deja una tabla que lista los principales componentes empleados para la fabricación del PCB.
+A modo de resumen, la tabla \ref{tab:componentes} lista los principales componentes empleados para la fabricación del PCB.
 
 \begin{table}[h]
 	\centering
@@ -301,7 +302,7 @@ A modo de resumen, se deja una tabla que lista los principales componentes emple
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:dut}
+	\label{tab:componentes}
 \end{table}
 
 \section{Desarrollo de firmware}
@@ -316,7 +317,8 @@ comportamiento concurrente a nivel lógico, lo que mejora la organización
 del sistema y facilita la gestión de sus funcionalidades.
 
 En este contexto, en el presente trabajo se implementaron seis tareas
-principales, ilustrados en la figura \ref{fig:relacion_rtos}.
+principales, ilustradas en la figura \ref{fig:relacion_rtos}, donde se
+aprecian las relaciones existentes entre ellas y con los módulos externos.
 
 \begin{figure}[h]
 	\centering
@@ -338,7 +340,7 @@ buffer, la escritura continúa desde el inicio, lo que permite reutilizar
 la memoria de manera eficiente sin necesidad de realizar desplazamientos
 de datos.
 
-Se opt[o por este tipo de estructura porque resulta especialmente adecuado para la recepción
+Se optó por este tipo de estructura porque resulta especialmente adecuado para la recepción
 de datos en tiempo real, ya que permite desacoplar la velocidad de llegada
 de la información respecto de su procesamiento. De esta forma, se evita la
 pérdida de datos ante ráfagas de información y se garantiza un manejo más
@@ -409,8 +411,7 @@ Posteriormente, en intervalos periódicos, realiza la lectura de los
 registros que el Cerbo GX pone a disposición para la obtención de datos
 y el control del comportamiento del equipo.
 
-El equipo utilizado para los ensayos fue un Victron Multiplus II
-48/5000/70-50, provisto por la empresa Enertik. Si bien el desarrollo
+El equipo utilizado para los ensayos fue un Victron MultiPlus-II 48/15000/200-100 230V \citep{web_multiplus}, provisto por la empresa Enertik. Si bien el desarrollo
 del firmware se realizó sobre este modelo, los registros utilizados
 resultan compatibles con otros equipos de la misma línea de
 inversores/cargadores Victron.
@@ -436,7 +437,7 @@ cargador.
 Esta tarea se encarga de solicitar de forma periódica información al
 módulo PRC10.
 
-Dentro de la red de Enertik, el PRC10 actúa como unidad central de
+Dentro de la red de Enertik, el módulo PRC10 actúa como unidad central de
 procesamiento. En este módulo se concentran los valores y estados de
 todas las variables del motorhome.
 
@@ -504,7 +505,7 @@ mecanismo permite desacoplar el procesamiento de datos de su consumo,
 mejorando la organización y la escalabilidad del firmware.
 
 \subsection{Tarea: control de servidor}
-
+\label{sec:tarea_server}
 Esta tarea gestiona la implementación del servidor en el ESP32.
 
 En primer lugar, se encarga de configurar el dispositivo en modo
@@ -536,13 +537,13 @@ solicitudes de tipo GET:
 \end{itemize}
 
 Cada uno de estos \textit{endpoints} genera y devuelve un archivo en
-formato JSON con la información requerida por la pantalla
+formato JSON (\textit{JavaScript Object Notation}) \citep{web_json} con la información requerida por la pantalla
 correspondiente, lo que permite actualizar la interfaz de usuario con
 los valores actuales del sistema.
 
 Por otra parte, la aplicación móvil dispone de distintos pulsadores que
 permiten controlar el funcionamiento del motorhome. Para ello, se
-implementó un quinto \textit{endpoint} que admite solicitudes de tipo
+implementó un quinto \textit{endpoint} (denominado pulsadores) que admite solicitudes de tipo
 POST, destinado a la recepción de comandos.
 
 Este \textit{endpoint} recibe un archivo JSON que contiene dos campos:
@@ -559,3 +560,257 @@ centralizando tanto la consulta de información como el envío de
 comandos.
 
 \section{Desarrollo de la aplicación}
+
+Para el desarrollo de la aplicación se optó por utilizar el framework
+Ionic. Su elección aportó diversas ventajas durante el proceso de
+desarrollo.
+
+En primer lugar, permitió utilizar el navegador web de la computadora
+como herramienta de depuración, lo que facilitó la visualización y
+prueba de la aplicación en tiempo real. Esto redujo significativamente
+los tiempos de desarrollo, ya que cada modificación realizada podía
+verificarse de forma inmediata.
+
+Asimismo, este entorno facilitó la realización de ensayos sobre los
+\textit{endpoints} definidos en el servidor del ESP32. Para ello, el
+dispositivo se conectó a la misma red Wi-Fi que la computadora de
+desarrollo, lo que permitió que la aplicación realizara solicitudes
+HTTP de tipo GET y POST hacia los \textit{endpoints}
+correspondientes.
+
+Estas solicitudes se dirigieron a la dirección IP asignada al ESP32,
+dato que el propio dispositivo informa al momento de establecer la
+conexión a la red.
+
+Para el desarrollo de la aplicación, se tomó como referencia la
+aplicación utilizada en la pantalla HMI del motorhome. Se buscó
+replicar la mayor cantidad posible de sus funcionalidades, con
+prioridad en aquellas consideradas de mayor importancia.
+
+Como se mencionó en la sección \ref{sec:tarea_server}, se optó por
+desarrollar una aplicación compuesta por cuatro pestañas. A su vez, se
+implementó una barra de navegación por pestañas que permite acceder a
+las distintas pantallas de la aplicación.
+
+\subsection{Aplicación: pestaña principal}
+\label{sec:app_home}
+
+La figura \ref{fig:app_home} muestra la primera pestaña de la
+aplicación. Esta pestaña se encuentra asociada al campo denominado
+\textit{home} y corresponde a la pantalla principal.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/P1_Home.png}
+	\caption{Pestaña \textit{home} de la aplicación.}
+	\label{fig:app_home}
+\end{figure}
+
+Cada vez que se accede a esta pestaña, se inicia un \textit{timer} o
+contador interno que realiza de forma periódica una solicitud GET al
+\textit{endpoint} \textit{home}. A través de este mecanismo se obtienen
+las variables necesarias para su visualización, así como también los
+estados de los pulsadores.
+
+Como se puede observar en la figura \ref{fig:app_home}, en el cuadrante
+superior izquierdo se ubican las variables asociadas a la batería. En
+este sector se visualizan los valores de tensión, corriente y el
+porcentaje de carga.
+
+El cuadrante inferior izquierdo corresponde al sistema de corriente
+alterna. En este se presentan los valores de tensión de entrada,
+corriente y frecuencia de la red.
+
+Asimismo, se incluyen indicadores que permiten identificar el origen
+de la alimentación. Este puede corresponder a tres fuentes distintas:
+línea, grupo electrógeno o inversor.
+
+El sistema PRC10 establece que, ante la presencia de múltiples fuentes
+activas en simultáneo, solo una de ellas alimenta el sistema. Para ello,
+se define un esquema de prioridades determinado por el hardware del
+módulo.
+
+El orden de prioridad es el siguiente: en primer lugar la línea, en
+segundo lugar el inversor y, finalmente, el grupo electrógeno.
+
+El estado de cada origen se representa mediante un código de colores.
+Si el indicador se muestra en color verde (tanto en el texto como en
+los bordes), significa que dicho origen se encuentra activo. Si el
+borde se presenta en color gris, indica que el origen está disponible,
+pero queda relegado debido al esquema de prioridades. Finalmente, si el
+indicador se muestra en color celeste, significa que el origen se
+encuentra desconectado.
+
+En el cuadrante superior derecho se ubican los indicadores de los
+tanques de agua. Para cada uno de ellos se dispone de un indicador
+circular que representa su nivel en porcentaje.
+
+Finalmente, se incluyen tres pulsadores de control: bomba de agua,
+esclusa de agua gris y esclusa de agua negra.
+
+Como se mencionó en la sección \ref{sec:tarea_server}, estos pulsadores
+realizan solicitudes de tipo POST al \textit{endpoint} denominado
+pulsadores. En este caso, se envía un archivo JSON que indica
+el origen del pulsador y el nuevo estado, lo que permite ejecutar la
+acción correspondiente.
+
+
+\subsection{Aplicación: pestaña luces}
+\label{sec:app_luces}
+
+La figura \ref{fig:app_luces} muestra la segunda pestaña de la
+aplicación. Esta pestaña se encuentra asociada al campo denominado
+luces.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/P2_Luces.png}
+	\caption{Pestaña luces de la aplicación.}
+	\label{fig:app_luces}
+\end{figure}
+
+De manera similar a la pestaña principal, esta pestaña realiza
+solicitudes GET de forma periódica al \textit{endpoint} denominado
+luces.
+
+A través de este mecanismo, se obtienen los estados de los pulsadores
+de luz interior y luz exterior, así como el valor actual del
+\textit{dimmer} de la luz interior.
+
+La iluminación interior es controlada por el módulo PRC10 mediante un
+sistema de modulación por ancho de pulso (PWM) \citep{web_pwm}. Por lo tanto, esta
+pestaña permite regular la intensidad lumínica mediante la variación
+del ancho de pulso.
+
+Al igual que en la pantalla principal, cada uno de estos controles
+realiza una solicitud POST al \textit{endpoint} pulsadores,
+indicando el origen del comando y el nuevo valor, ya sea el estado del
+pulsador o el valor del \textit{dimmer}.
+
+\subsection{Aplicación: pestaña motores}
+\label{sec:app_motores}
+
+La figura \ref{fig:app_motores} muestra la tercera pestaña de la
+aplicación. Esta pestaña se encuentra asociada al campo denominado
+motores.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/P3_Motores.png}
+	\caption{Pestaña motores de la aplicación.}
+	\label{fig:app_motores}
+\end{figure}
+
+Esta pestaña realiza solicitudes GET de forma periódica al
+\textit{endpoint} denominado motores y se encarga del control
+de los elementos móviles del motorhome.
+
+Como se puede observar en la figura \ref{fig:app_motores}, en el
+sector derecho se ubican tres pulsadores de selección. Estos
+permiten elegir la parte móvil sobre la que se desea operar.
+
+En el sector izquierdo se presentan los controles asociados al elemento
+seleccionado, junto con una animación indicativa de su funcionamiento.
+Mientras se mantiene presionado el control correspondiente, la
+animación refleja el movimiento del sistema.
+
+Entre las variables obtenidas mediante la solicitud GET se incluye el
+estado del freno de mano del vehículo. Esta variable cumple una función
+de habilitación sobre los controles de la cabina desplazable y del
+toldo del motorhome.
+
+Mientras estos controles se encuentran deshabilitados, se superpone
+una imagen con el símbolo de precaución o \textit{warning}. Cuando el
+sistema detecta que el freno de mano está accionado, este indicador
+desaparece y los controles se habilitan.
+
+Esta restricción responde a criterios de seguridad, ya que estos
+elementos solo pueden accionarse cuando el vehículo se encuentra
+detenido.
+
+
+Por otro lado, el accionamiento del motor de la mesa no depende del
+estado de movimiento del motorhome, por lo que su control permanece
+siempre habilitado.
+
+
+\subsection{Aplicación: pestaña energía}
+\label{sec:app_energia}
+
+La figura \ref{fig:app_energia} muestra la cuarta pestaña de la
+aplicación. Esta pestaña se encuentra asociada al campo denominado
+energía.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/P4_Energia.png}
+	\caption{Pestaña energía de la aplicación.}
+	\label{fig:app_energia}
+\end{figure}
+
+Esta pestaña realiza solicitudes GET de forma periódica al
+\textit{endpoint} denominado energía y se encarga del control
+del grupo electrógeno, el cargador y el inversor del motorhome, así
+como también del control del calentador de agua y del sistema de gas
+envasado (alta potencia).
+
+En el cuadrante superior izquierdo se observan los controles del grupo
+electrógeno. A través de estos controles es posible encender y apagar
+el equipo, así como seleccionar el modo de funcionamiento del cebador
+(manual o automático).
+
+En el cuadrante superior derecho se ubican los controles asociados al
+cargador. Se dispone de un pulsador para encender o apagar el equipo,
+junto con la visualización de la corriente de carga suministrada a la
+batería.
+
+En el cuadrante inferior derecho se presentan los controles del
+inversor. Se incluye un pulsador para encender o apagar el equipo,
+acompañado por la indicación de la potencia suministrada.
+
+Finalmente, en el cuadrante inferior izquierdo se encuentran los
+controles correspondientes al calentador de agua y al sistema de gas
+envasado.
+
+\subsection{Aplicación: generación de instalador para Android}
+\label{sec:app_apk}
+
+Una vez finalizado el desarrollo de la aplicación, fue necesario
+generar un instalador que permita su ejecución en dispositivos móviles
+con sistema operativo Android. Para ello, se utilizó la herramienta
+Capacitor, que posibilita la adaptación de aplicaciones desarrolladas
+con tecnologías web a un entorno nativo.
+
+Capacitor actúa como una capa de integración entre la aplicación
+desarrollada con Ionic y el sistema operativo del dispositivo. A través
+de esta herramienta, la aplicación se empaqueta en una estructura
+compatible con Android. Además, brinda acceso a funcionalidades propias
+del dispositivo. 
+
+En este contexto, se emplearon herramientas provistas por
+Capacitor para la gestión de solicitudes HTTP desde la aplicación,
+y permitir así un control más directo sobre la comunicación con el
+servidor del ESP32. Asimismo, se utilizaron utilidades para la
+generación y configuración de los recursos gráficos de la aplicación,
+como los íconos y elementos visuales requeridos por el sistema Android.
+
+A partir de este proceso, el proyecto fue importado en el entorno de
+desarrollo Android Studio. Este software permite gestionar la
+compilación de la aplicación, así como configurar parámetros propios
+del sistema Android, tales como permisos, versión mínima del sistema
+operativo y opciones de despliegue.
+
+Como resultado de la compilación, se obtiene un archivo en formato APK, 
+que constituye el formato estándar de
+distribución de aplicaciones para el sistema operativo Android. Este
+archivo contiene todos los recursos necesarios para la instalación de
+la aplicación, incluyendo el código ejecutable, bibliotecas y archivos de
+configuración.
+
+La instalación del APK puede realizarse directamente sobre un
+dispositivo móvil mediante distintas alternativas. En este trabajo se
+utilizó la herramienta ADB (\textit{Android Debug Bridge}) \citep{web_adb}, que permite
+la transferencia e instalación del archivo desde una computadora hacia
+el dispositivo a través de una conexión USB. Una vez instalado, el
+usuario puede ejecutar la aplicación de forma independiente, sin
+necesidad de herramientas de desarrollo adicionales.
