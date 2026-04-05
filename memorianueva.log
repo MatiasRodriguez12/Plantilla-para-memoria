@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  4 APR 2026 23:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  5 APR 2026 11:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1483,11 +1483,10 @@ LaTeX Info: Redefining \% on input line 120.
 
 ]
 Cap\'{\i }tulo 5.
-) [39] [40
-
-
-
-]
+[39])
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
+ [40]
 Overfull \hbox (16.7263pt too wide) in paragraph at lines 139--139
 []\T1/ppl/m/n/10.95 Victron Energy. Úl-ti-ma con-sul-ta: 2025-03-14. \T1/ppl/m/
 sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / www . victronenergy .
@@ -1513,7 +1512,11 @@ a: 2025-03-29. \T1/ppl/m/sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / www .
  typescriptlang .
  []
 
-[41]
+[41
+
+
+
+]
 Overfull \hbox (6.59753pt too wide) in paragraph at lines 139--139
 []\T1/ppl/m/it/10.95 Android Stu-dio\T1/ppl/m/n/10.95 . Úl-ti-ma con-sul-ta: 20
 25-03-25. \T1/ppl/m/sc/10.95 url\T1/ppl/m/n/10.95 : [][]$https : / / developer 
@@ -1603,7 +1606,7 @@ ublic/urw-base35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-bas
 e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (56 pages, 6719023 bytes).
+Output written on memorianueva.pdf (56 pages, 6724075 bytes).
 PDF statistics:
  842 PDF objects out of 1000 (max. 8388607)
  170 named destinations out of 1000 (max. 500000)

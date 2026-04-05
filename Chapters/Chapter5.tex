@@ -3,7 +3,9 @@
 \chapter{Conclusiones} % Main chapter title
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+En este capítulo se presentan las conclusiones obtenidas de la ejecución de este
+trabajo y, además, se proponen perspectivas que podrían ser implementadas a
+futuro.
 
 
 %----------------------------------------------------------------------------------------
@@ -14,18 +16,34 @@ Todos los capítulos deben comenzar con un breve párrafo introductorio que indi
 
 \section{Conclusiones generales }
 
-La idea de esta sección es resaltar cuáles son los principales aportes del trabajo realizado y cómo se podría continuar. Debe ser especialmente breve y concisa. Es buena idea usar un listado para enumerar los logros obtenidos.
 
-En esta sección no se deben incluir ni tablas ni gráficos.
+En primer lugar, se destaca que fue posible desarrollar con éxito un
+dispositivo capaz de comunicarse tanto con la red de domótica de
+Enertik como con el ecosistema Victron.
 
-Algunas preguntas que pueden servir para completar este capítulo:
+Este resultado resulta de gran relevancia, ya que habilita la futura
+integración de equipos Victron dentro de la red de domótica del
+motorhome, amplía las capacidades del sistema y permite una mayor
+flexibilidad en su implementación.
+
+Asimismo, se logró el desarrollo de una aplicación funcional que
+permite interactuar con el sistema de domótica. Esta aplicación es
+capaz de replicar la mayoría de las funcionalidades disponibles en la
+pantalla HMI del motorhome y brinda a los usuarios una alternativa
+adicional para el control del sistema.
+
+A continuación, se destacan los principales aspectos del trabajo:
 
 \begin{itemize}
-\item ¿Cuál es el grado de cumplimiento de los requerimientos?
-\item ¿Cuán fielmente se puedo seguir la planificación original (cronograma incluido)?
-\item ¿Se manifestó algunos de los riesgos identificados en la planificación? ¿Fue efectivo el plan de mitigación? ¿Se debió aplicar alguna otra acción no contemplada previamente?
-\item Si se debieron hacer modificaciones a lo planificado ¿Cuáles fueron las causas y los efectos?
-\item ¿Qué técnicas resultaron útiles para el desarrollo del proyecto y cuáles no tanto?
+\item Se desarrolló con éxito un dispositivo capaz de comunicarse con ambos ecosistemas de manera confiable.
+\item Se diseñó un PCB de tamaño reducido, orientado a su futura implementación como producto comercial.
+\item El equipo se integra a la red del motorhome mediante el cableado estándar de cuatro conductores, lo que facilita su instalación.
+\item Se implementó una arquitectura de firmware basada en múltiples tareas, lo que permite un funcionamiento organizado y eficiente del sistema.
+\item La aplicación desarrollada funciona correctamente en dispositivos Android, lo que amplía las posibilidades de uso por parte de los usuarios.
+\item La aplicación replica la mayoría de las funcionalidades de la pantalla HMI, lo que reduce la dependencia de esta para el control del sistema.
+\item Se validó el funcionamiento del sistema tanto en entorno de laboratorio como en condiciones reales de operación.
+\item La solución presenta un diseño escalable, lo que permite la incorporación de nuevas funcionalidades y dispositivos en el futuro.
+\item Se emplearon protocolos de comunicación estándar, lo que favorece la interoperabilidad con otros sistemas.
 \end{itemize}
 
 
@@ -34,4 +52,41 @@ Algunas preguntas que pueden servir para completar este capítulo:
 %----------------------------------------------------------------------------------------
 \section{Próximos pasos}
 
-Acá se indica cómo se podría continuar el trabajo más adelante.
+Como líneas de trabajo a futuro, se consideran diversas mejoras y
+extensiones del sistema desarrollado.
+
+En primer lugar, durante los ensayos en vehículos reales, los
+fabricantes de motorhomes señalaron que la aplicación requiere la
+conexión a la red Wi-Fi generada por el ESP32, lo que implica que el
+teléfono celular pierde el acceso a Internet mientras se utiliza el
+sistema. Si bien esta situación no resulta crítica, se analizaron
+distintas alternativas para su resolución.
+
+Una posible solución consiste en modificar el firmware del ESP32 para
+que se conecte a una red Wi-Fi existente. De esta manera, la aplicación,
+al conectarse a la misma red, podría acceder a los \textit{endpoints}
+del servidor mediante la dirección IP asignada por el módem.
+
+Otra alternativa consiste en migrar el protocolo de comunicación entre
+la aplicación y el ESP32. En este sentido, se podría implementar una
+comunicación mediante Bluetooth en reemplazo de la conexión Wi-Fi. Ambas
+opciones permitirían mantener la conectividad a Internet en el
+dispositivo móvil y, al mismo tiempo, conservar el control del sistema
+sin inconvenientes.
+
+Por otra parte, se considera necesaria la adaptación de la aplicación
+para su ejecución en dispositivos iOS. Esta tarea no se incluyó dentro
+del alcance del presente trabajo. 
+
+En la actualidad, los sistemas
+operativos predominantes en dispositivos móviles son Android e iOS. La compatibilidad con ambos sistemas permitiría ampliar el alcance de la solución, al cubrir una mayor cantidad de usuarios potenciales.
+
+Relacionado con este aspecto, también resulta necesario realizar
+modificaciones que permitan distribuir la aplicación a través de
+tiendas oficiales, como Play Store en Android y App Store en iOS.
+
+En la actualidad, la aplicación solo puede instalarse mediante un
+archivo de tipo APK. Sin embargo, para su implementación a nivel
+comercial, resulta conveniente que los usuarios puedan acceder a ella a
+través de estas plataformas, lo que facilitaría su distribución,
+instalación y actualización.
