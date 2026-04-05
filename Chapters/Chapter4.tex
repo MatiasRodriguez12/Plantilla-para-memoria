@@ -3,13 +3,199 @@
 \chapter{Ensayos y resultados} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+En este capítulo se explica como fueron los ensayos que se realizaron sobre el sistema y que resultados se obtuvieron a partir de ellos.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
+\section{Ensayos sobre la aplicación}
+\label{sec:pruebasAPP}
 
-\section{Pruebas funcionales del hardware}
-\label{sec:pruebasHW}
+Como se mencionó en la sección \ref{sec:app_home}, una de las
+ventajas que aportó el desarrollo de la aplicación mediante Ionic fue
+la posibilidad de utilizar el navegador web de la computadora como
+herramienta de depuración.
 
-La idea de esta sección es explicar cómo se hicieron los ensayos, qué resultados se obtuvieron y analizarlos.
+Ionic dispone del comando ``ionic serve'', que permite ejecutar la
+aplicación en el navegador. A partir de este comando, la aplicación se
+pone en funcionamiento y puede accederse a ella mediante la dirección \textit{localhost} y un
+puerto asociado, que por defecto corresponde al 8100 (aunque este valor
+puede modificarse según la configuración del entorno de desarrollo).
+
+La figura \ref{fig:ionic_debug} muestra cómo se llevó a cabo este
+proceso de depuración.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.32]{./Figures/ionic_debug.png}
+	\caption{Uso del navegador web como herramienta de depuración.}
+	\label{fig:ionic_debug}
+\end{figure}
+
+Una vez que la aplicación se encuentra en ejecución, es posible acceder
+a las herramientas de depuración del navegador mediante la tecla F12.
+
+En la figura \ref{fig:ionic_debug} se destacan dos aspectos relevantes
+al utilizar esta funcionalidad.
+
+En primer lugar, en el sector identificado como cuadro 1, se dispone de
+una herramienta que permite simular diferentes resoluciones o tamaños
+de pantalla, lo que facilita la verificación del comportamiento de la
+aplicación frente a distintos dispositivos.
+
+Para el desarrollo de este trabajo, se implementaron distintas
+estrategias de redimensionamiento automático de los elementos
+gráficos, con el objetivo de lograr una correcta adaptación a
+diferentes tamaños de pantalla.
+
+Asimismo, el entorno ofrece tamaños predefinidos que corresponden a
+estándares de diversos modelos de teléfonos móviles. Esta
+funcionalidad resultó de gran utilidad, ya que permitió evaluar el
+aspecto de la aplicación en dispositivos representativos sin necesidad
+de contar físicamente con cada uno de ellos.
+
+Luego, la segunda herramienta de gran utilidad fue la consola del
+navegador, indicada en el cuadro 2.
+
+En esta consola es posible visualizar mensajes de depuración generados
+desde la aplicación mediante el uso de instrucciones como
+``\textit{console.log()}'' dentro del código. Estos mensajes pueden incluir
+texto, valores de variables y estructuras de datos más complejas, como
+objetos en formato JSON utilizados en la comunicación con el
+servidor del ESP32.
+
+Asimismo, la consola permite detectar errores durante la ejecución de
+la aplicación, ya que cualquier falla se reporta mediante mensajes
+específicos, lo que facilitó su identificación y análisis.
+
+En esta primera etapa de ensayos, se evaluó el funcionamiento de la
+aplicación de forma independiente. Para ello, se navegó entre las
+distintas pestañas disponibles, se accionaron los diferentes
+pulsadores y se analizaron los mensajes generados en la consola.
+
+Adicionalmente, se implementó un esquema de prueba mediante
+modificación manual de variables internas del código
+(\textit{hardcodeo}). Esto permitió verificar el comportamiento de los
+indicadores visuales, evaluando cómo la aplicación representaba en
+pantalla distintos valores de las magnitudes involucradas.
+
+\section{Ensayos sobre el sistema}
+\label{sec:pruebasAPP_ESP32}
+
+La siguiente etapa consistió en la realización de ensayos en conjunto
+entre la aplicación y el dispositivo basado en ESP32.
+
+Para ello, además del uso del navegador web como herramienta de
+depuración de la aplicación, se utilizó el IDE Arduino para analizar
+el comportamiento del firmware del ESP32.
+
+Este entorno dispone de un monitor serie que permite establecer una
+comunicación a través de UART. Mediante esta herramienta es posible
+enviar y recibir datos; sin embargo, en este caso se utilizó
+principalmente como medio de visualización de mensajes generados por el
+microcontrolador.
+
+El IDE Arduino incorpora la función ``\textit{Serial.print()}'', que
+permite la impresión de información en el monitor serie. A través de
+esta función se pueden mostrar mensajes de texto, valores de variables
+y estructuras de datos más complejas, lo que facilitó el seguimiento
+del estado interno del sistema durante su ejecución.
+
+Para poner a prueba el servidor del ESP32, el microcontrolador se
+conectó a una red Wi-Fi local, coincidente con la utilizada por la
+computadora en la que se ejecutaba la aplicación.
+
+Al momento de establecer la conexión, el ESP32 informó a través del
+monitor serie la dirección IP asignada por el módem de la red.
+
+A partir de esta dirección IP, y al encontrarse ambos dispositivos en
+la misma red, fue posible acceder a cada uno de los
+\textit{endpoints} del servidor implementado en el ESP32, lo que
+permitió evaluar su funcionamiento y verificar la correcta
+comunicación con la aplicación.
+
+Para poner a prueba la comunicación entre los dispositivos, se
+implementó en el firmware del ESP32 una función temporal en la que se
+asignaban valores aleatorios a las variables contenidas en las
+estructuras JSON. Cada vez que uno de estos valores era modificado, se
+informaba mediante un mensaje en el monitor serie.
+
+Por otro lado, a través de la consola del navegador se verificó que los
+valores recibidos por la aplicación coincidieran con los reportados en
+el IDE Arduino. Asimismo, se comprobó que dichos valores se
+representaran correctamente en la interfaz de la aplicación.
+
+En la figura \ref{fig:app_json_recibido} se puede apreciar el
+comportamiento de la aplicación durante la comunicación con el ESP32.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.46]{./Figures/app_json_recibido.png}
+	\caption{Archivo JSON recibido en la pestaña \textit{home}.}
+	\label{fig:app_json_recibido}
+\end{figure}
+
+En dicha figura se observa el archivo JSON recibido desde el
+\textit{endpoint} \textit{home} del servidor implementado en el ESP32.
+Este paquete contiene los valores de todas las variables que la
+aplicación debe representar en esta pantalla.
+
+Asimismo, se incluyen los estados de los pulsadores correspondientes a
+la bomba de agua, la esclusa de agua gris y la esclusa de agua negra.
+
+Por otra parte, tal como se mencionó anteriormente, al accionar un
+pulsador la aplicación envía una solicitud HTTP de tipo POST hacia el
+ESP32. En esta solicitud se indica el origen del comando y el nuevo
+valor que debe establecerse.
+
+La figura \ref{fig:pulsador_respuesta_esp32} muestra el mensaje
+recibido por el ESP32 al momento de accionar el pulsador de la bomba de
+agua.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=1]{./Figures/pulsador_respuesta_esp32.png}
+	\caption{Mensaje recibido por el ESP32 al accionar un pulsador desde la aplicación.}
+	\label{fig:pulsador_respuesta_esp32}
+\end{figure}
+
+En este caso, el valor 8 corresponde a un identificador interno del
+firmware, asociado al pulsador de la bomba de agua. El campo de valor
+indica el nuevo estado que debe establecerse; en esta solicitud, el valor
+0 representa el estado apagado.
+
+En la misma figura también se observa el mensaje
+``Enviando comando bomba de agua'', que actúa como registro de
+depuración e indica que la tarea de comunicación CAN envió la orden al
+módulo PRC10 para ejecutar la acción correspondiente.
+
+Por último, la aplicación, al realizar una solicitud HTTP, espera una
+respuesta por parte del servidor. La figura
+\ref{fig:app_json_pulsador} muestra la respuesta enviada por el ESP32.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.46]{./Figures/app_json_pulsador.png}
+	\caption{Respuesta del servidor ante una solicitud de control.}
+	\label{fig:app_json_pulsador}
+\end{figure}
+
+En esta imagen se observa el \textit{endpoint} utilizado en la consulta
+junto con el contenido de la respuesta. En particular, se devuelve el
+comando 8, asociado al pulsador de la bomba de agua, junto con el nuevo
+valor asignado, lo que confirma la correcta ejecución de la acción.
+
+De esta manera, se evaluó el funcionamiento del servidor implementado
+en el ESP32 mediante la puesta a prueba de todos los
+\textit{endpoints}. Para ello, se asignaron valores aleatorios a las
+estructuras JSON asociadas a cada uno de ellos, lo que permitió analizar cómo la
+aplicación representaba dichas respuestas en pantalla.
+
+Asimismo, se verificó el correcto funcionamiento de los pulsadores de
+la aplicación, evaluando el envío de comandos y su correspondiente
+procesamiento en el sistema.
+\newpage
+En conjunto, estos ensayos permitieron validar la comunicación entre la
+aplicación y el ESP32, así como la correcta interpretación y
+representación de los datos en la interfaz de usuario, antes de avanzar
+hacia los ensayos con los equipos de la red de domótica.

@@ -38,8 +38,9 @@
 \contentsline {subsection}{\numberline {3.3.4}Aplicación: pestaña energía}{28}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}Aplicación: generación de instalador para Android}{29}{subsection.3.3.5}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pruebas funcionales del hardware}{31}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{33}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{33}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{33}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{35}{appendix*.26}%
+\contentsline {section}{\numberline {4.1}Ensayos sobre la aplicación}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ensayos sobre el sistema}{32}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{37}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{37}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{37}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{39}{appendix*.30}%
