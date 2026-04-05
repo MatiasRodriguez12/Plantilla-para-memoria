@@ -199,3 +199,91 @@ En conjunto, estos ensayos permitieron validar la comunicación entre la
 aplicación y el ESP32, así como la correcta interpretación y
 representación de los datos en la interfaz de usuario, antes de avanzar
 hacia los ensayos con los equipos de la red de domótica.
+
+\section{Ensayos de laboratorio}
+\label{sec:ensayos_laboratorio}
+
+La siguiente etapa consistió en la realización de ensayos con equipos
+reales de la red de domótica. Para ello, se utilizó un maletín
+proporcionado por la empresa Enertik, que integra los equipos
+comerciales empleados en aplicaciones de motorhomes.
+
+En este maletín, mostrado en la figura \ref{fig:equipos_enertik}, todos los
+equipos se encuentran interconectados mediante un cableado de cuatro
+conductores, replicando la configuración utilizada en los motorhomes.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.46]{./Figures/app_json_recibido.png}
+	\caption{Equipos Enertik.}
+	\label{fig:equipos_enertik}
+\end{figure}
+
+El sistema dispone de dos entradas de alimentación: una para tensión
+continua de 12 V, que representa la batería, y otra para tensión
+alterna, que simula las fuentes de línea, grupo electrógeno e inversor.
+
+Asimismo, cuenta con un conjunto de luces testigo que actúan como carga
+real, en reemplazo de los dispositivos presentes en un motorhome.
+
+Para la comunicación con el ecosistema Victron, el sistema incluye un
+módulo Cerbo GX y un equipo Multiplus, capaz de operar en modo inversor
+y cargador, tal como se muestra en la figura \ref{fig:equipos_victron}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.46]{./Figures/app_json_recibido.png}
+	\caption{Equipos victron.}
+	\label{fig:equipos_victron}
+\end{figure}
+
+En este entorno se ensayó la integración del microcontrolador ESP32 con
+los equipos reales de la red del motorhome.
+
+Para ello, se instaló la aplicación en un teléfono celular con sistema
+operativo Android y se estableció la conexión a la red Wi-Fi generada
+por el ESP32.
+
+A continuación, se procedió a evaluar el funcionamiento de cada una de
+las secciones de la aplicación.
+
+En la pantalla \textbf{home}, se pusieron a prueba los pulsadores y se
+verificó el accionamiento de las luces testigo correspondientes.
+
+También se ejerció presión sobre los sensores de nivel de los tanques,
+con el objetivo de simular distintas condiciones de carga y analizar la
+respuesta de la aplicación.
+
+Este procedimiento se replicó en las demás pestañas, evaluando cada una
+de las funcionalidades implementadas.
+
+En cuanto a la comunicación con la red Victron, se utilizó la pestaña
+\textbf{energía} de la aplicación para controlar el equipo Multiplus.
+
+Al activar el Multiplus en modo inversor, el equipo comenzó a convertir
+la tensión de batería en una señal alterna de 220 V. Como carga, se
+conectó un soldador de tipo \textit{cautín} de alta potencia, lo que
+permitió observar la variación de la potencia indicada en la aplicación.
+
+Por otro lado, se conectó el Multiplus a la red domiciliaria y se lo
+configuró en modo cargador. Mediante el uso de una pinza
+amperométrica, se verificó que el valor de corriente de carga mostrado
+en la aplicación resultaba coherente con la medición real.
+
+En conjunto, estos ensayos arrojaron resultados favorables, donde el
+ESP32 demostró capacidad para controlar tanto los equipos de la red de
+Enertik como los dispositivos del ecosistema Victron.
+
+Adicionalmente, se realizó una prueba en un motorhome real durante una
+visita a la fábrica. En dicha instancia, se evaluaron los distintos
+controles en condiciones reales de operación, obteniendo resultados
+satisfactorios.
+
+Sin embargo, no fue posible ensayar la comunicación con equipos Victron
+en el vehículo, ya que al momento de la prueba no se disponía de una
+unidad equipada con este sistema. Por lo tanto, esta validación queda
+pendiente para trabajos futuros.
+
+Finalmente, debido a políticas de la empresa fabricante de
+motorhomes, no fue posible registrar imágenes de los ensayos
+realizados durante la visita.

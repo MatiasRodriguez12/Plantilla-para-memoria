@@ -24,4 +24,6 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Archivo JSON recibido en la pestaña \textit {home}.}}{33}{figure.caption.26}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Mensaje recibido por el ESP32 al accionar un pulsador desde la aplicación.}}{34}{figure.caption.27}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Respuesta del servidor ante una solicitud de control.}}{34}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Equipos Enertik.}}{35}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Equipos victron.}}{36}{figure.caption.30}%
 \addvspace {10\p@ }
