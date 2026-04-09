@@ -153,14 +153,12 @@
     \endverb
   \endentry
 
-  \entry{pic_datasheet}{misc}{}{}
+  \entry{w5100_datasheet}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-19}
-    \field{title}{PIC18F66K80 FAMILY}
+    \field{title}{W5100}
     \verb{url}
-    \verb https://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F66K80%20FAMILY
-    \verb %20Enhanced%20Flash%20MCU%20with%20ECAN%20XLP%20Technology%2030009977
-    \verb G.pdf
+    \verb https://cdn.sparkfun.com/assets/e/2/f/c/2/W5100_Datasheet_v1_1_6.pdf
     \endverb
   \endentry
 
@@ -182,15 +180,6 @@
     \endverb
   \endentry
 
-  \entry{w5100_datasheet}{misc}{}{}
-    \field{labeltitlesource}{title}
-    \field{note}{Última consulta: 2025-03-19}
-    \field{title}{W5100}
-    \verb{url}
-    \verb https://cdn.sparkfun.com/assets/e/2/f/c/2/W5100_Datasheet_v1_1_6.pdf
-    \endverb
-  \endentry
-
   \entry{web_spi}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-29}
@@ -198,6 +187,26 @@
     \verb{url}
     \verb https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/
     \verb all
+    \endverb
+  \endentry
+
+  \entry{web_i2c}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-04-08}
+    \field{title}{I2C}
+    \verb{url}
+    \verb https://learn.sparkfun.com/tutorials/i2c
+    \endverb
+  \endentry
+
+  \entry{pic_datasheet}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-03-19}
+    \field{title}{PIC18F66K80 FAMILY}
+    \verb{url}
+    \verb https://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F66K80%20FAMILY
+    \verb %20Enhanced%20Flash%20MCU%20with%20ECAN%20XLP%20Technology%2030009977
+    \verb G.pdf
     \endverb
   \endentry
 

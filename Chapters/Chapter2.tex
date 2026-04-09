@@ -2,10 +2,7 @@
 
 \label{Chapter2}
 
-En este capítulo se describen los distintos protocolos de comunicación
-empleados en el desarrollo del trabajo, los componentes de hardware
-empleados para cumplir con los objetivos planteados y las
-herramientas utilizadas para el desarrollo del software.
+En este capítulo se describen los distintos protocolos de comunicación utilizados en el desarrollo del trabajo, los componentes de hardware empleados para cumplir con los objetivos planteados y las herramientas requeridas para el desarrollo del software.
 
 \section{Protocolos de comunicación}
 \label{sec:protocolos_comunicacion}
@@ -32,23 +29,19 @@ En este protocolo, la transmisión de datos se realiza a través de un
 par de conductores denominado CAN H y CAN L, en donde se emplea una señalización
 diferencial. Esta técnica consiste en transmitir la información como
 la diferencia de tensión entre ambos conductores, lo que proporciona
-una alta inmunidad a interferencias electromagnéticas, ya que el ruido
+una elevada inmunidad a interferencias electromagnéticas, ya que el ruido
 externo tiende a afectar a ambos cables de manera similar y, por lo
 tanto, es cancelado al evaluar la diferencia entre ellos.
 
-Por otra parte, la comunicación en una red CAN se basa en un esquema de
-difusión, donde todos los nodos reciben los mensajes transmitidos. Cada
-mensaje incluye un identificador que permite a los dispositivos
-determinar si la información es relevante para ellos, ignorando aquellos
-mensajes que no corresponden a su funcionamiento.
+Por otra parte, la comunicación en una red CAN se basa en un esquema de difusión, donde todos los nodos reciben los mensajes transmitidos. Cada mensaje incluye un identificador que permite a los dispositivos determinar si la información es relevante para ellos y descartar aquellos mensajes que no corresponden a su funcionamiento.
 
 \subsection{Protocolo Modbus TCP}
 
-El protocolo Modbus es uno de los protocolos más utilizados en la industria de la automatización. Su función principal es permitir que distintos dispositivos electrónicos se comuniquen entre sí de una forma sencilla y entandarizada.
+El protocolo Modbus es uno de los protocolos más utilizados en la industria de la automatización. Su función principal es permitir que distintos dispositivos electrónicos se comuniquen entre sí de una forma sencilla y estandarizada.
 
-En una red Modbus, exite una relación maestro-esclavo entre los dispositivos. El dispositivo maestro es el encargado de iniciar una comunicación y solicitar información. El esclavo se encarga de atender estas solicitudes y entregar los datos que el maestro requiera.
+En una red Modbus, existe una relación maestro-esclavo entre los dispositivos. El dispositivo maestro es el encargado de iniciar una comunicación y solicitar información. El esclavo se encarga de atender estas solicitudes y entregar los datos que el maestro requiera.
 
-En el caso de Modbus TCP, este protocolo se implementa sobre redes
+En particular, Modbus TCP se implementa sobre redes
 Ethernet, donde emplea el protocolo TCP/IP \citep{web_tcpip} como medio de transporte. Esto
 permite que los dispositivos puedan comunicarse a través de redes
 locales, identificándose mediante direcciones IP.
@@ -66,7 +59,7 @@ registros que pueden ser consultados y controlados de forma remota.
 
 \subsection{Solicitudes HTTP}
 \label{sec:http}
-El protocolo HTTP es un protocolo de aplicación ampliamente utilizado para la comunicación
+HTTP es un protocolo de aplicación ampliamente utilizado para la comunicación
 entre clientes y servidores. Su funcionamiento se
 basa en un modelo de tipo \textit{request-response}, donde un cliente
 envía una solicitud (request) a un servidor, este procesa la
@@ -94,7 +87,7 @@ control y la obtención de información del sistema.
 
 \section{Componentes de hardware}
 \label{sec:componentes_hardware}
-Para el desarrollo de hardware fue necesaria la utilización de ciertos componentes. El principal de ellos fue el ESP32 como microcontrolador del equipo. A su vez, para poder adaptarlo a los distintos protocolos de comunicación, fue necesario el agregado de dos periféricos adicionales: el módulo W5110 y el MCP2551.
+Para el desarrollo de hardware fue necesaria la utilización de ciertos componentes. El principal de ellos fue el ESP32 como microcontrolador del equipo. A su vez, para poder adaptarlo a los distintos protocolos de comunicación, fue necesario el agregado de dos periféricos adicionales: el módulo W5110  \citep{w5100_datasheet} y el MCP2551 \citep{2551_datasheet}.
 
 \subsection{Microcontrolador ESP32}
 El ESP32 es un microcontrolador desarrollado por
@@ -102,12 +95,12 @@ la empresa Espressif Systems. Se trata de un dispositivo SoC
 (\textit{System on Chip}) que integra múltiples periféricos y
 capacidades de procesamiento en un único dispositivo.
 
-Entre sus principales características, el ESP32 dispone de puertos de propósito general (GPIO), conversores analógico-digitales (ADC), módulos de comunicación serie como UART, SPI e I\textsuperscript{2}C,
-temporizadores y periféricos para generación de señales PWM.
+Entre sus principales características, el ESP32 dispone de puertos de propósito general (GPIO), conversores analógico-digitales (ADC), módulos de comunicación serie como UART (\textit{Universal Asynchronous Receiver-Transmitter}) \citep{web_uart}, SPI (\textit{Serial Peripheral Interface})\citep{web_spi} e I\textsuperscript{2}C (\textit{Inter-Integrated Circuit}) \citep{web_i2c},
+temporizadores y periféricos para generación de señales PWM (\textit{Pulse Width Modulation}).
 
 Además, el dispositivo incorpora conectividad inalámbrica, incluyendo
 Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para
-el desarrollo de aplicaciones orientadas al campo IoT (\textit{Internet of Things}). Todas las características mencionadas anteriormente vuelven al ESP32 en una opción mas que adecuada para el desarrolo del trabajo
+el desarrollo de aplicaciones orientadas al campo IoT (\textit{Internet of Things}). Todas las características mencionadas convierten al ESP32 en una opción mas que adecuada para el desarrollo del trabajo.
 
 \begin{figure}[h]
 	\centering
@@ -131,12 +124,12 @@ necesaria la implementación de un módulo transceiver.
 Este módulo actúa como interfaz entre el ESP32 y la red de domótica, y
 está compuesto por un microcontrolador PIC \citep{pic_datasheet}, en el
 que se implementa la biblioteca de comunicación, y un transceptor CAN
-MCP2551 \citep{2551_datasheet}, encargado de la adaptación de niveles
+MCP2551, encargado de la adaptación de niveles
 eléctricos para la transmisión diferencial sobre el bus.
 
 Como se puede apreciar en la figura \ref{fig:im_transceiver}, este módulo
 realiza la conversión de la red CAN, proveniente del sistema de domótica,
-a una interfaz de comunicación serial UART (\textit{Universal Asynchronous Receiver-Transmitter}) \citep{web_uart}, compatible con el ESP32.
+a una interfaz de comunicación serial UART, compatible con el ESP32.
 
 Esta solución permite desacoplar la gestión del protocolo de
 comunicación del procesamiento principal del sistema, lo que simplifica
@@ -155,12 +148,9 @@ la red de domótica existente.
 
 Para lograr la comunicación mediante el protocolo Modbus TCP, fue
 necesaria la utilización de un módulo Ethernet basado en el circuito
-W5100 \citep{w5100_datasheet}.
+W5100.
 
-El W5100 es un controlador Ethernet que permite dotar de conectividad
-de red a sistemas embebidos, gestionando internamente la pila de
-protocolos TCP/IP. La comunicación con el microcontrolador se realiza
-a través de una interfaz SPI (\textit{Serial Peripheral Interface})\citep{web_spi} , lo que facilita su integración en plataformas como el ESP32.
+El W5100 es un controlador Ethernet que permite dotar de conectividad de red a sistemas embebidos, ya que gestiona internamente la pila de protocolos TCP/IP. La comunicación con el microcontrolador se realiza a través de una interfaz SPI, lo que facilita su integración en plataformas como el ESP32.
 
 Mediante el uso de este módulo, el dispositivo desarrollado puede
 establecer conexiones sobre redes Ethernet, lo que permite la
@@ -174,20 +164,17 @@ equipos del ecosistema Victron.
 	\label{fig:im_w5100}
 \end{figure}
 
-\footnotetext{Imagen tomada de \url{https://grobotronics.com/wiznet-w5100-ethernet-network-module.html}}
+\footnotetext{Imagen tomada de \url{https://grobotronics.com/wiznet-w5100-ethernet-network-module.html}.}
 
 \section{Herramientas de software}
 \label{sec:componentes_software}
 
-Para el desarrollo del software fue necesario definir tanto el entorno
-de desarrollo integrado como el lenguaje de programación a emplear.
-Asimismo, se evaluaron las herramientas necesarias para el desarrollo de
-la aplicación móvil.
+Para el desarrollo del software fue necesario definir tanto el entorno de programación integrado como el lenguaje a emplear. Asimismo, se evaluaron las herramientas necesarias para la implementación de la aplicación móvil.
 
 \subsection{Entorno de desarrollo Arduino}
 
 El microcontrolador ESP32 es compatible con el entorno de desarrollo
-Arduino \citep{web_arduino}, lo que permitió utilizar este IDE (\textit{Integrated Development Environment}) como plataforma principal para el desarrollo del firmware. La elección de este entorno se basó en
+Arduino \citep{web_arduino}, lo que permitió utilizar este IDE (\textit{Integrated Development Environment}) como plataforma principal para la implementación del firmware. La elección de este entorno se basó en
 su facilidad de uso, amplia documentación y la disponibilidad de una gran
 cantidad de bibliotecas previamente desarrolladas.
 
@@ -215,7 +202,7 @@ entorno de desarrollo.
 
 \subsection{Funcionamiento del ESP32}
 \label{sec:rtos}
-Para la programación del microcontrolador se optó por el lenguaje C++,
+Para la programación del microcontrolador se optó por utilizar C++,
 debido a que es el lenguaje en el que se encuentran desarrolladas la
 mayoría de las bibliotecas disponibles en el entorno Arduino, lo que
 facilitó la integración de distintas funcionalidades requeridas en el
