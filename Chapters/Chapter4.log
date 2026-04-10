@@ -5666,7 +5666,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.134 	\caption
-               {Archivo JSON recibido en la pestaña \textit{home}.}
+               {Archivo JSON recibido en la pestaña home.}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -5680,7 +5680,7 @@ LaTeX Warning: Command \~ invalid in math mode on input line 134.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
 l.134 ...ption{Archivo JSON recibido en la pestañ
-                                                  a \textit{home}.}
+                                                  a home.}
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
@@ -5688,7 +5688,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 <to be read again> 
                    \edef 
 l.134 ...ption{Archivo JSON recibido en la pestañ
-                                                  a \textit{home}.}
+                                                  a home.}
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
 so that I will find a matching right brace soon.
@@ -7399,7 +7399,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.183 E
-       n esta imagen se observa el \textit{endpoint} utilizado en la consulta
+       n esta imagen se observa el endpoint utilizado en la consulta
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 

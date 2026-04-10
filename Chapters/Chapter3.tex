@@ -2,12 +2,12 @@
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-En este capítulo se explica cómo se diseñó el dispositivo, cómo está conformado el hardware y el software del equipo, y cómo se desarrolló la aplicación para el control del motorhome.
+En este capítulo se describe el diseño del dispositivo, así como la arquitectura de hardware y software que lo componen, junto con el desarrollo de la aplicación destinada al control del motorhome.
 
 \section{Desarrollo de hardware}
 \label{sec:desarrollo_hardware}
 
-Como se mencionó anteriormente, el ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
+Como se mencionó en la sección \ref{sec:1_4}, el ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
 
 La figura \ref{fig:esquema_hw_general} muestra una estructura del flujo o camino que debe seguir el ESP32 para llegar a cada una de estas partes.
 
@@ -43,9 +43,7 @@ Esto se debe a la complejidad de la biblioteca propia desarrollada por
 Enertik, cuyas condiciones y configuraciones no pudieron ser
 replicadas en el ESP32.
 
-Ante esta situación, se analizaron alternativas disponibles dentro de
-los equipos comercializados por Enertik. En este contexto, se identificó
-el módulo transceiver (mostrado en la figura \ref{fig:placa_transceiver}) utilizado en conjunto con la pantalla HMI de control.
+Ante esta situación, se analizaron alternativas disponibles dentro de los equipos comercializados por Enertik. En este contexto, se identificó el módulo transceiver mostrado en la figura \ref{fig:placa_transceiver}, utilizado en conjunto con la pantalla HMI de control.
 
 Esta placa tiene como función realizar la conversión del
 protocolo CAN, proveniente de la red del motorhome, a una interfaz de
@@ -68,7 +66,7 @@ La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre como fu
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{./Figures/esquema_hw_transceiver.png}
-	\caption{Diagrama de como se estable la comunicación CAN entre la red del motorhome y el ESP32.}
+	\caption{Diagrama de cómo se establece la comunicación CAN entre la red del motorhome y el ESP32.}
 	\label{fig:im_hw_transceiver}
 \end{figure}
 \newpage
@@ -132,7 +130,7 @@ basados en Arduino.
 Adicionalmente, el IDE Arduino dispone de bibliotecas específicas para
 la comunicación Ethernet que resultan compatibles con este módulo, lo
 que facilitó su integración dentro del sistema. Estas características
-hicieron del W5100 una opción adecuada para la implementación de la
+hicieron del módulo W5100 una opción adecuada para la implementación de la
 comunicación Modbus TCP con los equipos del ecosistema Victron.
 
 Otra ventaja de este componente es que utiliza el protocolo de
@@ -140,7 +138,7 @@ comunicación SPI. El ESP32 dispone de periféricos compatibles con este
 protocolo, lo que facilitó su integración dentro del sistema.
 
 Más allá del conexionado SPI (pines MOSI, MISO, SCK y CS), la conexión
-entre el ESP32 y el W5100 no requirió hardware adicional.
+entre el ESP32 y el módulo W5100 no requirió hardware adicional.
 
 Este módulo funciona con una tensión de alimentación de 5 V, lo que lo
 vuelve compatible con el diseño implementado, ya que se aprovecha la
@@ -237,7 +235,7 @@ compatible con el chip ESP32.
 
 En el caso del módulo transceiver, dado que se conocía completamente su
 diseño, se optó por integrarlo directamente en el PCB. Para ello, se
-incorporaron el microcontrolador PIC18F26K60 y el transceptor MCP2551
+incorporaron el microcontrolador PIC18F26K80 y el transceptor MCP2551
 en la placa. Esta decisión permitió optimizar el espacio disponible y
 reducir costos al unificar todos los componentes en una única placa.
 \newpage
@@ -259,15 +257,15 @@ En la figura \ref{fig:pcb_final} se puede observar el diseño final del PCB.
 	\label{fig:pcb_final}
 \end{figure}
 
-Como se puede apreciar, el PCB esta compuesto por los siguientes componentes:
+Como se puede apreciar, el PCB está compuesto por los siguientes componentes:
 
 \begin{itemize}
-	\item Componente 1: conector principal. Terminal sobre que se conecta el cableado de cuatro hilos proveniente del motorhome.
-	\item Componente 2: MCP2551. Forma parte del módulo transceiver, encargado de adaptar los niveles de tensión de la linea CAN.
+	\item Componente 1: conector principal. Terminal sobre el que se conecta el cableado de cuatro hilos proveniente del motorhome.
+	\item Componente 2: MCP2551. Forma parte del módulo transceiver, encargado de adaptar los niveles de tensión de la línea CAN.
 	\item Componente 3: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
 	\item Componente 4: PIC18F26K80. Microcontrolador que contiene la biblioteca desarrollada por Enertik para la comunicación entre equipos.
 	\item Componente 5: módulo ESP32. Microcontrolador que contiene el firmware principal del equipo.    
-    \item Componente 6: regulador de tensión AP63203. Fuente de tensión de 3,3 V encargado alimentar el ESP32.
+    \item Componente 6: regulador de tensión AP63203. Fuente de tensión de 3,3 V encargado de alimentar el ESP32.
     \item Componente 7: regulador de tensión 7805. Componente responsable de suministrar una tensión estable de 5 V para alimentar el PIC y el W5100.   
     \item Componente 8: conector de diez pines. Conector compatible con el módulo W5100. En este lugar se montará dicho componente.
 \end{itemize}
@@ -287,6 +285,7 @@ A modo de resumen, la tabla \ref{tab:componentes} lista los principales componen
 
 \begin{table}[h]
 	\centering
+	\renewcommand{\arraystretch}{1.5}
 	\caption[Componentes utilizados en el PCB final.]{Componentes utilizados en el PCB final.}
 	\begin{tabular}{m{2cm} m{8cm}}   
 		\toprule
@@ -300,7 +299,6 @@ A modo de resumen, la tabla \ref{tab:componentes} lista los principales componen
 		Resistencias		&	Arreglo para el divisor de tensión.\\
 		W5100		&	Módulo para comunicación Ethernet.\\
 		\bottomrule
-		\hline
 	\end{tabular}
 	\label{tab:componentes}
 \end{table}
@@ -499,10 +497,7 @@ del inversor o del cargador. Para ello, se realiza la escritura sobre
 los registros correspondientes del dispositivo Victron, lo que permite
 modificar su estado de operación.
 
-Finalmente, una vez procesada la información, los datos actualizados se
-envían a otras tareas del sistema a través de colas de FreeRTOS. Este
-mecanismo permite desacoplar el procesamiento de datos de su consumo,
-mejorando la organización y la escalabilidad del firmware.
+Finalmente, una vez procesada la información, los datos actualizados se envían a otras tareas del sistema a través de colas de FreeRTOS. Este mecanismo permite desacoplar el procesamiento de datos de su consumo, lo que mejora la organización y la escalabilidad del firmware.
 
 \subsection{Tarea: control de servidor}
 \label{sec:tarea_server}
@@ -515,38 +510,38 @@ dispositivos. Además, se definen los parámetros de la red, tales como
 el nombre (SSID) y la contraseña de acceso.
 
 Una vez establecida la conectividad, se definió la estructura del
-servidor HTTP mediante la creación de distintos \textit{endpoints}.
+servidor HTTP mediante la creación de distintos endpoints.
 Estos representan puntos de acceso que permiten a los clientes
-interactuar con el sistema. Cada \textit{endpoint} se asocia a una ruta
+interactuar con el sistema. Cada endpoint se asocia a una ruta
 específica y a un tipo de solicitud, como GET o POST, lo que permite
 consultar información o enviar comandos.
 
-Se optó por implementar un \textit{endpoint} para cada una de las
+Se optó por implementar un endpoint para cada una de las
 pantallas principales de la aplicación. Este enfoque permite que cada
 pantalla solicite únicamente la información necesaria, lo que reduce el
 tráfico de datos y mejora la eficiencia del sistema.
 
-En particular, se definieron cuatro \textit{endpoints} que admiten
+En particular, se definieron cuatro endpoints que admiten
 solicitudes de tipo GET:
 
 \begin{itemize}
-    \item \textit{Home}
+    \item home
     \item Luces  
     \item Motores
     \item Energía
 \end{itemize}
 
-Cada uno de estos \textit{endpoints} genera y devuelve un archivo en
-formato JSON (\textit{JavaScript Object Notation}) \citep{web_json} con la información requerida por la pantalla
+Cada uno de estos endpoints genera y devuelve un archivo en
+formato \texttt{JSON} (\textit{JavaScript Object Notation}) \citep{web_json} con la información requerida por la pantalla
 correspondiente, lo que permite actualizar la interfaz de usuario con
 los valores actuales del sistema.
 
 Por otra parte, la aplicación móvil dispone de distintos pulsadores que
 permiten controlar el funcionamiento del motorhome. Para ello, se
-implementó un quinto \textit{endpoint} (denominado pulsadores) que admite solicitudes de tipo
+implementó un quinto endpoint (denominado pulsadores) que admite solicitudes de tipo
 POST, destinado a la recepción de comandos.
 
-Este \textit{endpoint} recibe un archivo JSON que contiene dos campos:
+Este endpoint recibe un archivo \texttt{JSON} que contiene dos campos:
 uno que identifica el pulsador que originó la acción y otro que indica
 el nuevo estado asociado.
 
@@ -554,10 +549,7 @@ A partir de esta información, el servidor interpreta el comando y lo
 traduce en una instrucción que es enviada al módulo PRC10 para así permitir
 la ejecución de la acción correspondiente dentro del sistema.
 
-De esta manera, el servidor implementado en el ESP32 actúa como
-intermediario entre la aplicación móvil y la red de domótica,
-centralizando tanto la consulta de información como el envío de
-comandos.
+De esta manera, el servidor implementado en el ESP32 actúa como intermediario entre la aplicación móvil y la red de domótica, lo que permite centralizar tanto la consulta de información como el envío de comandos.
 
 \section{Desarrollo de la aplicación}
 \label{sec:desarrollo_app}
@@ -572,20 +564,17 @@ los tiempos de desarrollo, ya que cada modificación realizada podía
 verificarse de forma inmediata.
 
 Asimismo, este entorno facilitó la realización de ensayos sobre los
-\textit{endpoints} definidos en el servidor del ESP32. Para ello, el
+endpoint definidos en el servidor del ESP32. Para ello, el
 dispositivo se conectó a la misma red Wi-Fi que la computadora de
 desarrollo, lo que permitió que la aplicación realizara solicitudes
-HTTP de tipo GET y POST hacia los \textit{endpoints}
+HTTP de tipo GET y POST hacia los endpoints
 correspondientes.
 
 Estas solicitudes se dirigieron a la dirección IP asignada al ESP32,
 dato que el propio dispositivo informa al momento de establecer la
 conexión a la red.
 
-Para el desarrollo de la aplicación, se tomó como referencia la
-aplicación utilizada en la pantalla HMI del motorhome. Se buscó
-replicar la mayor cantidad posible de sus funcionalidades, con
-prioridad en aquellas consideradas de mayor importancia.
+Para el desarrollo de la aplicación, se tomó como referencia la aplicación utilizada en la pantalla HMI del motorhome. Se replicaron la mayor cantidad posible de sus funcionalidades, con prioridad en aquellas consideradas de mayor importancia.
 
 Como se mencionó en la sección \ref{sec:tarea_server}, se optó por
 desarrollar una aplicación compuesta por cuatro pestañas. A su vez, se
@@ -597,18 +586,18 @@ las distintas pantallas de la aplicación.
 
 La figura \ref{fig:app_home} muestra la primera pestaña de la
 aplicación. Esta pestaña se encuentra asociada al campo denominado
-\textit{home} y corresponde a la pantalla principal.
+home y corresponde a la pantalla principal.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.16]{./Figures/P1_Home.png}
-	\caption{Pestaña \textit{home} de la aplicación.}
+	\caption{Pestaña home de la aplicación.}
 	\label{fig:app_home}
 \end{figure}
 
 Cada vez que se accede a esta pestaña, se inicia un \textit{timer} o
 contador interno que realiza de forma periódica una solicitud GET al
-\textit{endpoint} \textit{home}. A través de este mecanismo se obtienen
+endpoint home. A través de este mecanismo se obtienen
 las variables necesarias para su visualización, así como también los
 estados de los pulsadores.
 
@@ -649,8 +638,8 @@ Finalmente, se incluyen tres pulsadores de control: bomba de agua,
 esclusa de agua gris y esclusa de agua negra.
 
 Como se mencionó en la sección \ref{sec:tarea_server}, estos pulsadores
-realizan solicitudes de tipo POST al \textit{endpoint} denominado
-pulsadores. En este caso, se envía un archivo JSON que indica
+realizan solicitudes de tipo POST al endpoint denominado
+pulsadores. En este caso, se envía un archivo \texttt{JSON} que indica
 el origen del pulsador y el nuevo estado, lo que permite ejecutar la
 acción correspondiente.
 
@@ -670,7 +659,7 @@ luces.
 \end{figure}
 
 De manera similar a la pestaña principal, esta pestaña realiza
-solicitudes GET de forma periódica al \textit{endpoint} denominado
+solicitudes GET de forma periódica al endpoint denominado
 luces.
 
 A través de este mecanismo, se obtienen los estados de los pulsadores
@@ -683,7 +672,7 @@ pestaña permite regular la intensidad lumínica mediante la variación
 del ancho de pulso.
 
 Al igual que en la pantalla principal, cada uno de estos controles
-realiza una solicitud POST al \textit{endpoint} pulsadores,
+realiza una solicitud POST al endpoint pulsadores,
 indicando el origen del comando y el nuevo valor, ya sea el estado del
 pulsador o el valor del \textit{dimmer}.
 
@@ -702,7 +691,7 @@ motores.
 \end{figure}
 
 Esta pestaña realiza solicitudes GET de forma periódica al
-\textit{endpoint} denominado motores y se encarga del control
+endpoint denominado motores y se encarga del control
 de los elementos móviles del motorhome.
 
 Como se puede observar en la figura \ref{fig:app_motores}, en el
@@ -720,7 +709,7 @@ de habilitación sobre los controles de la cabina desplazable y del
 toldo del motorhome.
 
 Mientras estos controles se encuentran deshabilitados, se superpone
-una imagen con el símbolo de precaución o \textit{warning}. Cuando el
+una imagen con el símbolo de precaución o warning. Cuando el
 sistema detecta que el freno de mano está accionado, este indicador
 desaparece y los controles se habilitan.
 
@@ -749,7 +738,7 @@ energía.
 \end{figure}
 
 Esta pestaña realiza solicitudes GET de forma periódica al
-\textit{endpoint} denominado energía y se encarga del control
+endpoint denominado energía y se encarga del control
 del grupo electrógeno, el cargador y el inversor del motorhome, así
 como también del control del calentador de agua y del sistema de gas
 envasado (alta potencia).
@@ -794,7 +783,7 @@ servidor del ESP32. Asimismo, se utilizaron utilidades para la
 generación y configuración de los recursos gráficos de la aplicación,
 como los íconos y elementos visuales requeridos por el sistema Android.
 
-A partir de este proceso, el proyecto fue importado en el entorno de
+A partir de este proceso, el trabajo fue importado en el entorno de
 desarrollo Android Studio. Este software permite gestionar la
 compilación de la aplicación, así como configurar parámetros propios
 del sistema Android, tales como permisos, versión mínima del sistema

@@ -16,7 +16,7 @@ ventajas que aportó el desarrollo de la aplicación mediante Ionic fue
 la posibilidad de utilizar el navegador web de la computadora como
 herramienta de depuración.
 
-Ionic dispone del comando ``ionic serve'', que permite ejecutar la
+Ionic dispone del comando \texttt{ionic serve}, que permite ejecutar la
 aplicación en el navegador. A partir de este comando, la aplicación se
 pone en funcionamiento y puede accederse a ella mediante la dirección \textit{localhost} y un
 puerto asociado, que por defecto corresponde al 8100 (aunque este valor
@@ -59,9 +59,9 @@ navegador, indicada en el cuadro 2.
 
 En esta consola es posible visualizar mensajes de depuración generados
 desde la aplicación mediante el uso de instrucciones como
-``\textit{console.log()}'' dentro del código. Estos mensajes pueden incluir
+\texttt{console.log()} dentro del código. Estos mensajes pueden incluir
 texto, valores de variables y estructuras de datos más complejas, como
-objetos en formato JSON utilizados en la comunicación con el
+objetos en formato \texttt{JSON} utilizados en la comunicación con el
 servidor del ESP32.
 
 Asimismo, la consola permite detectar errores durante la ejecución de
@@ -95,7 +95,7 @@ enviar y recibir datos; sin embargo, en este caso se utilizó
 principalmente como medio de visualización de mensajes generados por el
 microcontrolador.
 
-El IDE Arduino incorpora la función ``\textit{Serial.print()}'', que
+El IDE Arduino incorpora la función \texttt{Serial.print()}, que
 permite la impresión de información en el monitor serie. A través de
 esta función se pueden mostrar mensajes de texto, valores de variables
 y estructuras de datos más complejas, lo que facilitó el seguimiento
@@ -110,14 +110,14 @@ monitor serie la dirección IP asignada por el módem de la red.
 
 A partir de esta dirección IP, y al encontrarse ambos dispositivos en
 la misma red, fue posible acceder a cada uno de los
-\textit{endpoints} del servidor implementado en el ESP32, lo que
+endpoints del servidor implementado en el ESP32, lo que
 permitió evaluar su funcionamiento y verificar la correcta
 comunicación con la aplicación.
 
 Para poner a prueba la comunicación entre los dispositivos, se
 implementó en el firmware del ESP32 una función temporal en la que se
 asignaban valores aleatorios a las variables contenidas en las
-estructuras JSON. Cada vez que uno de estos valores era modificado, se
+estructuras \texttt{JSON}. Cada vez que uno de estos valores era modificado, se
 informaba mediante un mensaje en el monitor serie.
 
 Por otro lado, a través de la consola del navegador se verificó que los
@@ -131,12 +131,12 @@ comportamiento de la aplicación durante la comunicación con el ESP32.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.46]{./Figures/app_json_recibido.png}
-	\caption{Archivo JSON recibido en la pestaña \textit{home}.}
+	\caption{Archivo \texttt{JSON} recibido en la pestaña home.}
 	\label{fig:app_json_recibido}
 \end{figure}
 
-En dicha figura se observa el archivo JSON recibido desde el
-\textit{endpoint} \textit{home} del servidor implementado en el ESP32.
+En dicha figura se observa el archivo \texttt{JSON} recibido desde el
+endpoint home del servidor implementado en el ESP32.
 Este paquete contiene los valores de todas las variables que la
 aplicación debe representar en esta pantalla.
 
@@ -180,15 +180,15 @@ respuesta por parte del servidor. La figura
 	\label{fig:app_json_pulsador}
 \end{figure}
 
-En esta imagen se observa el \textit{endpoint} utilizado en la consulta
+En esta imagen se observa el endpoint utilizado en la consulta
 junto con el contenido de la respuesta. En particular, se devuelve el
 comando 8, asociado al pulsador de la bomba de agua, junto con el nuevo
 valor asignado, lo que confirma la correcta ejecución de la acción.
 
 De esta manera, se evaluó el funcionamiento del servidor implementado
 en el ESP32 mediante la puesta a prueba de todos los
-\textit{endpoints}. Para ello, se asignaron valores aleatorios a las
-estructuras JSON asociadas a cada uno de ellos, lo que permitió analizar cómo la
+endpoints. Para ello, se asignaron valores aleatorios a las
+estructuras \texttt{JSON} asociadas a cada uno de ellos, lo que permitió analizar cómo la
 aplicación representaba dichas respuestas en pantalla.
 
 Asimismo, se verificó el correcto funcionamiento de los pulsadores de
