@@ -33,7 +33,7 @@
 \contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{24}{subsection.3.2.6}%
 \contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{25}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Aplicación: pestaña principal}{25}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Aplicación: pestaña luces}{26}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Aplicación: pestaña luces}{27}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Aplicación: pestaña motores}{27}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Aplicación: pestaña energía}{28}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}Aplicación: generación de instalador para Android}{29}{subsection.3.3.5}%

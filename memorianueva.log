@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  9 APR 2026 21:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  9 APR 2026 21:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1349,21 +1349,17 @@ Package pdftex.def Info: ./Figures/P1_Home.png  used on input line 593.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 612.
-LaTeX Info: Redefining \% on input line 612.
+LaTeX Info: Redefining \. on input line 603.
+LaTeX Info: Redefining \% on input line 603.
 [25]
 <./Figures/P2_Luces.png, id=604, 2409.0pt x 1084.05pt>
 File: ./Figures/P2_Luces.png Graphic file (type png)
 <use ./Figures/P2_Luces.png>
 Package pdftex.def Info: ./Figures/P2_Luces.png  used on input line 656.
 (pdftex.def)             Requested size: 385.44788pt x 173.45154pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 665.
-LaTeX Info: Redefining \% on input line 665.
-[26 <./Figures/P1_Home.png>]
+LaTeX Info: Redefining \. on input line 659.
+LaTeX Info: Redefining \% on input line 659.
+ [26 <./Figures/P1_Home.png>]
 <./Figures/P3_Motores.png, id=612, 1806.75pt x 2481.27pt>
 File: ./Figures/P3_Motores.png Graphic file (type png)
 <use ./Figures/P3_Motores.png>
@@ -1373,8 +1369,8 @@ Package pdftex.def Info: ./Figures/P3_Motores.png  used on input line 688.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 721.
-LaTeX Info: Redefining \% on input line 721.
+LaTeX Info: Redefining \. on input line 715.
+LaTeX Info: Redefining \% on input line 715.
 [27 <./Figures/P2_Luces.png>]
 <./Figures/P4_Energia.png, id=621, 2409.0pt x 1084.05pt>
 File: ./Figures/P4_Energia.png Graphic file (type png)
@@ -1385,11 +1381,11 @@ Package pdftex.def Info: ./Figures/P4_Energia.png  used on input line 735.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 756.
-LaTeX Info: Redefining \% on input line 756.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
 [28 <./Figures/P3_Motores.png>]
-LaTeX Info: Redefining \. on input line 799.
-LaTeX Info: Redefining \% on input line 799.
+LaTeX Info: Redefining \. on input line 798.
+LaTeX Info: Redefining \% on input line 798.
  [29 <./Figures/P4_Energia.png>])
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
@@ -1583,6 +1579,9 @@ L3 programming layer <2026-01-19>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
 (rerunfilecheck)             Checksum: 248173BA9191A099D78B6373E19E44AD;8588.
 
@@ -1618,7 +1617,7 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (56 pages, 9062948 bytes).
+Output written on memorianueva.pdf (56 pages, 9062983 bytes).
 PDF statistics:
  863 PDF objects out of 1000 (max. 8388607)
  172 named destinations out of 1000 (max. 500000)
