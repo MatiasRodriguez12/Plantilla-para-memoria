@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  9 APR 2026 21:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  9 APR 2026 21:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1415,70 +1415,70 @@ Overfull \hbox (2.39053pt too wide) in paragraph at lines 30--31
 
 
  <./Figures/ionic_debug.png>]
-LaTeX Info: Redefining \. on input line 111.
-LaTeX Info: Redefining \% on input line 111.
+LaTeX Info: Redefining \. on input line 107.
+LaTeX Info: Redefining \% on input line 107.
  [32]
 <./Figures/app_json_recibido.png, id=653, 852.18375pt x 455.45157pt>
 File: ./Figures/app_json_recibido.png Graphic file (type png)
 <use ./Figures/app_json_recibido.png>
-Package pdftex.def Info: ./Figures/app_json_recibido.png  used on input line 13
-3.
+Package pdftex.def Info: ./Figures/app_json_recibido.png  used on input line 12
+9.
 (pdftex.def)             Requested size: 392.00928pt x 209.51025pt.
 
-Overfull \hbox (2.20659pt too wide) in paragraph at lines 133--134
+Overfull \hbox (2.20659pt too wide) in paragraph at lines 129--130
  [][] 
  []
 
-<./Figures/pulsador_respuesta_esp32.png, id=655, 202.50656pt x 91.09032pt>
+<./Figures/pulsador_respuesta_esp32.png, id=656, 202.50656pt x 91.09032pt>
 File: ./Figures/pulsador_respuesta_esp32.png Graphic file (type png)
 <use ./Figures/pulsador_respuesta_esp32.png>
 Package pdftex.def Info: ./Figures/pulsador_respuesta_esp32.png  used on input 
-line 157.
+line 153.
 (pdftex.def)             Requested size: 202.50604pt x 91.09007pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 167.
-LaTeX Info: Redefining \% on input line 167.
+LaTeX Info: Redefining \. on input line 163.
+LaTeX Info: Redefining \% on input line 163.
 [33 <./Figures/app_json_recibido.png>]
-<./Figures/app_json_pulsador.png, id=662, 816.80156pt x 379.4175pt>
+<./Figures/app_json_pulsador.png, id=663, 816.80156pt x 379.4175pt>
 File: ./Figures/app_json_pulsador.png Graphic file (type png)
 <use ./Figures/app_json_pulsador.png>
 Package pdftex.def Info: ./Figures/app_json_pulsador.png  used on input line 17
-8.
+4.
 (pdftex.def)             Requested size: 375.73328pt x 174.53416pt.
-LaTeX Info: Redefining \. on input line 197.
-LaTeX Info: Redefining \% on input line 197.
+LaTeX Info: Redefining \. on input line 193.
+LaTeX Info: Redefining \% on input line 193.
  [34 <./Figures/pulsador_respuesta_esp32.png> <./Figures/app_json_pulsador.png>
 ]
-<./Figures/prc10.png, id=670, 602.25pt x 453.19313pt>
+<./Figures/prc10.png, id=671, 602.25pt x 453.19313pt>
 File: ./Figures/prc10.png Graphic file (type png)
 <use ./Figures/prc10.png>
-Package pdftex.def Info: ./Figures/prc10.png  used on input line 213.
+Package pdftex.def Info: ./Figures/prc10.png  used on input line 209.
 (pdftex.def)             Requested size: 361.35278pt x 271.91797pt.
-<./Figures/maletin.png, id=672, 453.19313pt x 602.25pt>
+<./Figures/maletin.png, id=673, 453.19313pt x 602.25pt>
 File: ./Figures/maletin.png Graphic file (type png)
 <use ./Figures/maletin.png>
-Package pdftex.def Info: ./Figures/maletin.png  used on input line 228.
+Package pdftex.def Info: ./Figures/maletin.png  used on input line 224.
 (pdftex.def)             Requested size: 271.91797pt x 361.35278pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 243.
-LaTeX Info: Redefining \% on input line 243.
+LaTeX Info: Redefining \. on input line 239.
+LaTeX Info: Redefining \% on input line 239.
 [35 <./Figures/prc10.png>]
-<./Figures/multiplus.png, id=680, 712.16063pt x 339.51843pt>
+<./Figures/multiplus.png, id=681, 712.16063pt x 339.51843pt>
 File: ./Figures/multiplus.png Graphic file (type png)
 <use ./Figures/multiplus.png>
-Package pdftex.def Info: ./Figures/multiplus.png  used on input line 246.
+Package pdftex.def Info: ./Figures/multiplus.png  used on input line 242.
 (pdftex.def)             Requested size: 384.561pt x 183.33722pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 278.
-LaTeX Info: Redefining \% on input line 278.
+LaTeX Info: Redefining \. on input line 274.
+LaTeX Info: Redefining \% on input line 274.
 [36 <./Figures/maletin.png>])
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
@@ -1618,9 +1618,9 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (56 pages, 9064041 bytes).
+Output written on memorianueva.pdf (56 pages, 9064212 bytes).
 PDF statistics:
- 862 PDF objects out of 1000 (max. 8388607)
+ 863 PDF objects out of 1000 (max. 8388607)
  172 named destinations out of 1000 (max. 500000)
  494 words of extra memory for PDF output out of 10000 (max. 10000000)
 

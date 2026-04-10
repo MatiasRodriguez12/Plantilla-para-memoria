@@ -17,7 +17,7 @@ la posibilidad de utilizar el navegador web de la computadora como
 herramienta de depuración.
 
 Ionic dispone del comando \texttt{ionic serve}, que permite ejecutar la
-aplicación en el navegador. A partir de este comando, la aplicación se
+aplicación en el navegador. A partir de este punto, la aplicación se
 pone en funcionamiento y puede accederse a ella mediante la dirección \textit{localhost} y un
 puerto asociado, que por defecto corresponde al 8100 (aunque este valor
 puede modificarse según la configuración del entorno de desarrollo).
@@ -73,11 +73,7 @@ aplicación de forma independiente. Para ello, se navegó entre las
 distintas pestañas disponibles, se accionaron los diferentes
 pulsadores y se analizaron los mensajes generados en la consola.
 
-Adicionalmente, se implementó un esquema de prueba mediante
-modificación manual de variables internas del código
-(\textit{hardcodeo}). Esto permitió verificar el comportamiento de los
-indicadores visuales, evaluando cómo la aplicación representaba en
-pantalla distintos valores de las magnitudes involucradas.
+Adicionalmente, se implementó un esquema de prueba mediante modificación manual de variables internas del código (\textit{hardcodeo}). Esto permitió verificar el comportamiento de los indicadores visuales y evaluar cómo la aplicación representaba en pantalla distintos valores de las magnitudes involucradas.
 
 \section{Ensayos sobre el sistema}
 \label{sec:pruebasAPP_ESP32}
@@ -97,7 +93,7 @@ microcontrolador.
 
 El IDE Arduino incorpora la función \texttt{Serial.print()}, que
 permite la impresión de información en el monitor serie. A través de
-esta función se pueden mostrar mensajes de texto, valores de variables
+esta ella se pueden mostrar mensajes de texto, valores de variables
 y estructuras de datos más complejas, lo que facilitó el seguimiento
 del estado interno del sistema durante su ejecución.
 
@@ -143,7 +139,7 @@ aplicación debe representar en esta pantalla.
 Asimismo, se incluyen los estados de los pulsadores correspondientes a
 la bomba de agua, la esclusa de agua gris y la esclusa de agua negra.
 
-Por otra parte, tal como se mencionó anteriormente, al accionar un
+Por otra parte, tal como se mencionó en la sección \ref{sec:app_home}, al accionar un
 pulsador la aplicación envía una solicitud HTTP de tipo POST hacia el
 ESP32. En esta solicitud se indica el origen del comando y el nuevo
 valor que debe establecerse.
@@ -221,7 +217,7 @@ En este maletín, mostrado en la figura \ref{fig:equipos_enertik}, todos los
 equipos se encuentran interconectados mediante un cableado de cuatro
 conductores, replicando la configuración utilizada en los motorhomes.
 
-A su vez, se puede observar el módulo PRC10 usando en los ensayos (indicado con el cuadro 2) junto con el prototipo experimental (indicado con el cuadro 1).
+A su vez, se puede observar el módulo PRC10 usado en los ensayos (indicado con el cuadro 2) junto con el prototipo experimental (indicado con el cuadro 1).
 
 \begin{figure}[h]
 	\centering
@@ -258,7 +254,7 @@ por el ESP32.
 A continuación, se procedió a evaluar el funcionamiento de cada una de
 las secciones de la aplicación.
 
-En la pantalla \textbf{home}, se pusieron a prueba los pulsadores y se
+En la pantalla home se pusieron a prueba los pulsadores y se
 verificó el accionamiento de las luces testigo correspondientes.
 
 También se ejerció presión sobre los sensores de nivel de los tanques,
@@ -269,7 +265,7 @@ Este procedimiento se replicó en las demás pestañas, evaluando cada una
 de las funcionalidades implementadas.
 
 En cuanto a la comunicación con la red Victron, se utilizó la pestaña
-\textbf{energía} de la aplicación para controlar el equipo Multiplus.
+energía de la aplicación para controlar el equipo Multiplus.
 
 Al activar el Multiplus en modo inversor, el equipo comenzó a convertir
 la tensión de batería en una señal alterna de 220 V. Como carga, se
