@@ -300,6 +300,15 @@
     \endverb
   \endentry
 
+  \entry{web_rj45}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-04-15}
+    \field{title}{¿Qué es un conector RJ45? Todo lo que necesitas saber}
+    \verb{url}
+    \verb https://seetronic.com/es/blog/what-is-an-rj45-connector/
+    \endverb
+  \endentry
+
   \entry{7805_datasheet}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-29}

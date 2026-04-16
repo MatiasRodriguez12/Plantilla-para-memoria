@@ -7,7 +7,7 @@ En este capítulo se describe el diseño del dispositivo, así como la arquitect
 \section{Desarrollo de hardware}
 \label{sec:desarrollo_hardware}
 
-Como se mencionó en la sección \ref{sec:1_4}, el ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
+Como se mencionó en la sección \ref{sec:1_4}, el microcontrolador ESP32 debe actuar como intermediario y vínculo entre las tres partes principales: módulo PRC10, Cerbo GX y aplicación móvil.
 
 La figura \ref{fig:esquema_hw_general} muestra una estructura del flujo o camino que debe seguir el ESP32 para llegar a cada una de estas partes.
 
@@ -31,23 +31,11 @@ a través de un cableado de cuatro conductores: dos destinados a la
 alimentación de los equipos y dos destinados a la comunicación CAN
 (CAN H y CAN L).
 
-Para el desarrollo de la comunicación del ESP32 mediante este
-protocolo, se consideró en primer lugar la adaptación de la biblioteca
-de Enertik dentro del firmware del dispositivo. Durante la etapa de
-investigación se identificaron bibliotecas disponibles que permiten al
-ESP32 implementar comunicación CAN a través de sus puertos GPIO.
+Para lograr una comunicación compatible y confiable entre el ESP32 y la red CAN del sistema, fue necesario incorporar un módulo transceiver provisto por Enertik, como se muestra en la figura \ref{fig:placa_transceiver}.
 
-Sin embargo, los intentos de establecer una comunicación básica entre
-el ESP32 y el módulo PRC10 no arrojaron resultados satisfactorios.
-Esto se debe a la complejidad de la biblioteca propia desarrollada por
-Enertik, cuyas condiciones y configuraciones no pudieron ser
-replicadas en el ESP32.
+Este módulo permite la conversión del protocolo CAN, proveniente de la red del motorhome, a una interfaz de comunicación UART compatible con el ESP32. De este modo, se garantiza la correcta integración con la infraestructura existente y se evita la necesidad de adaptar o replicar las configuraciones propias de la biblioteca desarrollada por la empresa.
 
-Ante esta situación, se analizaron alternativas disponibles dentro de los equipos comercializados por Enertik. En este contexto, se identificó el módulo transceiver mostrado en la figura \ref{fig:placa_transceiver}, utilizado en conjunto con la pantalla HMI de control.
-
-Esta placa tiene como función realizar la conversión del
-protocolo CAN, proveniente de la red del motorhome, a una interfaz de
-comunicación UART, compatible con la pantalla.
+Asimismo, esta solución simplifica la implementación de la comunicación, ya que delega el procesamiento específico del protocolo CAN en un dispositivo diseñado para tal fin.
 
 \begin{figure}[h]
 	\centering
@@ -61,7 +49,7 @@ para que sea compatible con el dispositivo basado en ESP32. Este
 módulo se compone de un microcontrolador PIC y de un transceptor CAN
 MCP2551.
 
-La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre como fue la implementación de este módulo transceiver.
+La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre cómo fue la implementación de este módulo transceiver.
 
 \begin{figure}[h]
 	\centering
@@ -89,6 +77,10 @@ La solución adoptada fue la implementación de un divisor resistivo. La
 figura \ref{fig:divisor_resistivo} muestra un diagrama del circuito
 utilizado, junto con el cálculo correspondiente a la tensión de salida.
 
+Mediante el uso de tres resistencias de igual valor, se logró reducir la
+tensión de 5 V a 3,3 V en la línea de transmisión hacia el ESP32,
+lo que permitió una comunicación segura entre ambos dispositivos.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{./Figures/divisor_resistivo.png}
@@ -96,9 +88,6 @@ utilizado, junto con el cálculo correspondiente a la tensión de salida.
 	\label{fig:divisor_resistivo}
 \end{figure}
 
-Mediante el uso de tres resistencias de igual valor, se logró reducir la
-tensión de 5 V a 3,3 V en la línea de transmisión hacia el ESP32,
-lo que permitió una comunicación segura entre ambos dispositivos.
 \newpage
 Este divisor fue implementado en la conexión correspondiente a la línea
 de transmisión UART (Tx) del microcontrolador PIC hacia la línea de
@@ -106,11 +95,7 @@ recepción UART (Rx) del ESP32. En el sentido contrario no fue necesaria
 esta adaptación, ya que el nivel lógico de 3,3 V proveniente del ESP32
 es reconocido correctamente por el PIC.
 
-De esta manera, el módulo transceiver actúa como un intermediario que
-realiza la conversión entre la red CAN y una interfaz UART. Esto
-permite que el ESP32 pueda enviar y recibir información de la red de
-domótica sin necesidad de implementar directamente la complejidad del
-protocolo CAN utilizado por Enertik.
+De esta manera, el módulo transceiver actúa como un intermediario que realiza la conversión entre la red CAN y una interfaz UART. Esto permite al ESP32 enviar y recibir información de la red de domótica sin necesidad de implementar directamente la complejidad del protocolo CAN utilizado por Enertik.
 
 
 \subsection{Comunicación con la red Victron}
@@ -146,7 +131,7 @@ misma fuente utilizada para energizar el microcontrolador PIC del
 módulo transceiver.
 
 La conexión Ethernet que parte desde el módulo W5100 se realiza a
-través de un conector RJ45. Este conector permite la utilización de
+través de un conector RJ45 \citep{web_rj45}. Este conector permite la utilización de
 cables de red estándar, compuestos por pares trenzados de conductores,
 diseñados para la transmisión de datos a alta velocidad.
 
@@ -156,19 +141,16 @@ la integridad de la señal. De esta manera, se garantiza una comunicación
 confiable entre el dispositivo desarrollado y la red del sistema
 Victron.
 
-Mediante este tipo de conexión, el módulo W5100 puede integrarse
-directamente a la red Ethernet donde se encuentra el módulo Cerbo GX,
-permitiendo el intercambio de datos necesario para la implementación
-del protocolo Modbus TCP.
+Mediante este tipo de conexión, el módulo W5100 puede integrarse directamente a la red Ethernet donde se encuentra el módulo Cerbo GX, lo que permite el intercambio de datos necesario para la implementación del protocolo Modbus TCP.
 
 Para lograr la comunicación, resta definir qué dispositivo cumplirá el
 rol de maestro y cuál el de esclavo. Esta definición se abordará en la
-sección de firmware, donde se detallará su implementación.
+sección \ref{sec:desarrollo_firmware}, donde se detallará su implementación.
 
 \subsection{Prototipo experimental}
 
-Para realizar los primeros ensayos, se decidió montar un primer
-prototipo del equipo. Para ello, se utilizó como base un PCB perforado
+Para realizar los primeros ensayos, se decidió realizar un primer
+prototipo del equipo. Para ello, se utilizó como base un PCB (\textit{Printed Circuit Board}) perforado
 de tipo experimental, sobre el que se soldaron diversos conectores,
 cableados y componentes de forma manual.
 
@@ -183,7 +165,7 @@ montaje del prototipo utilizado para los ensayos iniciales.
 \end{figure}
 
 Como se puede apreciar, el prototipo cuenta con cada uno de los módulos
-explicados en secciones anteriores, donde:
+explicados en la sección \ref{sec:desarrollo_hardware}, donde:
 
 \begin{itemize}
     \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
@@ -207,8 +189,7 @@ de hardware.
 
 El diseño del PCB final se desarrolló mediante el software Altium
 Designer \citep{web_altium}. Este software es ampliamente utilizado en la industria, ya
-que permite crear esquemáticos de circuitos de forma sencilla. Estos
-esquemáticos sirven como base para el diseño de placas de circuito
+que permite crear esquemáticos de circuitos de forma sencilla. Estos sirven como base para el diseño de placas de circuito
 impreso.
 
 Para la creación de este PCB, se tomó como referencia el conexionado
@@ -240,11 +221,7 @@ en la placa. Esta decisión permitió optimizar el espacio disponible y
 reducir costos al unificar todos los componentes en una única placa.
 \newpage
 En cuanto al módulo W5100, se optó por utilizar la versión comercial
-disponible en el mercado. Inicialmente se evaluó realizar un proceso de
-ingeniería inversa para analizar su diseño interno, pero se descartó
-esta alternativa debido al tiempo requerido.
-
-Como consecuencia, en el PCB se reservó un espacio para la colocación
+disponible en el mercado. Como consecuencia, en el PCB se reservó un espacio para la colocación
 de un conector compatible con el módulo W5100, lo que permite su
 montaje manual de forma sencilla.
 
@@ -273,13 +250,6 @@ Como se puede apreciar, el PCB está compuesto por los siguientes componentes:
 Para el proceso de fabricación, fue necesaria la contratación de
 servicios de un fabricante especializado en este campo. Para ello, se
 generaron los denominados archivos Gerber \citep{web_altiu_gerber}.
-
-Los archivos Gerber constituyen el estándar utilizado en la industria
-para describir las distintas capas de una placa de circuito impreso.
-Cada archivo representa una capa específica del PCB, como las pistas de
-cobre, la máscara de soldadura, la serigrafía o el plano de taladros.
-A partir de esta información, el fabricante puede interpretar el diseño
-y llevar a cabo la fabricación física de la placa con precisión.
 
 A modo de resumen, la tabla \ref{tab:componentes} lista los principales componentes empleados para la fabricación del PCB.
 
@@ -327,7 +297,7 @@ aprecian las relaciones existentes entre ellas y con los módulos externos.
 \newpage
 \subsection{Tarea: recepción UART}
 
-Esta tarea se encarga de escuchar constantemente el puerto UART del
+Esta tarea se encarga de monitorear de manera continua el puerto UART del
 ESP32. Cada vez que se detecta una señal en sus puertos, la tarea
 almacena la información recibida en un buffer de tipo circular \citep{ringbuffer}.
 
@@ -671,11 +641,7 @@ sistema de modulación por ancho de pulso (PWM) \citep{web_pwm}. Por lo tanto, e
 pestaña permite regular la intensidad lumínica mediante la variación
 del ancho de pulso.
 
-Al igual que en la pantalla principal, cada uno de estos controles
-realiza una solicitud POST al endpoint pulsadores,
-indicando el origen del comando y el nuevo valor, ya sea el estado del
-pulsador o el valor del \textit{dimmer}.
-
+Al igual que en la pantalla principal, cada uno de estos controles realiza una solicitud POST al endpoint pulsadores, en la que se indica el origen del comando y el nuevo valor, ya sea el estado del pulsador o el valor del \textit{dimmer}.
 \subsection{Aplicación: pestaña motores}
 \label{sec:app_motores}
 
@@ -789,12 +755,7 @@ compilación de la aplicación, así como configurar parámetros propios
 del sistema Android, tales como permisos, versión mínima del sistema
 operativo y opciones de despliegue.
 
-Como resultado de la compilación, se obtiene un archivo en formato APK, 
-que constituye el formato estándar de
-distribución de aplicaciones para el sistema operativo Android. Este
-archivo contiene todos los recursos necesarios para la instalación de
-la aplicación, incluyendo el código ejecutable, bibliotecas y archivos de
-configuración.
+Como resultado de la compilación, se obtiene un archivo en formato APK, que constituye el formato estándar de distribución de aplicaciones para el sistema operativo Android. Este archivo contiene todos los recursos necesarios para la instalación de la aplicación, tales como el código ejecutable, las bibliotecas y los archivos de configuración.
 
 La instalación del APK puede realizarse directamente sobre un
 dispositivo móvil mediante distintas alternativas. En este trabajo se

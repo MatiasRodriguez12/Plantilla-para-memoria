@@ -10,13 +10,10 @@ En este capítulo se describen los distintos protocolos de comunicación utiliza
 Como se mencionó en la sección \ref{sec:1_4}, el dispositivo debía
 cumplir con la funcionalidad de actuar como intermediario entre las
 redes establecidas por Enertik y Victron, así como también constituir
-un punto de acceso para que la aplicación móvil pueda operar sobre el
+un punto de acceso para que la aplicación móvil opere sobre el
 sistema.
 
-Para lograr este objetivo, fue necesario implementar distintos protocolos
-de comunicación que permitan el intercambio de información entre los
-subsistemas involucrados, incluyendo CAN, Modbus TCP y una interfaz basada
-en HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}.
+Para lograr este objetivo, fue necesario implementar distintos protocolos de comunicación que permiten el intercambio de información entre los subsistemas involucrados, tales como CAN, Modbus TCP y una interfaz basada en HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}.
 
 \subsection{Protocolo CAN}
 \label{sec:protocolo_can}
@@ -34,6 +31,9 @@ externo tiende a afectar a ambos cables de manera similar y, por lo
 tanto, es cancelado al evaluar la diferencia entre ellos.
 
 Por otra parte, la comunicación en una red CAN se basa en un esquema de difusión, donde todos los nodos reciben los mensajes transmitidos. Cada mensaje incluye un identificador que permite a los dispositivos determinar si la información es relevante para ellos y descartar aquellos mensajes que no corresponden a su funcionamiento.
+\newpage
+En el contexto del presente trabajo, la incorporación del protocolo CAN se encuentra directamente vinculada a su utilización en la red de domótica desarrollada por Enertik. Dado que los dispositivos del sistema ya emplean este protocolo para su comunicación, su adopción permitió garantizar la compatibilidad con la infraestructura existente y evitar la necesidad de rediseñar los módulos involucrados.
+
 
 \subsection{Protocolo Modbus TCP}
 
@@ -79,7 +79,7 @@ método POST, utilizado para enviar datos y generar cambios en
 el estado del sistema. Otros métodos relevantes incluyen
 PUT, orientado a la actualización de recursos, y
 DELETE, destinado a su eliminación \citep{web_solicitudes_http}.
-
+\newpage
 En el contexto de este trabajo, las solicitudes HTTP son utilizadas
 como mecanismo de comunicación entre la aplicación móvil y el
 dispositivo basado en ESP32, lo que permite el envío de comandos de
@@ -87,7 +87,7 @@ control y la obtención de información del sistema.
 
 \section{Componentes de hardware}
 \label{sec:componentes_hardware}
-Para el desarrollo de hardware fue necesaria la utilización de ciertos componentes. El principal de ellos fue el ESP32 como microcontrolador del equipo. A su vez, para poder adaptarlo a los distintos protocolos de comunicación, fue necesario el agregado de dos periféricos adicionales: el módulo W5110  \citep{w5100_datasheet} y el MCP2551 \citep{2551_datasheet}.
+Para el desarrollo de hardware fue necesaria la utilización de ciertos componentes. El principal de ellos fue el ESP32 como microcontrolador del equipo. A su vez, para poder adaptarlo a los distintos protocolos de comunicación, fue necesario el agregado de dos periféricos adicionales: el módulo W5100  \citep{w5100_datasheet} y el MCP2551 \citep{2551_datasheet}.
 
 \subsection{Microcontrolador ESP32}
 El ESP32 es un microcontrolador desarrollado por
@@ -98,9 +98,9 @@ capacidades de procesamiento en un único dispositivo.
 Entre sus principales características, el ESP32 dispone de puertos de propósito general (GPIO), conversores analógico-digitales (ADC), módulos de comunicación serie como UART (\textit{Universal Asynchronous Receiver-Transmitter}) \citep{web_uart}, SPI (\textit{Serial Peripheral Interface})\citep{web_spi} e I\textsuperscript{2}C (\textit{Inter-Integrated Circuit}) \citep{web_i2c},
 temporizadores y periféricos para generación de señales PWM (\textit{Pulse Width Modulation}).
 
-Además, el dispositivo incorpora conectividad inalámbrica, incluyendo
-Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para
-el desarrollo de aplicaciones orientadas al campo IoT (\textit{Internet of Things}). Todas las características mencionadas convierten al ESP32 en una opción mas que adecuada para el desarrollo del trabajo.
+Además, el dispositivo incorpora conectividad inalámbrica, como Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para el desarrollo de aplicaciones orientadas al campo IoT (Internet of Things).
+
+La elección del ESP32 responde a la necesidad de disponer de un microcontrolador con capacidad para gestionar múltiples interfaces de comunicación y brindar conectividad inalámbrica, lo que permite su integración con los distintos subsistemas del vehículo y con la aplicación móvil. En este sentido, sus características lo convierten en una opción adecuada para el desarrollo del presente trabajo.
 
 \begin{figure}[h]
 	\centering
@@ -163,7 +163,7 @@ equipos del ecosistema Victron.
 	\caption{Módulo W5100\protect\footnotemark.}
 	\label{fig:im_w5100}
 \end{figure}
-
+\newpage
 \footnotetext{Imagen tomada de \url{https://grobotronics.com/wiznet-w5100-ethernet-network-module.html}.}
 
 \section{Herramientas de software}
@@ -221,8 +221,6 @@ de procesamiento en función de su prioridad. Asimismo, proporciona
 mecanismos que permiten la comunicación y sincronización entre tareas,
 lo que facilita la correcta coordinación de las distintas
 funcionalidades implementadas en el sistema.
-\newpage
-
 
 \subsection{Desarrollo de la aplicación móvil}
 
