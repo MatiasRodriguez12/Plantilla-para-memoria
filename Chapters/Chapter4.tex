@@ -3,7 +3,7 @@
 \chapter{Ensayos y resultados} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-En este capítulo se explica como fueron los ensayos que se realizaron sobre el sistema y que resultados se obtuvieron a partir de ellos.
+En este capítulo se explica cómo fueron los ensayos que se realizaron sobre el sistema y qué resultados se obtuvieron a partir de ellos.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -18,7 +18,7 @@ herramienta de depuración.
 
 Ionic dispone del comando \texttt{ionic serve}, que permite ejecutar la
 aplicación en el navegador. A partir de este punto, la aplicación se
-pone en funcionamiento y puede accederse a ella mediante la dirección \textit{localhost} y un
+pone en funcionamiento y puede accederse a ella mediante la dirección localhost y un
 puerto asociado, que por defecto corresponde al 8100 (aunque este valor
 puede modificarse según la configuración del entorno de desarrollo).
 
@@ -230,8 +230,13 @@ Asimismo, cuenta con un conjunto de luces testigo que actúan como carga
 real, en reemplazo de los dispositivos presentes en un motorhome.
 
 Para la comunicación con el ecosistema Victron, el sistema incluye un
-módulo Cerbo GX y un equipo Multiplus, capaz de operar en modo inversor
+módulo Cerbo GX y un equipo MultiPlus-II 12/3000/120-32 230V \citep{web_multiplus}, provisto por la empresa Enertik, capaz de operar en modo inversor
 y cargador, tal como se muestra en la figura \ref{fig:equipos_victron}.
+
+Si bien el desarrollo
+del firmware se realizó sobre este modelo, los registros utilizados
+resultan compatibles con otros equipos de la misma línea de
+inversores/cargadores Victron.
 
 \begin{figure}[h]
 	\centering

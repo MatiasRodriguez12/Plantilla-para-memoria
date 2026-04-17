@@ -279,12 +279,9 @@ A modo de resumen, la tabla \ref{tab:componentes} lista los principales componen
 Como se mencionó en la sección \ref{sec:rtos}, se optó por utilizar
 FreeRTOS como base para el desarrollo del firmware.
 
-FreeRTOS permite estructurar el firmware mediante la ejecución de
-múltiples tareas. La planificación de estas tareas genera un
-comportamiento concurrente a nivel lógico, lo que mejora la organización
-del sistema y facilita la gestión de sus funcionalidades.
+FreeRTOS permite estructurar el firmware mediante la ejecución de múltiples tareas. Su planificación genera un comportamiento concurrente a nivel lógico, lo que mejora la organización del sistema y facilita la gestión de sus funcionalidades.
 
-En este contexto, en el presente trabajo se implementaron seis tareas
+En este contexto, para el presente trabajo se implementaron seis tareas
 principales, ilustradas en la figura \ref{fig:relacion_rtos}, donde se
 aprecian las relaciones existentes entre ellas y con los módulos externos.
 
@@ -308,7 +305,7 @@ buffer, la escritura continúa desde el inicio, lo que permite reutilizar
 la memoria de manera eficiente sin necesidad de realizar desplazamientos
 de datos.
 
-Se optó por este tipo de estructura porque resulta especialmente adecuado para la recepción
+Se optó por este tipo de estructura porque resulta adecuada para la recepción
 de datos en tiempo real, ya que permite desacoplar la velocidad de llegada
 de la información respecto de su procesamiento. De esta forma, se evita la
 pérdida de datos ante ráfagas de información y se garantiza un manejo más
@@ -328,13 +325,9 @@ byte corresponde a un valor de control CRC (\textit{Cyclic Redundancy Check}),
 utilizado para verificar la integridad de los datos recibidos mediante
 un cálculo basado en el contenido del mensaje.
 
-Dentro de la trama de datos se incluyen los campos de dirección de
-origen, que identifica el dispositivo emisor, dirección de destino,
-que indica el dispositivo receptor, un campo de comando asociado a la
-acción a ejecutar y un conjunto de bytes de datos.
+La trama incluye un campo de dirección de origen para identificar al dispositivo emisor, un campo de dirección de destino para indicar el dispositivo receptor, un campo de comando asociado a la acción a ejecutar y un conjunto de bytes de datos.
 
-Esta tarea se encarga de analizar cada trama completa. Para ello, recorre el buffer
-circular hasta encontrar el byte de marca de inicio.
+El análisis de cada trama completa se realiza recorriendo el buffer circular hasta encontrar el byte de marca de inicio.
 
 A continuación, extrae la trama completa y realiza el cálculo del CRC,
 lo que permite determinar si la trama es válida o no. En caso afirmativo, se
@@ -346,7 +339,7 @@ la siguiente tarea, encargada de procesar la instrucción correspondiente.
 
 \subsection{Tarea: comunicación Modbus TCP}
 \label{sec:comando_modbus}
-Esta tarea se encarga de gestionar de manera completa la comunicación
+Esta tarea se encarga de gestionar la comunicación
 Modbus TCP y, por lo tanto, es responsable del control del módulo
 Cerbo GX.
 
@@ -371,18 +364,13 @@ La dirección IP del Cerbo GX se configura desde el menú del propio
 equipo. Por otro lado, la dirección IP del ESP32 se definió por
 software dentro de esta tarea.
 
-Esta tarea utiliza un contador interno que cumple la función de
-temporizador. En primer lugar, establece la comunicación Modbus TCP y
+Para su funcionamiento, se utiliza un contador interno que cumple la función de
+temporizador. En primer lugar, establece la comunicación Modbus TCP y se
 la mantiene activa durante el funcionamiento del sistema.
 
 Posteriormente, en intervalos periódicos, realiza la lectura de los
 registros que el Cerbo GX pone a disposición para la obtención de datos
 y el control del comportamiento del equipo.
-
-El equipo utilizado para los ensayos fue un VictronMultiPlus-II 12/3000/120-32 230V \citep{web_multiplus}, provisto por la empresa Enertik. Si bien el desarrollo
-del firmware se realizó sobre este modelo, los registros utilizados
-resultan compatibles con otros equipos de la misma línea de
-inversores/cargadores Victron.
 
 En este contexto, los parámetros de interés fueron aquellos asociados
 al modo de operación del equipo, ya sea en modo inversor o cargador.
@@ -412,8 +400,7 @@ todas las variables del motorhome.
 Para que la aplicación pueda reflejar esta información en pantalla,
 resulta necesario que el ESP32 tenga acceso a dichos datos.
 
-Con este objetivo, fue necesario realizar una modificación en el
-firmware del módulo PRC10. Se incorporó una función que permite generar
+Con este objetivo, se realizó una modificación en el firmware del módulo PRC10. Se incorporó una función que permite generar
 una serie de paquetes, cada uno asociado a un conjunto de variables del
 sistema.
 
@@ -450,15 +437,13 @@ recibir los comandos provenientes de las tareas de comunicación CAN
 y actualizar las variables internas del sistema.
 
 En relación con la comunicación CAN, esta tarea recibe las tramas ya
-validadas por la etapa de decodificación. A partir de estas tramas,
+validadas por la etapa de decodificación. A partir de estas,
 extrae los distintos campos de datos y los interpreta según el tipo de
 paquete recibido. Los valores obtenidos se almacenan en estructuras de
 datos internas, que representan el estado actualizado de los distintos
 sensores y actuadores del motorhome.
-
-Adicionalmente, esta tarea realiza conversiones sobre los datos
-recibidos, ya que muchos de ellos se encuentran codificados. Estas conversiones permiten obtener magnitudes físicas en unidades reales, lo que facilita su posterior visualización y
-procesamiento.
+\newpage
+Adicionalmente, se realizan conversiones sobre los datos recibidos, ya que muchos de ellos se encuentran codificados. Estas conversiones permiten obtener magnitudes físicas en unidades reales, lo que facilita su posterior visualización y procesamiento.
 
 Por otra parte, la tarea también gestiona comandos destinados al módulo
 Cerbo GX a través de Modbus TCP. En función del comando recibido, se
@@ -565,7 +550,7 @@ home y corresponde a la pantalla principal.
 	\label{fig:app_home}
 \end{figure}
 
-Cada vez que se accede a esta pestaña, se inicia un \textit{timer} o
+Cada vez que se accede a esta pestaña, se inicia un timer o
 contador interno que realiza de forma periódica una solicitud GET al
 endpoint home. A través de este mecanismo se obtienen
 las variables necesarias para su visualización, así como también los
@@ -634,14 +619,14 @@ luces.
 
 A través de este mecanismo, se obtienen los estados de los pulsadores
 de luz interior y luz exterior, así como el valor actual del
-\textit{dimmer} de la luz interior.
+dimmer de la luz interior.
 
 La iluminación interior es controlada por el módulo PRC10 mediante un
 sistema de modulación por ancho de pulso (PWM) \citep{web_pwm}. Por lo tanto, esta
 pestaña permite regular la intensidad lumínica mediante la variación
 del ancho de pulso.
 
-Al igual que en la pantalla principal, cada uno de estos controles realiza una solicitud POST al endpoint pulsadores, en la que se indica el origen del comando y el nuevo valor, ya sea el estado del pulsador o el valor del \textit{dimmer}.
+Al igual que en la pantalla principal, cada uno de estos controles realiza una solicitud POST al endpoint pulsadores, en la que se indica el origen del comando y el nuevo valor, ya sea el estado del pulsador o el valor del dimmer.
 \subsection{Aplicación: pestaña motores}
 \label{sec:app_motores}
 

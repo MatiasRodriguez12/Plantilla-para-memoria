@@ -358,16 +358,6 @@
     \endverb
   \endentry
 
-  \entry{web_multiplus}{misc}{}{}
-    \field{labeltitlesource}{title}
-    \field{note}{Última consulta: 2025-04-02}
-    \field{title}{Victron MultiPlus-II 12/3000/120-32 230V}
-    \verb{url}
-    \verb https://enertik.com/ar/tienda/inversores/inversores-cargadores/sin-re
-    \verb gulador-solar/victron-multiplus-ii-123000120-32-230v/
-    \endverb
-  \endentry
-
   \entry{web_json}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-04-02}
@@ -394,6 +384,16 @@
     \field{title}{Android Debug Bridge (adb)}
     \verb{url}
     \verb https://developer.android.com/tools/adb?hl=es-419
+    \endverb
+  \endentry
+
+  \entry{web_multiplus}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-04-02}
+    \field{title}{Victron MultiPlus-II 12/3000/120-32 230V}
+    \verb{url}
+    \verb https://enertik.com/ar/tienda/inversores/inversores-cargadores/sin-re
+    \verb gulador-solar/victron-multiplus-ii-123000120-32-230v/
     \endverb
   \endentry
 \enddatalist
