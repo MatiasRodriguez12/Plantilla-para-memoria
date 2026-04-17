@@ -251,27 +251,14 @@ Para el proceso de fabricación, fue necesaria la contratación de
 servicios de un fabricante especializado en este campo. Para ello, se
 generaron los denominados archivos Gerber \citep{web_altiu_gerber}.
 
-A modo de resumen, la tabla \ref{tab:componentes} lista los principales componentes empleados para la fabricación del PCB.
+A modo de resumen, la figura \ref{fig:diagrama_completo} muestra todos los componentes de hardware empleados en el diseño y como se relacionan unos con otros.
 
-\begin{table}[h]
+\begin{figure}[h]
 	\centering
-	\renewcommand{\arraystretch}{1.5}
-	\caption[Componentes utilizados en el PCB final.]{Componentes utilizados en el PCB final.}
-	\begin{tabular}{m{2cm} m{8cm}}   
-		\toprule
-		\textbf{Componente} 	 & \textbf{Descripción} \\
-		\midrule
-		ESP32		&	Microcontrolador principal del equipo. \\		
-		PIC18F26K80		&	Encargado de la comunicación CAN. \\
-		MCP2551		&	Encargado de la adaptación de niveles en la comunicación CAN.\\
-		7805		&	Regulador de tensión de 5 V.\\
-		AP63203		&	Regulador de tensión de 3,3 V.\\
-		Resistencias		&	Arreglo para el divisor de tensión.\\
-		W5100		&	Módulo para comunicación Ethernet.\\
-		\bottomrule
-	\end{tabular}
-	\label{tab:componentes}
-\end{table}
+	\includegraphics[scale=0.39]{./Figures/diagrama_completo.png}
+	\caption{Diagrama final de los componentes de hardware empleados.}
+	\label{fig:diagrama_completo}
+\end{figure}
 
 \section{Desarrollo de firmware}
 \label{sec:desarrollo_firmware}

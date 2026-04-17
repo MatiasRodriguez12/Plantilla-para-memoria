@@ -14,11 +14,12 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Diseño de divisor resistivo para adaptación UART.}}{15}{figure.caption.16}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Prototipo experimental del equipo.}}{17}{figure.caption.17}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Diseño final para PCB del equipo.}}{19}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Relación entre las distintas tareas del firmware y su comunicación con el exterior.}}{21}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Pestaña home de la aplicación.}}{26}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Pestaña luces de la aplicación.}}{27}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Pestaña motores de la aplicación.}}{28}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Pestaña energía de la aplicación.}}{29}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama final de los componentes de hardware empleados.}}{20}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Relación entre las distintas tareas del firmware y su comunicación con el exterior.}}{21}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Pestaña home de la aplicación.}}{26}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Pestaña luces de la aplicación.}}{27}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Pestaña motores de la aplicación.}}{28}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Pestaña energía de la aplicación.}}{29}{figure.caption.24}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Uso del navegador web como herramienta de depuración.}}{31}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Archivo \texttt {JSON} recibido en la pestaña home.}}{33}{figure.caption.26}%
