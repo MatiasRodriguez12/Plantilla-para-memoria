@@ -100,22 +100,6 @@
     \endverb
   \endentry
 
-  \entry{web_victron_modbus}{misc}{}{}
-    \name{author}{1}{}{%
-      {{hash=M}{%
-         family={{Manual de GX - Modbus TCP}},
-         familyi={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{M1}
-    \strng{fullhash}{M1}
-    \field{labelnamesource}{author}
-    \field{note}{Última consulta: 2025-03-15}
-    \verb{url}
-    \verb https://www.victronenergy.com/live/ccgx:modbustcp_faq
-    \endverb
-  \endentry
-
   \entry{web_intro_modbus}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-19}
@@ -141,6 +125,22 @@
     \verb{url}
     \verb https://www.cisco.com/c/en/us/support/docs/ip/routing-information-pro
     \verb tocol-rip/13769-5.html
+    \endverb
+  \endentry
+
+  \entry{web_victron_modbus}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={{Manual de GX - Modbus TCP}},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
+    \field{note}{Última consulta: 2025-03-15}
+    \verb{url}
+    \verb https://www.victronenergy.com/live/ccgx:modbustcp_faq
     \endverb
   \endentry
 

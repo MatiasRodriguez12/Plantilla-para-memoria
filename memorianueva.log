@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  16 APR 2026 22:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  19 APR 2026 01:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1132,43 +1132,40 @@ l.63 L
 
 
 ]
-<./Figures/esquema_domotica.png, id=382, 623.32875pt x 295.1025pt>
-File: ./Figures/esquema_domotica.png Graphic file (type png)
-<use ./Figures/esquema_domotica.png>
-Package pdftex.def Info: ./Figures/esquema_domotica.png  used on input line 106
-.
-(pdftex.def)             Requested size: 374.00014pt x 177.06285pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 111.
-LaTeX Info: Redefining \% on input line 111.
+LaTeX Info: Redefining \. on input line 98.
+LaTeX Info: Redefining \% on input line 98.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 111.
+(babel)             Reported on input line 98.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.111 \newpage
-               [2]
-LaTeX Info: Redefining \. on input line 136.
-LaTeX Info: Redefining \% on input line 136.
+l.98 
+      [2]
+<./Figures/esquema_domotica.png, id=388, 623.32875pt x 295.1025pt>
+File: ./Figures/esquema_domotica.png Graphic file (type png)
+<use ./Figures/esquema_domotica.png>
+Package pdftex.def Info: ./Figures/esquema_domotica.png  used on input line 101
+.
+(pdftex.def)             Requested size: 374.00014pt x 177.06285pt.
+LaTeX Info: Redefining \. on input line 118.
+LaTeX Info: Redefining \% on input line 118.
  [3 <./Figures/esquema_domotica.png>]
-<./Figures/esquema.png, id=401, 2547.5175pt x 1409.265pt>
+LaTeX Info: Redefining \. on input line 147.
+LaTeX Info: Redefining \% on input line 147.
+ [4]
+<./Figures/esquema.png, id=402, 2547.5175pt x 1409.265pt>
 File: ./Figures/esquema.png Graphic file (type png)
 <use ./Figures/esquema.png>
-Package pdftex.def Info: ./Figures/esquema.png  used on input line 187.
+Package pdftex.def Info: ./Figures/esquema.png  used on input line 161.
 (pdftex.def)             Requested size: 407.61113pt x 225.487pt.
 
-Overfull \hbox (17.80844pt too wide) in paragraph at lines 187--188
+Overfull \hbox (17.80844pt too wide) in paragraph at lines 161--162
  [][] 
  []
 
-LaTeX Info: Redefining \. on input line 191.
-LaTeX Info: Redefining \% on input line 191.
-[4])
+)
 LaTeX Info: Redefining \. on input line 117.
 LaTeX Info: Redefining \% on input line 117.
  [5 <./Figures/esquema.png>]
@@ -1590,7 +1587,7 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 Here is how much of TeX's memory you used:
  31516 strings out of 467828
  683452 string characters out of 5427024
- 1299478 words of memory out of 5000000
+ 1298478 words of memory out of 5000000
  59868 multiletter control sequences out of 15000+600000
  689263 words of font info for 112 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1611,7 +1608,7 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (56 pages, 9112973 bytes).
+Output written on memorianueva.pdf (56 pages, 9110439 bytes).
 PDF statistics:
  870 PDF objects out of 1000 (max. 8388607)
  173 named destinations out of 1000 (max. 500000)

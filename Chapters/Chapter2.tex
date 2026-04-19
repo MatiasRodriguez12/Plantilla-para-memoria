@@ -13,7 +13,7 @@ redes establecidas por Enertik y Victron, así como también constituir
 un punto de acceso para que la aplicación móvil opere sobre el
 sistema.
 
-Para lograr este objetivo, fue necesario implementar distintos protocolos de comunicación que permiten el intercambio de información entre los subsistemas involucrados, tales como CAN, Modbus TCP y una interfaz basada en HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}.
+Para lograr este objetivo, fue necesario implementar distintos protocolos de comunicación que permiten el intercambio de información entre los subsistemas involucrados, tales como CAN (\textit{Controller Area Network}) \citep{web_intro_can}, Modbus TCP \citep{web_intro_modbus} y una interfaz basada en HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}.
 
 \subsection{Protocolo CAN}
 \label{sec:protocolo_can}
@@ -55,7 +55,7 @@ registers} o \textit{input registers}.
 
 En el contexto de este trabajo, el protocolo Modbus TCP es utilizado para
 establecer la comunicación con el módulo Cerbo GX, que expone diferentes
-registros que pueden ser consultados y controlados de forma remota.
+registros que pueden ser consultados y controlados de forma remota \citep{web_victron_modbus}.
 
 \subsection{Solicitudes HTTP}
 \label{sec:http}
