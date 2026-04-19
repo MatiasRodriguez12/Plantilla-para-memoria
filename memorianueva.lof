@@ -5,7 +5,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Microcontrolador ESP32\footnotemark .}}{9}{figure.caption.9}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Funcionamiento del módulo transceiver.}}{10}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Módulo W5100\footnotemark .}}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Módulo W5100\footnotemark .}}{10}{figure.caption.11}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Esquema de integración entre Angular, Ionic, Capacitor y Android Studio.}}{12}{figure.caption.12}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Trayecto que sigue el ESP32 para llegar a cada uno de los módulos.}}{13}{figure.caption.13}%

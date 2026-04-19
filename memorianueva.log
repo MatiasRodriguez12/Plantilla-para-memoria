@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  19 APR 2026 01:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  19 APR 2026 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1206,23 +1206,19 @@ LaTeX Info: Redefining \% on input line 118.
 File: ./Figures/transceiver.png Graphic file (type png)
 <use ./Figures/transceiver.png>
 Package pdftex.def Info: ./Figures/transceiver.png  used on input line 141.
-(pdftex.def)             Requested size: 374.00014pt x 60.07489pt.
+(pdftex.def)             Requested size: 249.32707pt x 40.0489pt.
 <./Figures/w5100.jpg, id=461, 253.94875pt x 199.74625pt>
 File: ./Figures/w5100.jpg Graphic file (type jpg)
 <use ./Figures/w5100.jpg>
 Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 162.
-(pdftex.def)             Requested size: 177.76291pt x 139.82141pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 166.
-LaTeX Info: Redefining \% on input line 166.
-[10 <./Figures/transceiver.png>]
-LaTeX Info: Redefining \. on input line 210.
-LaTeX Info: Redefining \% on input line 210.
- [11 <./Figures/w5100.jpg>]
-<./Figures/esquema_herramientas_app.png, id=482, 779.16093pt x 167.87718pt>
+(pdftex.def)             Requested size: 114.27588pt x 89.88498pt.
+LaTeX Info: Redefining \. on input line 174.
+LaTeX Info: Redefining \% on input line 174.
+ [10 <./Figures/transceiver.png> <./Figures/w5100.jpg>]
+LaTeX Info: Redefining \. on input line 231.
+LaTeX Info: Redefining \% on input line 231.
+ [11]
+<./Figures/esquema_herramientas_app.png, id=483, 779.16093pt x 167.87718pt>
 File: ./Figures/esquema_herramientas_app.png Graphic file (type png)
 <use ./Figures/esquema_herramientas_app.png>
 Package pdftex.def Info: ./Figures/esquema_herramientas_app.png  used on input 
@@ -1608,7 +1604,7 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (56 pages, 9110577 bytes).
+Output written on memorianueva.pdf (56 pages, 9110360 bytes).
 PDF statistics:
  870 PDF objects out of 1000 (max. 8388607)
  173 named destinations out of 1000 (max. 500000)
