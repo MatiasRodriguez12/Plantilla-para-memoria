@@ -314,7 +314,7 @@ un cálculo basado en el contenido del mensaje.
 
 La trama incluye un campo de dirección de origen para identificar al dispositivo emisor, un campo de dirección de destino para indicar el dispositivo receptor, un campo de comando asociado a la acción a ejecutar y un conjunto de bytes de datos.
 
-El análisis de cada trama completa se realiza recorriendo el buffer circular hasta encontrar el byte de marca de inicio.
+El análisis de cada trama completa se realiza mediante el recorrido del buffer circular hasta encontrar el byte de marca de inicio.
 
 A continuación, extrae la trama completa y realiza el cálculo del CRC,
 lo que permite determinar si la trama es válida o no. En caso afirmativo, se
