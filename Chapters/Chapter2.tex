@@ -4,86 +4,61 @@
 
 En este capítulo se describen los distintos protocolos de comunicación utilizados en el desarrollo del trabajo, los componentes de hardware empleados para cumplir con los objetivos planteados y las herramientas requeridas para el desarrollo del software.
 
+\section{Arquitectura general del sistema}
+\label{sec:arq_sist}
+La figura \ref{fig:arquitectura_general} presenta un esquema general del sistema desarrollado, en el que se ilustran los distintos subsistemas involucrados y sus interconexiones.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.16]{./Figures/esquema.png}
+    \caption{Arquitectura general del sistema.}
+    \label{fig:arquitectura_general}
+\end{figure}
+
+Como se puede observar, el dispositivo basado en ESP32 actúa como nodo central del sistema y establece comunicación con la red de domótica de Enertik mediante CAN (\textit{Controller Area Network}) \citep{web_intro_can}, con el ecosistema Victron a través de Modbus TCP sobre Ethernet \citep{web_intro_modbus}, y con la aplicación móvil mediante solicitudes HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http} sobre Wi-Fi.
+
+Esta arquitectura permite integrar subsistemas previamente independientes dentro de una única plataforma de control.
+
+
 \section{Protocolos de comunicación}
 \label{sec:protocolos_comunicacion}
 
-Como se mencionó en la sección \ref{sec:1_4}, el dispositivo debía
+Como se mencionó en la sección \ref{sec:arq_sist}, el dispositivo debía
 cumplir con la funcionalidad de actuar como intermediario entre las
 redes establecidas por Enertik y Victron, así como también constituir
 un punto de acceso para que la aplicación móvil opere sobre el
 sistema.
 
-Para lograr este objetivo, fue necesario implementar distintos protocolos de comunicación que permiten el intercambio de información entre los subsistemas involucrados, tales como CAN (\textit{Controller Area Network}) \citep{web_intro_can}, Modbus TCP \citep{web_intro_modbus} y una interfaz basada en HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http}.
+Para lograr este objetivo, fue necesario implementar distintos mecanismos de comunicación que permiten el intercambio de información entre los subsistemas involucrados. Estos mecanismos abarcan la interacción con la red de domótica existente, la comunicación con el ecosistema Victron y el acceso desde la aplicación móvil.
+
 
 \subsection{Protocolo CAN}
 \label{sec:protocolo_can}
-El protocolo CAN es un protocolo serie ampliamente utilizado en la industria automotriz \citep{web_intro_can}.
-Permite la comunicación entre múltiples dispositivos sin la necesidad
-de un controlador central y proporciona un intercambio de datos rápido
-y confiable.
 
-En este protocolo, la transmisión de datos se realiza a través de un
-par de conductores denominado CAN H y CAN L, en donde se emplea una señalización
-diferencial. Esta técnica consiste en transmitir la información como
-la diferencia de tensión entre ambos conductores, lo que proporciona
-una elevada inmunidad a interferencias electromagnéticas, ya que el ruido
-externo tiende a afectar a ambos cables de manera similar y, por lo
-tanto, es cancelado al evaluar la diferencia entre ellos.
+El protocolo CAN (\textit{Controller Area Network}) es un estándar de comunicación serie ampliamente utilizado en la industria automotriz, diseñado para el intercambio de información entre múltiples dispositivos en sistemas distribuidos \citep{web_intro_can}.
 
-Por otra parte, la comunicación en una red CAN se basa en un esquema de difusión, donde todos los nodos reciben los mensajes transmitidos. Cada mensaje incluye un identificador que permite a los dispositivos determinar si la información es relevante para ellos y descartar aquellos mensajes que no corresponden a su funcionamiento.
-\newpage
-En el contexto del presente trabajo, la incorporación del protocolo CAN se encuentra directamente vinculada a su utilización en la red de domótica desarrollada por Enertik. Dado que los dispositivos del sistema ya emplean este protocolo para su comunicación, su adopción permitió garantizar la compatibilidad con la infraestructura existente y evitar la necesidad de rediseñar los módulos involucrados.
+Este protocolo emplea una transmisión diferencial sobre un par de conductores (CAN H y CAN L), lo que le otorga una elevada inmunidad a interferencias electromagnéticas y lo hace adecuado para entornos eléctricos exigentes.
 
+En el presente trabajo, la incorporación del protocolo CAN se encuentra directamente vinculada a su utilización en la red de domótica desarrollada por Enertik. Dado que los dispositivos del sistema ya emplean este protocolo para su comunicación, su adopción permitió garantizar la compatibilidad con la infraestructura existente, evitando la necesidad de rediseñar los módulos involucrados.
+
+En este contexto, las características del protocolo CAN, como su inmunidad al ruido eléctrico, su capacidad de comunicación entre múltiples nodos y su uso extendido en aplicaciones automotrices, lo convierten en una solución adecuada para su implementación en sistemas de domótica vehicular. Esto facilitó la integración del dispositivo desarrollado dentro de la red existente, sin necesidad de modificaciones en la infraestructura.
 
 \subsection{Protocolo Modbus TCP}
 
-El protocolo Modbus es uno de los protocolos más utilizados en la industria de la automatización. Su función principal es permitir que distintos dispositivos electrónicos se comuniquen entre sí de una forma sencilla y estandarizada.
+El protocolo Modbus TCP es una variante del protocolo Modbus que opera sobre redes Ethernet mediante el uso de TCP/IP como medio de transporte \citep{web_tcpip}. Este protocolo permite el acceso a registros internos de dispositivos remotos a través de una estructura de comunicación simple y estandarizada.
 
-En una red Modbus, existe una relación maestro-esclavo entre los dispositivos. El dispositivo maestro es el encargado de iniciar una comunicación y solicitar información. El esclavo se encarga de atender estas solicitudes y entregar los datos que el maestro requiera.
-
-En particular, Modbus TCP se implementa sobre redes
-Ethernet, donde emplea el protocolo TCP/IP \citep{web_tcpip} como medio de transporte. Esto
-permite que los dispositivos puedan comunicarse a través de redes
-locales, identificándose mediante direcciones IP.
-
-La comunicación se basa en un esquema de tipo \textit{request-response},
-donde el cliente (maestro) envía una solicitud a un servidor (esclavo),
-y este último procesa la petición y devuelve una respuesta \citep{web_intro_modbus}. Dentro de
-estas solicitudes se incluyen funciones específicas que permiten leer o
-escribir distintos tipos de registros, tales como \textit{holding
-registers} o \textit{input registers}.
-
-En el contexto de este trabajo, el protocolo Modbus TCP es utilizado para
-establecer la comunicación con el módulo Cerbo GX, que expone diferentes
-registros que pueden ser consultados y controlados de forma remota \citep{web_victron_modbus}.
+En el presente trabajo, Modbus TCP se utiliza para establecer la comunicación con el módulo Cerbo GX. Este dispositivo expone distintos registros asociados al estado y funcionamiento de los equipos del ecosistema Victron \citep{web_victron_modbus}. A través de este protocolo, el dispositivo basado en ESP32 consulta variables relevantes y envía comandos de control.
+\newpage
+La elección de Modbus TCP responde a que constituye el mecanismo de comunicación provisto de forma nativa por los equipos Victron. Esto permite acceder a la información del sistema y modificar su comportamiento mediante una interfaz documentada y estandarizada, sin necesidad de desarrollar soluciones propietarias. Además, su estructura basada en registros facilita la organización y el acceso a las variables de interés dentro del sistema.
 
 \subsection{Solicitudes HTTP}
 \label{sec:http}
-HTTP es un protocolo de aplicación ampliamente utilizado para la comunicación
-entre clientes y servidores. Su funcionamiento se
-basa en un modelo de tipo \textit{request-response}, donde un cliente
-envía una solicitud (request) a un servidor, este procesa la
-petición y devuelve una respuesta (response) con la información
-requerida.
 
-Las solicitudes HTTP permiten a los clientes acceder a recursos,
-enviar información y ejecutar acciones sobre un servidor. Estas
-peticiones están compuestas por distintos elementos, tales como el
-método de la solicitud, la dirección del recurso solicitado y, en
-algunos casos, un cuerpo de datos que contiene la información a enviar.
+HTTP es un protocolo de aplicación ampliamente utilizado para la comunicación entre clientes y servidores. Su funcionamiento se basa en un modelo de tipo \textit{request-response}, donde un cliente envía una solicitud (request) a un servidor, que procesa la petición y devuelve una respuesta (response) con la información requerida \citep{web_solicitudes_http}.
 
-Existen diferentes tipos de métodos HTTP, cada uno con una función
-específica. Entre los más utilizados se encuentran el método
-GET, empleado para solicitar información al servidor, y el
-método POST, utilizado para enviar datos y generar cambios en
-el estado del sistema. Otros métodos relevantes incluyen
-PUT, orientado a la actualización de recursos, y
-DELETE, destinado a su eliminación \citep{web_solicitudes_http}.
-\newpage
-En el contexto de este trabajo, las solicitudes HTTP son utilizadas
-como mecanismo de comunicación entre la aplicación móvil y el
-dispositivo basado en ESP32, lo que permite el envío de comandos de
-control y la obtención de información del sistema.
+En el presente trabajo, se emplea como mecanismo de comunicación entre la aplicación móvil y el dispositivo basado en ESP32. A través de solicitudes HTTP, la aplicación envía comandos de control y solicita información del sistema, lo que permite la interacción remota con la red de domótica.
+
+La elección de HTTP se fundamenta en su simplicidad de implementación y en su compatibilidad con entornos móviles. La comunicación se establece de forma directa entre la aplicación y el ESP32 dentro de la red local, sin intermediarios, lo que permite obtener tiempos de respuesta adecuados para la operación del sistema. En este esquema, el ESP32 actúa como servidor y procesa las solicitudes recibidas para generar las respuestas correspondientes, lo que simplifica el diseño del firmware y contribuye a un funcionamiento confiable del sistema.
 
 \section{Componentes de hardware}
 \label{sec:componentes_hardware}
@@ -99,7 +74,7 @@ Entre sus principales características, el ESP32 dispone de puertos de propósit
 temporizadores y periféricos para generación de señales PWM (\textit{Pulse Width Modulation}).
 
 Además, el dispositivo incorpora conectividad inalámbrica, como Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para el desarrollo de aplicaciones orientadas al campo IoT (Internet of Things).
-
+\newpage
 La elección del ESP32 responde a la necesidad de disponer de un microcontrolador con capacidad para gestionar múltiples interfaces de comunicación y brindar conectividad inalámbrica, lo que permite su integración con los distintos subsistemas del vehículo y con la aplicación móvil. En este sentido, sus características lo convierten en una opción adecuada para el desarrollo del presente trabajo.
 
 \begin{figure}[h]
@@ -146,20 +121,17 @@ la red de domótica existente.
 
 \subsection{Módulo Ethernet W5100}
 
-Para lograr la comunicación mediante el protocolo Modbus TCP, fue
-necesaria la utilización de un módulo Ethernet basado en el circuito
-W5100.
+Para establecer la comunicación con el sistema Victron mediante el protocolo Modbus TCP, se incorporó un módulo Ethernet basado en el circuito W5100.
 
-El W5100 es un controlador Ethernet que permite dotar de conectividad de red a sistemas embebidos, ya que gestiona internamente la pila de protocolos TCP/IP. La comunicación con el microcontrolador se realiza a través de una interfaz SPI, lo que facilita su integración en plataformas como el ESP32.
+El W5100 es un controlador de red que integra la pila de protocolos TCP/IP en hardware, lo que permite gestionar la comunicación Ethernet sin sobrecargar al microcontrolador principal. La interfaz con el ESP32 se realiza a través de SPI, lo que simplifica su integración a nivel de hardware.
 
-Mediante el uso de este módulo, el dispositivo desarrollado puede
-establecer conexiones sobre redes Ethernet, lo que permite la
-implementación del protocolo Modbus TCP para la comunicación con
-equipos del ecosistema Victron.
+En el presente trabajo, este módulo cumple la función de proporcionar una interfaz de red cableada para el acceso al módulo Cerbo GX, ya que la comunicación con los equipos Victron se realiza sobre una red Ethernet local.
+
+La incorporación del W5100 permite delegar la gestión de la comunicación de red en un periférico dedicado, lo que reduce la carga de procesamiento sobre el ESP32 y facilita la implementación del protocolo Modbus TCP dentro del sistema. Asimismo, se trata de una solución de bajo costo y amplia disponibilidad en el mercado, lo que favorece su adopción en desarrollos embebidos y su posible integración en un producto comercial.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.45]{./Figures/w5100.jpg}
+	\includegraphics[scale=0.6]{./Figures/w5100.jpg}
 	\caption{Módulo W5100\protect\footnotemark.}
 	\label{fig:im_w5100}
 \end{figure}
@@ -202,32 +174,22 @@ entorno de desarrollo.
 
 \subsection{Funcionamiento del ESP32}
 \label{sec:rtos}
-Para la programación del microcontrolador se optó por utilizar C++,
-debido a que es el lenguaje en el que se encuentran desarrolladas la
-mayoría de las bibliotecas disponibles en el entorno Arduino, lo que
-facilitó la integración de distintas funcionalidades requeridas en el
-trabajo.
 
-Como metodología de desarrollo, se utilizó FreeRTOS \citep{web_freertos},
-que se encuentra integrado en el ESP32. Este sistema operativo en
-tiempo real permite organizar el firmware mediante la ejecución de
-múltiples tareas, cuya planificación da lugar a un comportamiento
-concurrente a nivel lógico. Esto mejora la estructura del programa y
-facilita la gestión de distintas funcionalidades en paralelo.
+Para la programación del microcontrolador se optó por utilizar C++, debido a que es el lenguaje en el que se encuentran desarrolladas la mayoría de las bibliotecas disponibles en el entorno Arduino, lo que facilitó la integración de las distintas funcionalidades requeridas en el trabajo.
 
-Adicionalmente, FreeRTOS dispone de un planificador (\textit{scheduler})
-encargado de coordinar la ejecución de cada tarea. Este asigna el tiempo
-de procesamiento en función de su prioridad. Asimismo, proporciona
-mecanismos que permiten la comunicación y sincronización entre tareas,
-lo que facilita la correcta coordinación de las distintas
-funcionalidades implementadas en el sistema.
+Para la implementación del firmware se utilizó FreeRTOS \citep{web_freertos}, disponible de forma nativa en el ESP32.
+
+La adopción de este sistema operativo responde a la necesidad de gestionar múltiples tareas de manera concurrente dentro del sistema. En particular, el dispositivo debe atender de forma simultánea la comunicación con la red de domótica mediante CAN, el intercambio de información con el sistema Victron a través de Modbus TCP y la interacción con la aplicación móvil mediante HTTP.
+
+La organización del firmware en tareas independientes permite desacoplar estas funcionalidades, de modo que cada una pueda ejecutarse con su propia lógica y requerimientos temporales, sin interferir con las demás. Esto resulta especialmente relevante en un sistema donde coexisten mecanismos de comunicación con diferentes tiempos de respuesta.
+
+FreeRTOS incorpora un planificador (\textit{scheduler}) que asigna el tiempo de procesamiento a cada tarea en función de su prioridad. Además, proporciona mecanismos de comunicación y sincronización, como colas y semáforos, que permiten coordinar el intercambio de información entre tareas de forma segura.
+
+Este enfoque contribuye a una estructura de firmware más organizada y facilita la escalabilidad del sistema ante la incorporación de nuevas funcionalidades.
 
 \subsection{Desarrollo de la aplicación móvil}
 
-Para el desarrollo de la aplicación móvil se optó por utilizar un
-conjunto de herramientas que trabajan de forma integrada. La figura
-\ref{fig:im_herramientas_app} presenta un esquema de la relación entre
-las distintas tecnologías empleadas.
+Para el desarrollo de la aplicación móvil se optó por utilizar un conjunto de herramientas que trabajan de forma integrada. La figura \ref{fig:im_herramientas_app} presenta un esquema de la relación entre las distintas tecnologías empleadas.
 
 \begin{figure}[h]
 	\centering
@@ -236,27 +198,14 @@ las distintas tecnologías empleadas.
 	\label{fig:im_herramientas_app}
 \end{figure}
 
-Se utilizó el framework Ionic \citep{web_ionic} como base para el
-desarrollo de la aplicación, debido a que permite la creación de
-interfaces móviles multiplataforma a partir de tecnologías web.
+Se utilizó el framework Ionic \citep{web_ionic} como base para el desarrollo de la aplicación, debido a que permite construir interfaces móviles a partir de tecnologías web, manteniendo una única base de código.
 
-Ionic se apoya en el framework Angular \citep{web_angular}, que proporciona una estructura
-robusta para el desarrollo de interfaces de usuario dinámicas y
-organizadas en componentes. Angular utiliza lenguajes como TypeScript \citep{web_ts},
-HTML \citep{web_html} y CSS \citep{web_css}, lo que facilita la construcción de aplicaciones
-modulares y escalables.
+Ionic se integra con Angular \citep{web_angular}, framework que facilita la organización de la aplicación en componentes y la gestión del estado de la interfaz. El uso de tecnologías como TypeScript \citep{web_ts}, HTML \citep{web_html} y CSS \citep{web_css} permitió estructurar la aplicación de forma modular y mantener una separación clara entre lógica y presentación.
 
-Para la adaptación de la aplicación a dispositivos móviles se utilizó
-Capacitor \citep{web_capacitor}, herramienta que permite empaquetar la aplicación web como
-una aplicación nativa y facilita el acceso a funcionalidades propias
-del dispositivo.
+Para la ejecución en dispositivos móviles se utilizó Capacitor \citep{web_capacitor}, que permite empaquetar la aplicación como una aplicación nativa y acceder a funcionalidades propias del dispositivo cuando resulta necesario.
 
-Finalmente, se empleó Android Studio \citep{web_androidstudio} para la compilación y generación
-del archivo APK (\textit{Android Package Kit}), que constituye el
-paquete instalable de la aplicación en sistemas Android. Este archivo
-contiene todos los recursos necesarios para su ejecución, tales como el
-código compilado, las bibliotecas utilizadas y los archivos de
-configuración.
+Finalmente, se empleó Android Studio \citep{web_androidstudio} para la generación del archivo APK (\textit{Android Package Kit}), necesario para la instalación de la aplicación en dispositivos Android.
 
+La elección de este conjunto de herramientas responde a la necesidad de desarrollar una interfaz de usuario flexible y fácilmente mantenible, capaz de comunicarse con el dispositivo basado en ESP32 mediante solicitudes HTTP. Este enfoque permitió implementar rápidamente una solución funcional sin requerir el desarrollo de aplicaciones nativas desde cero.
 
 
