@@ -12,7 +12,7 @@
 \contentsline {subsection}{\numberline {2.1.3}Solicitudes HTTP}{8}{subsection.2.1.3}%
 \contentsline {section}{\numberline {2.2}Componentes de hardware}{9}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Microcontrolador ESP32}{9}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Módulo transceiver}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.2}Módulo transceptor}{10}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Módulo Ethernet W5100}{10}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}Herramientas de software}{11}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Entorno de desarrollo Arduino}{11}{subsection.2.3.1}%
@@ -44,4 +44,4 @@
 \contentsline {chapter}{\numberline {5}Conclusiones}{39}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Conclusiones generales }{39}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Próximos pasos}{40}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{41}{appendix*.33}%
+\contentsline {chapter}{Bibliografía}{41}{appendix*.32}%

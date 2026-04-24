@@ -31,7 +31,7 @@ a través de un cableado de cuatro conductores: dos destinados a la
 alimentación de los equipos y dos destinados a la comunicación CAN
 (CAN H y CAN L).
 
-Para lograr una comunicación compatible y confiable entre el ESP32 y la red CAN del sistema, fue necesario incorporar un módulo transceiver provisto por Enertik, como se muestra en la figura \ref{fig:placa_transceiver}.
+Para lograr una comunicación compatible y confiable entre el ESP32 y la red CAN del sistema, fue necesario incorporar un módulo transceptor provisto por Enertik, como se muestra en la figura \ref{fig:placa_transceiver}.
 
 Este módulo permite la conversión del protocolo CAN, proveniente de la red del motorhome, a una interfaz de comunicación UART compatible con el ESP32. De este modo, se garantiza la correcta integración con la infraestructura existente y se evita la necesidad de adaptar o replicar las configuraciones propias de la biblioteca desarrollada por la empresa.
 
@@ -40,16 +40,16 @@ Asimismo, esta solución simplifica la implementación de la comunicación, ya q
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{./Figures/placa_transceiver.png}
-	\caption{Módulo transceiver comercial perteneciente a Enertik.}
+	\caption{Módulo transceptor comercial perteneciente a Enertik.}
 	\label{fig:placa_transceiver}
 \end{figure}
 
-Basado en esta premisa, se decidió replicar y adaptar este módulo transceiver
+Basado en esta premisa, se decidió replicar y adaptar este módulo transceptor
 para que sea compatible con el dispositivo basado en ESP32. Este
 módulo se compone de un microcontrolador PIC y de un transceptor CAN
 MCP2551.
 
-La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre cómo fue la implementación de este módulo transceiver.
+La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre cómo fue la implementación de este módulo transceptor.
 
 \begin{figure}[h]
 	\centering
@@ -95,7 +95,7 @@ recepción UART (Rx) del ESP32. En el sentido contrario no fue necesaria
 esta adaptación, ya que el nivel lógico de 3,3 V proveniente del ESP32
 es reconocido correctamente por el PIC.
 
-De esta manera, el módulo transceiver actúa como un intermediario que realiza la conversión entre la red CAN y una interfaz UART. Esto permite al ESP32 enviar y recibir información de la red de domótica sin necesidad de implementar directamente la complejidad del protocolo CAN utilizado por Enertik.
+De esta manera, el módulo transceptor actúa como un intermediario que realiza la conversión entre la red CAN y una interfaz UART. Esto permite al ESP32 enviar y recibir información de la red de domótica sin necesidad de implementar directamente la complejidad del protocolo CAN utilizado por Enertik.
 
 
 \subsection{Comunicación con la red Victron}
@@ -128,7 +128,7 @@ entre el ESP32 y el módulo W5100 no requirió hardware adicional.
 Este módulo funciona con una tensión de alimentación de 5 V, lo que lo
 vuelve compatible con el diseño implementado, ya que se aprovecha la
 misma fuente utilizada para energizar el microcontrolador PIC del
-módulo transceiver.
+módulo transceptor.
 
 La conexión Ethernet que parte desde el módulo W5100 se realiza a
 través de un conector RJ45 \citep{web_rj45}. Este conector permite la utilización de
@@ -174,11 +174,11 @@ explicados en la sección \ref{sec:desarrollo_hardware}, donde:
     
     \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
     
-    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
+    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceptor.
     
-    \item Componente 5: módulo transceiver. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
+    \item Componente 5: módulo transceptor. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
     
-    \item Componente 6: módulo W5100. De manera similar al módulo transceiver, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
+    \item Componente 6: módulo W5100. De manera similar al módulo transceptor, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
 \end{itemize}
 
 Este prototipo permitió validar el funcionamiento general del sistema
@@ -214,7 +214,7 @@ tensión AP63203 \citep{AP63203_datasheet}. Este dispositivo permite adaptar el 
 de 12 V proveniente de la red del motorhome a un valor de 3,3 V,
 compatible con el chip ESP32.
 
-En el caso del módulo transceiver, dado que se conocía completamente su
+En el caso del módulo transceptor, dado que se conocía completamente su
 diseño, se optó por integrarlo directamente en el PCB. Para ello, se
 incorporaron el microcontrolador PIC18F26K80 y el transceptor MCP2551
 en la placa. Esta decisión permitió optimizar el espacio disponible y
@@ -238,8 +238,8 @@ Como se puede apreciar, el PCB está compuesto por los siguientes componentes:
 
 \begin{itemize}
 	\item Componente 1: conector principal. Terminal sobre el que se conecta el cableado de cuatro hilos proveniente del motorhome.
-	\item Componente 2: MCP2551. Forma parte del módulo transceiver, encargado de adaptar los niveles de tensión de la línea CAN.
-	\item Componente 3: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceiver.
+	\item Componente 2: MCP2551. Forma parte del módulo transceptor, encargado de adaptar los niveles de tensión de la línea CAN.
+	\item Componente 3: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceptor.
 	\item Componente 4: PIC18F26K80. Microcontrolador que contiene la biblioteca desarrollada por Enertik para la comunicación entre equipos.
 	\item Componente 5: módulo ESP32. Microcontrolador que contiene el firmware principal del equipo.    
     \item Componente 6: regulador de tensión AP63203. Fuente de tensión de 3,3 V encargado de alimentar el ESP32.

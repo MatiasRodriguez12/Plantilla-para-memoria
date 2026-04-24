@@ -5,7 +5,7 @@
 \label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
 \label{IntroGeneral}
 
-En este capítulo se explica en qué consiste la red de domótica empleada, el estado del arte actual, las motivaciones y objetivos propuestos durante la planificación del trabajo.
+En este capítulo se describe la red de domótica implementada por Enertik, junto con el estado del arte actual, las motivaciones y los objetivos planteados durante la planificación del trabajo.
 
 %----------------------------------------------------------------------------------------
 
@@ -30,11 +30,7 @@ campo de las energías renovables. A su vez, dispone de un área de investigaci�
 desarrollo que se especializa en la fabricación y comercialización de equipos 
 destinados a la domótica de motorhomes.
 
-Cuando se habla de domotizar un espacio, se hace referencia a la incorporación de 
-sistemas electrónicos que permiten automatizar, monitorear y controlar distintos 
-parámetros asociados a una unidad habitacional. Estos sistemas buscan mejorar el 
-confort del usuario, optimizar el uso de la energía y simplificar la operación de 
-los diferentes dispositivos presentes en el entorno.
+La domótica consiste en la incorporación de sistemas electrónicos que permiten automatizar, monitorear y controlar distintos parámetros asociados a una unidad habitacional. Estos sistemas buscan mejorar el confort del usuario, optimizar el uso de la energía y simplificar la operación de los diferentes dispositivos presentes en el entorno.
 
 En el caso particular de los motorhomes, la domótica se aplica al control de 
 diferentes subsistemas del vehículo, tales como la iluminación, los sistemas de 
@@ -111,7 +107,7 @@ Entre los distintos dispositivos que componen la red de domótica de Enertik, se
 \begin{itemize}
     \item PRC10: módulo central de procesamiento, responsable de la recepción de información proveniente de los demás dispositivos y de la toma de decisiones sobre el funcionamiento del sistema. Además, permite el comando de distintos periféricos, tales como la iluminación interna del vehículo, la apertura y cierre de esclusas de agua, la activación de la bomba de agua y el accionamiento de los motores asociados a las partes móviles del vehículo, como la mesa, la cama levadiza y el toldo.
     \item Pantalla HMI: interfaz de usuario de tipo táctil que ejecuta el software principal del sistema. Permite la visualización del estado de las variables y la operación de los distintos dispositivos conectados a la red.
-    \item Módulo transceiver: dispositivo que permite la adaptación de la pantalla HMI a la red de comunicación del motorhome.
+    \item Módulo transceptor: dispositivo que permite la adaptación de la pantalla HMI a la red de comunicación del motorhome.
     \item Módulo sensor de gases: dispositivo encargado de la medición de la composición de gases en el ambiente. Genera alertas ante la detección de condiciones perjudiciales para la salud.
     \item Módulo RGB: módulo de potencia destinado al control de la iluminación RGB distribuida en el vehículo.
     \item Módulo de control de patas: dispositivo responsable del accionamiento del sistema de estabilización del vehículo mediante el control de las patas de apoyo.
@@ -154,11 +150,3 @@ El sistema implementado permite la lectura de variables relevantes de dicho mód
 
 Asimismo, se desarrolló una aplicación móvil que permite al usuario visualizar información del sistema y ejecutar acciones de control sobre los dispositivos conectados.
 
-Finalmente, la Figura \ref{fig:esquema_equipo} presenta un esquema general de la solución propuesta, donde se ilustra la interacción entre los distintos componentes del sistema.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.16]{./Figures/esquema.png}
-	\caption{Arquitectura de comunicación del sistema con el ESP32 como intermediario entre PRC10, Cerbo GX y la aplicación móvil.}
-	\label{fig:esquema_equipo}
-\end{figure}

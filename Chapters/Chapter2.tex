@@ -109,7 +109,7 @@ La elección del ESP32 responde a la necesidad de disponer de un microcontrolado
 	\label{fig:im_esp32}
 \end{figure}
 \footnotetext{Imagen tomada de \href{https://robu.in/product/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core/}{https://robu.in/product/esp32-38pin-development-board-\linebreak wifibluetooth-ultra-low-power-consumption-dual-core/}.}
-\subsection{Módulo transceiver}
+\subsection{Módulo transceptor}
 
 Todos los dispositivos que pertenecen a la red de domótica de Enertik se
 conectan a través de un cableado de cuatro conductores (+12 V, GND,
@@ -119,7 +119,7 @@ comunicación de los equipos conectados a la red de manera sencilla.
 Por otra parte, el protocolo de comunicación empleado corresponde a una
 biblioteca propia desarrollada por Enertik, basada en el estándar CAN.
 Para adaptar el ESP32 a esta red y permitir su correcta integración, fue
-necesaria la implementación de un módulo transceiver.
+necesaria la implementación de un módulo transceptor.
 
 Este módulo actúa como interfaz entre el ESP32 y la red de domótica, y
 está compuesto por un microcontrolador PIC \citep{pic_datasheet}, en el
@@ -139,7 +139,7 @@ la red de domótica existente.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4]{./Figures/transceiver.png}
-	\caption{Funcionamiento del módulo transceiver.}
+	\caption{Funcionamiento del módulo transceptor.}
 	\label{fig:im_transceiver}
 \end{figure}
 
