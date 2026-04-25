@@ -199,6 +199,17 @@
     \endverb
   \endentry
 
+  \entry{web_pwm}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{note}{Última consulta: 2025-04-02}
+    \field{title}{Pulse Width Modulation (PWM): How it Works and Why it’s
+  Essential in Electronics}
+    \verb{url}
+    \verb https://www.sameskydevices.com/blog/pulse-width-modulation-pwm-how-it
+    \verb -works-and-why-its-essential-in-electronics
+    \endverb
+  \endentry
+
   \entry{pic_datasheet}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{note}{Última consulta: 2025-03-19}
@@ -364,17 +375,6 @@
     \field{title}{Introducing JSON}
     \verb{url}
     \verb https://www.json.org/json-en.html
-    \endverb
-  \endentry
-
-  \entry{web_pwm}{misc}{}{}
-    \field{labeltitlesource}{title}
-    \field{note}{Última consulta: 2025-04-02}
-    \field{title}{Pulse Width Modulation (PWM): How it Works and Why it’s
-  Essential in Electronics}
-    \verb{url}
-    \verb https://www.sameskydevices.com/blog/pulse-width-modulation-pwm-how-it
-    \verb -works-and-why-its-essential-in-electronics
     \endverb
   \endentry
 
