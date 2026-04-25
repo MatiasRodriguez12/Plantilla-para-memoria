@@ -33,16 +33,16 @@
 \contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{25}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{26}{subsection.3.2.6}%
 \contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{27}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Aplicación: pestaña principal}{27}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.1}Aplicación: pestaña principal}{28}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Aplicación: pestaña luces}{29}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Aplicación: pestaña motores}{29}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Aplicación: pestaña energía}{30}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Aplicación: generación de instalador para Android}{31}{subsection.3.3.5}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{33}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Ensayos sobre la aplicación}{33}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Ensayos sobre el sistema}{34}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ensayos de laboratorio}{37}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{41}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{41}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{42}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{43}{appendix*.33}%
+\contentsline {subsection}{\numberline {3.3.3}Aplicación: pestaña motores}{30}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Aplicación: pestaña energía}{31}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Aplicación: generación de instalador para Android}{32}{subsection.3.3.5}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ensayos sobre la aplicación}{35}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ensayos sobre el sistema}{36}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Ensayos de laboratorio}{39}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{43}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{43}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{44}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{45}{appendix*.34}%

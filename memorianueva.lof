@@ -8,7 +8,7 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Módulo W5100\footnotemark .}}{11}{figure.caption.11}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Esquema de integración entre Angular, Ionic, Capacitor y Android Studio.}}{13}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Trayecto que sigue el ESP32 para llegar a cada uno de los módulos.}}{15}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema de interconexión entre el ESP32 y los módulos externos.}}{15}{figure.caption.13}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Módulo transceptor comercial perteneciente a Enertik.}}{16}{figure.caption.14}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de cómo se establece la comunicación CAN entre la red del motorhome y el ESP32.}}{17}{figure.caption.15}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Diseño de divisor resistivo para adaptación UART.}}{17}{figure.caption.16}%
@@ -16,16 +16,17 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Diseño final para PCB del equipo.}}{21}{figure.caption.18}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama final de los componentes de hardware empleados.}}{22}{figure.caption.19}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Relación entre las distintas tareas del firmware y su comunicación con el exterior.}}{23}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Pestaña home de la aplicación.}}{28}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Pestaña luces de la aplicación.}}{29}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Pestaña motores de la aplicación.}}{30}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Pestaña energía de la aplicación.}}{31}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Contenedores dentro de una pantalla.}}{28}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Pestaña principal de la aplicación.}}{28}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Pestaña luces de la aplicación.}}{30}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Pestaña motores de la aplicación.}}{31}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Pestaña energía de la aplicación.}}{32}{figure.caption.25}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Uso del navegador web como herramienta de depuración.}}{33}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Archivo \texttt {JSON} recibido en la pestaña home.}}{35}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Mensaje recibido por el ESP32 al accionar un pulsador desde la aplicación.}}{36}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Respuesta del servidor ante una solicitud de control.}}{36}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Módulo PRC10 usado en los ensayos.}}{37}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Equipos Enertik usados en los ensayos.}}{38}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Equipo Victron MultiPlus-II 12/3000/120-32 230V y módulo Cerbo GX.}}{39}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Uso del navegador web como herramienta de depuración.}}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Archivo \texttt {JSON} recibido en la pestaña home.}}{37}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Mensaje recibido por el ESP32 al accionar un pulsador desde la aplicación.}}{38}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Respuesta del servidor ante una solicitud de control.}}{38}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Módulo PRC10 usado en los ensayos.}}{39}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Equipos Enertik usados en los ensayos.}}{40}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Equipo Victron MultiPlus-II 12/3000/120-32 230V y módulo Cerbo GX.}}{41}{figure.caption.32}%
 \addvspace {10\p@ }

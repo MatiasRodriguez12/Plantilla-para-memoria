@@ -15,7 +15,7 @@ La figura \ref{fig:esquema_hw_general} muestra una estructura del flujo o camino
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{./Figures/esquema_hw_general.png}
-	\caption{Trayecto que sigue el ESP32 para llegar a cada uno de los módulos.}
+	\caption{Esquema de interconexión entre el ESP32 y los módulos externos.}
 	\label{fig:esquema_hw_general}
 \end{figure}
 
@@ -516,82 +516,99 @@ Estas solicitudes se dirigieron a la dirección IP asignada al ESP32,
 dato que el propio dispositivo informa al momento de establecer la
 conexión a la red.
 
-Para el desarrollo de la aplicación, se tomó como referencia la aplicación utilizada en la pantalla HMI del motorhome. Se replicaron la mayor cantidad posible de sus funcionalidades, con prioridad en aquellas consideradas de mayor importancia.
+Para el desarrollo de la aplicación, se tomó como referencia el software utilizado en la pantalla HMI del motorhome. Se replicaron la mayor cantidad posible de sus funcionalidades, con prioridad en aquellas consideradas de mayor importancia.
 
 Como se mencionó en la sección \ref{sec:tarea_server}, se optó por
 desarrollar una aplicación compuesta por cuatro pestañas. A su vez, se
 implementó una barra de navegación por pestañas que permite acceder a
 las distintas pantallas de la aplicación.
 
+Previo a la implementación, se definió un criterio de diseño orientado
+a la organización modular de la interfaz. Para ello, se adoptó un
+enfoque basado en contenedores visuales personalizados, cuyo tamaño se
+define en términos relativos al espacio disponible en pantalla.
+
+La figura \ref{fig:contenedores} ilustra este criterio. Cada contenedor
+puede ocupar un porcentaje del ancho y del alto de la pantalla, lo que
+permite estructurar la interfaz mediante una disposición en filas y
+columnas.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.66]{./Figures/contenedores_ionic.png}
+	\caption{Contenedores dentro de una pantalla.}
+	\label{fig:contenedores}
+\end{figure}
+
+A partir de este esquema, las pantallas se construyen como una
+composición de contenedores anidados. Dentro cada bloque final se integra cada uno de los elementos
+funcionales de la aplicación, tales como indicadores, controles y
+visualizaciones de datos.
+
+Este enfoque responde a un modelo de layout basado en grillas,
+ampliamente utilizado en el desarrollo de interfaces modernas. Su uso
+permitió mantener una distribución consistente de los elementos en
+todas las pantallas y facilitó la adaptación del diseño a distintos
+tamaños de dispositivo.
+
+En el ejemplo de la figura \ref{fig:contenedores}, se observa un contenedor principal que
+define el área de trabajo de la pantalla. A partir de este, se
+establecen subdivisiones en filas y columnas mediante nuevos
+contenedores, lo que permite organizar la ubicación de cada elemento de
+la interfaz.
+
+Inicialmente, estos contenedores se representaron con colores para facilitar la visualización de la estructura. Una vez definida la disposición final, se ajustó su apariencia según el diseño de cada pantalla y, en la mayoría de los casos, se utilizó un fondo transparente para integrarlos visualmente con la interfaz.
+
 \subsection{Aplicación: pestaña principal}
 \label{sec:app_home}
 
-La figura \ref{fig:app_home} muestra la primera pestaña de la
-aplicación. Esta pestaña se encuentra asociada al campo denominado
-home y corresponde a la pantalla principal.
+La pestaña principal, representada en la figura  \ref{fig:app_home}, constituye el punto de acceso central a la
+información del sistema, ya que concentra las variables más relevantes
+asociadas al estado general del motorhome.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.16]{./Figures/P1_Home.png}
-	\caption{Pestaña home de la aplicación.}
+	\caption{Pestaña principal de la aplicación.}
 	\label{fig:app_home}
 \end{figure}
 
-Cada vez que se accede a esta pestaña, se inicia un timer o
-contador interno que realiza de forma periódica una solicitud GET al
-endpoint home. A través de este mecanismo se obtienen
-las variables necesarias para su visualización, así como también los
-estados de los pulsadores.
-\newpage
-Como se puede observar en la figura \ref{fig:app_home}, en el cuadrante
-superior izquierdo se ubican las variables asociadas a la batería. En
-este sector se visualizan los valores de tensión, corriente y el
-porcentaje de carga.
+Desde el punto de vista funcional, esta pantalla implementa un
+mecanismo de actualización periódica basado en solicitudes HTTP de tipo
+GET al endpoint home. 
 
-El cuadrante inferior izquierdo corresponde al sistema de corriente
-alterna. En este se presentan los valores de tensión de entrada,
-corriente y frecuencia de la red.
+Para ello, se utiliza un temporizador interno que permite consultar de forma cíclica el estado del sistema. De este modo, la información visualizada se mantiene sincronizada con las variables reales del motorhome.
 
-Asimismo, se incluyen indicadores que permiten identificar el origen
-de la alimentación. Este puede corresponder a tres fuentes distintas:
-línea, grupo electrógeno o inversor.
+La información presentada se organiza en distintos grupos funcionales. Por un lado, se incluyen variables asociadas al sistema de baterías, tales como tensión, corriente y porcentaje de carga. Por otro lado, se presentan magnitudes correspondientes al sistema de corriente alterna, entre las que se encuentran la tensión, la corriente y la frecuencia de entrada.
 
-El sistema PRC10 establece que, ante la presencia de múltiples fuentes
-activas en simultáneo, solo una de ellas alimenta el sistema. Para ello,
-se define un esquema de prioridades determinado por el hardware del
-módulo.
+Adicionalmente, se incorporan indicadores que permiten identificar el
+origen de la alimentación del sistema. Esta lógica responde al
+comportamiento del módulo PRC10, que establece un esquema de prioridad
+entre las distintas fuentes disponibles. 
 
-El orden de prioridad es el siguiente: en primer lugar la línea, en
-segundo lugar el inversor y, finalmente, el grupo electrógeno.
+En este esquema, la línea de
+alimentación posee la mayor prioridad, seguida por el inversor y,
+finalmente, el grupo electrógeno. La interfaz refleja este criterio de
+forma visual, lo que permite interpretar rápidamente el estado de
+operación del sistema.
 
-El estado de cada origen se representa mediante un código de colores.
-Si el indicador se muestra en color verde (tanto en el texto como en
-los bordes), significa que dicho origen se encuentra activo. Si el
-borde se presenta en color gris, indica que el origen está disponible,
-pero queda relegado debido al esquema de prioridades. Finalmente, si el
-indicador se muestra en color celeste, significa que el origen se
-encuentra desconectado.
+Asimismo, la pantalla incluye la visualización del nivel de los tanques
+de agua, representados en términos porcentuales, lo que permite un
+monitoreo directo de estos recursos.
 
-En el cuadrante superior derecho se ubican los indicadores de los
-tanques de agua. Para cada uno de ellos se dispone de un indicador
-circular que representa su nivel en porcentaje.
+En cuanto al control del sistema, se incorporan pulsadores que permiten
+accionar distintos actuadores del motorhome, como la bomba de agua y
+las esclusas de los tanques. Estos comandos se envían mediante
+solicitudes HTTP de tipo POST al endpoint pulsadores, donde se
+transmite la identificación del control y su nuevo estado en formato
+\texttt{JSON}.
 
-Finalmente, se incluyen tres pulsadores de control: bomba de agua,
-esclusa de agua gris y esclusa de agua negra.
-
-Como se mencionó en la sección \ref{sec:tarea_server}, estos pulsadores
-realizan solicitudes de tipo POST al endpoint denominado
-pulsadores. En este caso, se envía un archivo \texttt{JSON} que indica
-el origen del pulsador y el nuevo estado, lo que permite ejecutar la
-acción correspondiente.
-
+De esta manera, la pestaña principal integra en una única interfaz la visualización de variables críticas y el acceso a funciones de control, y representa el principal punto de interacción entre el usuario y el sistema.
 
 \subsection{Aplicación: pestaña luces}
 \label{sec:app_luces}
 
-La figura \ref{fig:app_luces} muestra la segunda pestaña de la
-aplicación. Esta pestaña se encuentra asociada al campo denominado
-luces.
+La pestaña correspondiente al control de iluminación, representada en la figura \ref{fig:app_luces}, concentra las funciones asociadas al manejo de las luces del sistema.
 
 \begin{figure}[h]
 	\centering
@@ -600,26 +617,31 @@ luces.
 	\label{fig:app_luces}
 \end{figure}
 
-De manera similar a la pestaña principal, esta pestaña realiza
-solicitudes GET de forma periódica al endpoint denominado
-luces.
+Desde el punto de vista funcional, esta pantalla implementa un
+mecanismo de actualización periódica mediante solicitudes HTTP de tipo
+GET al endpoint luces. A través de estas consultas, se obtienen
+los estados de los circuitos de iluminación y el valor asociado al
+control de intensidad.
 
-A través de este mecanismo, se obtienen los estados de los pulsadores
-de luz interior y luz exterior, así como el valor actual del
-dimmer de la luz interior.
+En particular, el sistema permite gestionar tanto la iluminación
+interior como la exterior. Para el caso de la iluminación interior, se
+dispone de un control de intensidad basado en modulación por ancho de
+pulso (PWM) \citep{web_pwm}, implementado en el módulo PRC10. Esto
+permite ajustar el nivel de iluminación mediante la variación del
+ciclo de trabajo de la señal.
 
-La iluminación interior es controlada por el módulo PRC10 mediante un
-sistema de modulación por ancho de pulso (PWM) \citep{web_pwm}. Por lo tanto, esta
-pestaña permite regular la intensidad lumínica mediante la variación
-del ancho de pulso.
+Las acciones de control se envían mediante solicitudes HTTP de tipo
+POST al endpoint pulsadores, donde se transmite la
+identificación del elemento a accionar y el valor correspondiente. Este
+esquema unifica el mecanismo de control para distintos tipos de
+actuadores, tanto discretos como analógicos.
 
-Al igual que en la pantalla principal, cada uno de estos controles realiza una solicitud POST al endpoint pulsadores, en la que se indica el origen del comando y el nuevo valor, ya sea el estado del pulsador o el valor del dimmer.
+De esta manera, la pestaña de iluminación permite supervisar el estado de los circuitos y ajustar su comportamiento a través de una interfaz simple, en coherencia con la arquitectura de comunicación definida para el sistema.
 \subsection{Aplicación: pestaña motores}
 \label{sec:app_motores}
 
-La figura \ref{fig:app_motores} muestra la tercera pestaña de la
-aplicación. Esta pestaña se encuentra asociada al campo denominado
-motores.
+La pestaña de motores, representada en la figura  \ref{fig:app_motores}, se encarga de la supervisión y el control de los
+elementos móviles del motorhome.
 
 \begin{figure}[h]
 	\centering
@@ -628,45 +650,46 @@ motores.
 	\label{fig:app_motores}
 \end{figure}
 
-Esta pestaña realiza solicitudes GET de forma periódica al
-endpoint denominado motores y se encarga del control
-de los elementos móviles del motorhome.
+Desde el punto de vista funcional, esta pantalla implementa un
+mecanismo de actualización periódica mediante solicitudes HTTP de tipo
+GET al endpoint motores. A través de estas consultas, se
+obtienen tanto los estados de los actuadores como las variables
+necesarias para la lógica de control.
 
-Como se puede observar en la figura \ref{fig:app_motores}, en el
-sector derecho se ubican tres pulsadores de selección. Estos
-permiten elegir la parte móvil sobre la que se desea operar.
+La interfaz permite seleccionar el elemento móvil sobre el que se
+desea operar y presentar los controles asociados a dicho elemento. De
+esta forma, se reutiliza una misma estructura de control para distintos
+actuadores, lo que simplifica el diseño de la aplicación.
 
-En el sector izquierdo se presentan los controles asociados al elemento
-seleccionado, junto con una animación indicativa de su funcionamiento.
-Mientras se mantiene presionado el control correspondiente, la
-animación refleja el movimiento del sistema.
+Entre las variables recibidas se incluye el estado del freno de mano
+del vehículo. Esta señal se utiliza como condición de habilitación para
+determinados actuadores, en particular la cabina desplazable y el toldo.
 
-Entre las variables obtenidas mediante la solicitud GET se incluye el
-estado del freno de mano del vehículo. Esta variable cumple una función
-de habilitación sobre los controles de la cabina desplazable y del
-toldo del motorhome.
+Cuando el freno de mano no se encuentra accionado, el sistema bloquea
+la interacción con estos controles. Esta restricción responde a
+criterios de seguridad, ya que dichos mecanismos solo deben operar con
+el vehículo detenido. Una vez que el sistema detecta la activación del
+freno de mano, los controles correspondientes se habilitan.
 
-Mientras estos controles se encuentran deshabilitados, se superpone
-una imagen con el símbolo de precaución o warning. Cuando el
-sistema detecta que el freno de mano está accionado, este indicador
-desaparece y los controles se habilitan.
+Por otro lado, el motor asociado al desplazamiento de la mesa no
+depende de esta condición, por lo que su control permanece habilitado
+en todo momento.
 
-Esta restricción responde a criterios de seguridad, ya que estos
-elementos solo pueden accionarse cuando el vehículo se encuentra
-detenido.
+Las acciones de control se envían mediante solicitudes HTTP de tipo
+POST al endpoint pulsadores, donde se transmite la
+identificación del actuador y el estado requerido.
 
-
-Por otro lado, el accionamiento del motor de la mesa no depende del
-estado de movimiento del motorhome, por lo que su control permanece
-siempre habilitado.
-
+De esta manera, la pestaña de motores centraliza el control de los
+elementos móviles e incorpora restricciones de operación que
+garantizan un uso seguro del sistema.
 
 \subsection{Aplicación: pestaña energía}
 \label{sec:app_energia}
 
-La figura \ref{fig:app_energia} muestra la cuarta pestaña de la
-aplicación. Esta pestaña se encuentra asociada al campo denominado
-energía.
+La pestaña de energía, representada en la figura \ref{fig:app_energia}, concentra la supervisión y el control de los
+principales sistemas energéticos del motorhome, entre ellos el grupo
+electrógeno, el cargador, el inversor y otros consumos de alta
+potencia.
 
 \begin{figure}[h]
 	\centering
@@ -675,29 +698,33 @@ energía.
 	\label{fig:app_energia}
 \end{figure}
 
-Esta pestaña realiza solicitudes GET de forma periódica al
-endpoint denominado energía y se encarga del control
-del grupo electrógeno, el cargador y el inversor del motorhome, así
-como también del control del calentador de agua y del sistema de gas
-envasado (alta potencia).
+Desde el punto de vista funcional, esta pantalla implementa un
+mecanismo de actualización periódica mediante solicitudes HTTP de tipo
+GET al endpoint energia. A través de estas consultas se
+obtienen las variables asociadas al estado de los distintos equipos,
+lo que permite su monitoreo en tiempo real.
 
-En el cuadrante superior izquierdo se observan los controles del grupo
-electrógeno. A través de estos controles es posible encender y apagar
-el equipo, así como seleccionar el modo de funcionamiento del cebador
-(manual o automático).
+La interfaz agrupa los controles según el tipo de sistema. En primer
+lugar, se dispone del control del grupo electrógeno, que permite su
+encendido y apagado, así como la selección del modo de operación del
+cebador. 
 
-En el cuadrante superior derecho se ubican los controles asociados al
-cargador. Se dispone de un pulsador para encender o apagar el equipo,
-junto con la visualización de la corriente de carga suministrada a la
-batería.
+Por otro lado, se incluyen los controles asociados al cargador
+y al inversor, junto con la visualización de variables relevantes como
+la corriente de carga y la potencia suministrada.
 
-En el cuadrante inferior derecho se presentan los controles del
-inversor. Se incluye un pulsador para encender o apagar el equipo,
-acompañado por la indicación de la potencia suministrada.
+Además, se incorporan controles correspondientes a otros sistemas de
+consumo energético, como el calentador de agua y el sistema de gas
+envasado de alta potencia. Esta integración permite centralizar el
+manejo de distintos dispositivos dentro de una misma interfaz.
 
-Finalmente, en el cuadrante inferior izquierdo se encuentran los
-controles correspondientes al calentador de agua y al sistema de gas
-envasado.
+Las acciones de control se envían mediante solicitudes HTTP de tipo
+POST al endpoint pulsadores, donde se transmite la
+identificación del equipo y el estado requerido.
+
+De esta manera, la pestaña de energía permite supervisar y gestionar
+los distintos subsistemas energéticos desde un único punto de acceso,
+en coherencia con la arquitectura de control definida para el sistema.
 
 \subsection{Aplicación: generación de instalador para Android}
 \label{sec:app_apk}
@@ -720,7 +747,7 @@ y permitir así un control más directo sobre la comunicación con el
 servidor del ESP32. Asimismo, se utilizaron utilidades para la
 generación y configuración de los recursos gráficos de la aplicación,
 como los íconos y elementos visuales requeridos por el sistema Android.
-
+\newpage
 A partir de este proceso, el trabajo fue importado en el entorno de
 desarrollo Android Studio. Este software permite gestionar la
 compilación de la aplicación, así como configurar parámetros propios
