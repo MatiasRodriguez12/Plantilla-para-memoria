@@ -8,17 +8,16 @@ En este capítulo se describen los distintos protocolos de comunicación utiliza
 \label{sec:arq_sist}
 La figura \ref{fig:arquitectura_general} presenta un esquema general del sistema desarrollado, en el que se ilustran los distintos subsistemas involucrados y sus interconexiones.
 
+Como se puede observar, el dispositivo basado en ESP32 actúa como nodo central del sistema y establece comunicación con la red de domótica de Enertik mediante CAN (\textit{Controller Area Network}) \citep{web_intro_can}, con el ecosistema Victron a través de Modbus TCP sobre Ethernet \citep{web_intro_modbus}, y con la aplicación móvil mediante solicitudes HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http} sobre Wi-Fi.
+
+Esta arquitectura permite integrar subsistemas previamente independientes dentro de una única plataforma de control.
+
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.16]{./Figures/esquema.png}
     \caption{Arquitectura general del sistema.}
     \label{fig:arquitectura_general}
 \end{figure}
-
-Como se puede observar, el dispositivo basado en ESP32 actúa como nodo central del sistema y establece comunicación con la red de domótica de Enertik mediante CAN (\textit{Controller Area Network}) \citep{web_intro_can}, con el ecosistema Victron a través de Modbus TCP sobre Ethernet \citep{web_intro_modbus}, y con la aplicación móvil mediante solicitudes HTTP (\textit{HyperText Transfer Protocol}) \citep{web_intro_http} sobre Wi-Fi.
-
-Esta arquitectura permite integrar subsistemas previamente independientes dentro de una única plataforma de control.
-
 
 \section{Protocolos de comunicación}
 \label{sec:protocolos_comunicacion}

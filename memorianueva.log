@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  24 APR 2026 22:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  25 APR 2026 23:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1168,36 +1168,36 @@ LaTeX Info: Redefining \% on input line 117.
 
 ]
 Cap\'{\i }tulo 2.
-<./Figures/esquema.png, id=419, 2547.5175pt x 1409.265pt>
+<./Figures/esquema.png, id=422, 2547.5175pt x 1409.265pt>
 File: ./Figures/esquema.png Graphic file (type png)
 <use ./Figures/esquema.png>
-Package pdftex.def Info: ./Figures/esquema.png  used on input line 13.
+Package pdftex.def Info: ./Figures/esquema.png  used on input line 17.
 (pdftex.def)             Requested size: 407.61113pt x 225.487pt.
 
-Overfull \hbox (17.80844pt too wide) in paragraph at lines 13--14
+Overfull \hbox (17.80844pt too wide) in paragraph at lines 17--18
  [][] 
  []
 
 [7 <./Figures/esquema.png>]
-LaTeX Info: Redefining \. on input line 51.
-LaTeX Info: Redefining \% on input line 51.
+LaTeX Info: Redefining \. on input line 50.
+LaTeX Info: Redefining \% on input line 50.
  [8]
-LaTeX Info: Redefining \. on input line 77.
-LaTeX Info: Redefining \% on input line 77.
+LaTeX Info: Redefining \. on input line 76.
+LaTeX Info: Redefining \% on input line 76.
  [9]
 <./Figures/esp32.png, id=459, 148.30406pt x 289.08pt>
 File: ./Figures/esp32.png Graphic file (type png)
 <use ./Figures/esp32.png>
-Package pdftex.def Info: ./Figures/esp32.png  used on input line 82.
+Package pdftex.def Info: ./Figures/esp32.png  used on input line 81.
 (pdftex.def)             Requested size: 74.15184pt x 144.53964pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 83.
+(Font)              <7> on input line 82.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 83.
+(Font)              <5> on input line 82.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 86.
+(Font)              <9> on input line 85.
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
 [][][]\T1/ppl/m/n/9 Imagen to-ma-da de [][]https://robu.in/product/esp32-38pin-
 development-board-
  []
@@ -1205,31 +1205,31 @@ development-board-
 <./Figures/transceiver.png, id=464, 623.32875pt x 100.12407pt>
 File: ./Figures/transceiver.png Graphic file (type png)
 <use ./Figures/transceiver.png>
-Package pdftex.def Info: ./Figures/transceiver.png  used on input line 116.
+Package pdftex.def Info: ./Figures/transceiver.png  used on input line 115.
 (pdftex.def)             Requested size: 249.32707pt x 40.0489pt.
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
+LaTeX Info: Redefining \. on input line 125.
+LaTeX Info: Redefining \% on input line 125.
 [10 <./Figures/esp32.png> <./Figures/transceiver.png>]
 <./Figures/w5100.jpg, id=474, 253.94875pt x 199.74625pt>
 File: ./Figures/w5100.jpg Graphic file (type jpg)
 <use ./Figures/w5100.jpg>
-Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 134.
+Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 133.
 (pdftex.def)             Requested size: 152.3704pt x 119.84866pt.
-LaTeX Info: Redefining \. on input line 163.
-LaTeX Info: Redefining \% on input line 163.
+LaTeX Info: Redefining \. on input line 162.
+LaTeX Info: Redefining \% on input line 162.
  [11 <./Figures/w5100.jpg>]
 <./Figures/esquema_herramientas_app.png, id=488, 779.16093pt x 167.87718pt>
 File: ./Figures/esquema_herramientas_app.png Graphic file (type png)
 <use ./Figures/esquema_herramientas_app.png>
 Package pdftex.def Info: ./Figures/esquema_herramientas_app.png  used on input 
-line 196.
+line 195.
 (pdftex.def)             Requested size: 389.57951pt x 83.93839pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 205.
-LaTeX Info: Redefining \% on input line 205.
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
 [12])
 LaTeX Info: Redefining \. on input line 118.
 LaTeX Info: Redefining \% on input line 118.
@@ -1624,7 +1624,7 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (60 pages, 9132351 bytes).
+Output written on memorianueva.pdf (60 pages, 9132355 bytes).
 PDF statistics:
  893 PDF objects out of 1000 (max. 8388607)
  179 named destinations out of 1000 (max. 500000)
