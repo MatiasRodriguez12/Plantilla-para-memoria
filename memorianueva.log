@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  25 APR 2026 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  1 MAY 2026 21:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1143,7 +1143,7 @@ been already used, duplicate ignored
                    \relax 
 l.94 
       [2]
-<./Figures/esquema_domotica.png, id=394, 623.32875pt x 295.1025pt>
+<./Figures/esquema_domotica.png, id=393, 623.32875pt x 295.1025pt>
 File: ./Figures/esquema_domotica.png Graphic file (type png)
 <use ./Figures/esquema_domotica.png>
 Package pdftex.def Info: ./Figures/esquema_domotica.png  used on input line 97.
@@ -1168,7 +1168,7 @@ LaTeX Info: Redefining \% on input line 117.
 
 ]
 Cap\'{\i }tulo 2.
-<./Figures/esquema.png, id=422, 2547.5175pt x 1409.265pt>
+<./Figures/esquema.png, id=421, 2547.5175pt x 1409.265pt>
 File: ./Figures/esquema.png Graphic file (type png)
 <use ./Figures/esquema.png>
 Package pdftex.def Info: ./Figures/esquema.png  used on input line 17.
@@ -1185,7 +1185,7 @@ LaTeX Info: Redefining \% on input line 50.
 LaTeX Info: Redefining \. on input line 76.
 LaTeX Info: Redefining \% on input line 76.
  [9]
-<./Figures/esp32.png, id=459, 148.30406pt x 289.08pt>
+<./Figures/esp32.png, id=458, 148.30406pt x 289.08pt>
 File: ./Figures/esp32.png Graphic file (type png)
 <use ./Figures/esp32.png>
 Package pdftex.def Info: ./Figures/esp32.png  used on input line 81.
@@ -1202,7 +1202,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--85
 development-board-
  []
 
-<./Figures/transceiver.png, id=464, 623.32875pt x 100.12407pt>
+<./Figures/transceiver.png, id=463, 623.32875pt x 100.12407pt>
 File: ./Figures/transceiver.png Graphic file (type png)
 <use ./Figures/transceiver.png>
 Package pdftex.def Info: ./Figures/transceiver.png  used on input line 115.
@@ -1210,7 +1210,7 @@ Package pdftex.def Info: ./Figures/transceiver.png  used on input line 115.
 LaTeX Info: Redefining \. on input line 125.
 LaTeX Info: Redefining \% on input line 125.
 [10 <./Figures/esp32.png> <./Figures/transceiver.png>]
-<./Figures/w5100.jpg, id=474, 253.94875pt x 199.74625pt>
+<./Figures/w5100.jpg, id=473, 253.94875pt x 199.74625pt>
 File: ./Figures/w5100.jpg Graphic file (type jpg)
 <use ./Figures/w5100.jpg>
 Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 133.
@@ -1218,7 +1218,7 @@ Package pdftex.def Info: ./Figures/w5100.jpg  used on input line 133.
 LaTeX Info: Redefining \. on input line 162.
 LaTeX Info: Redefining \% on input line 162.
  [11 <./Figures/w5100.jpg>]
-<./Figures/esquema_herramientas_app.png, id=488, 779.16093pt x 167.87718pt>
+<./Figures/esquema_herramientas_app.png, id=487, 779.16093pt x 167.87718pt>
 File: ./Figures/esquema_herramientas_app.png Graphic file (type png)
 <use ./Figures/esquema_herramientas_app.png>
 Package pdftex.def Info: ./Figures/esquema_herramientas_app.png  used on input 
@@ -1244,20 +1244,20 @@ LaTeX Info: Redefining \% on input line 118.
 
 ]
 Cap\'{\i }tulo 3.
-<./Figures/esquema_hw_general.png, id=520, 485.56406pt x 554.82281pt>
+<./Figures/esquema_hw_general.png, id=519, 485.56406pt x 554.82281pt>
 File: ./Figures/esquema_hw_general.png Graphic file (type png)
 <use ./Figures/esquema_hw_general.png>
 Package pdftex.def Info: ./Figures/esquema_hw_general.png  used on input line 1
 7.
 (pdftex.def)             Requested size: 267.06105pt x 305.15349pt.
 [15 <./Figures/esquema_hw_general.png>]
-<./Figures/placa_transceiver.png, id=528, 451.6875pt x 248.42813pt>
+<./Figures/placa_transceiver.png, id=527, 451.6875pt x 248.42813pt>
 File: ./Figures/placa_transceiver.png Graphic file (type png)
 <use ./Figures/placa_transceiver.png>
 Package pdftex.def Info: ./Figures/placa_transceiver.png  used on input line 42
 .
 (pdftex.def)             Requested size: 271.01459pt x 149.05801pt.
-<./Figures/esquema_hw_transceiver.png, id=530, 625.58719pt x 242.40562pt>
+<./Figures/esquema_hw_transceiver.png, id=529, 625.58719pt x 242.40562pt>
 File: ./Figures/esquema_hw_transceiver.png Graphic file (type png)
 <use ./Figures/esquema_hw_transceiver.png>
 Package pdftex.def Info: ./Figures/esquema_hw_transceiver.png  used on input li
@@ -1270,7 +1270,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 60.
 LaTeX Info: Redefining \% on input line 60.
 [16 <./Figures/placa_transceiver.png>]
-<./Figures/divisor_resistivo.png, id=537, 326.72063pt x 240.14719pt>
+<./Figures/divisor_resistivo.png, id=536, 326.72063pt x 240.14719pt>
 File: ./Figures/divisor_resistivo.png Graphic file (type png)
 <use ./Figures/divisor_resistivo.png>
 Package pdftex.def Info: ./Figures/divisor_resistivo.png  used on input line 86
@@ -1282,7 +1282,7 @@ LaTeX Info: Redefining \% on input line 91.
 LaTeX Info: Redefining \. on input line 150.
 LaTeX Info: Redefining \% on input line 150.
  [18]
-<./Figures/prototipo_experimental.png, id=553, 1388.93906pt x 1156.32pt>
+<./Figures/prototipo_experimental.png, id=552, 1388.93906pt x 1156.32pt>
 File: ./Figures/prototipo_experimental.png Graphic file (type png)
 <use ./Figures/prototipo_experimental.png>
 Package pdftex.def Info: ./Figures/prototipo_experimental.png  used on input li
@@ -1294,7 +1294,7 @@ LaTeX Info: Redefining \% on input line 176.
 LaTeX Info: Redefining \. on input line 222.
 LaTeX Info: Redefining \% on input line 222.
  [20]
-<./Figures/pcb_pca10.png, id=571, 880.79062pt x 845.40843pt>
+<./Figures/pcb_pca10.png, id=570, 880.79062pt x 845.40843pt>
 File: ./Figures/pcb_pca10.png Graphic file (type png)
 <use ./Figures/pcb_pca10.png>
 Package pdftex.def Info: ./Figures/pcb_pca10.png  used on input line 232.
@@ -1302,13 +1302,13 @@ Package pdftex.def Info: ./Figures/pcb_pca10.png  used on input line 232.
 LaTeX Info: Redefining \. on input line 247.
 LaTeX Info: Redefining \% on input line 247.
  [21 <./Figures/pcb_pca10.png>]
-<./Figures/diagrama_completo.png, id=579, 996.72375pt x 611.28375pt>
+<./Figures/diagrama_completo.png, id=578, 996.72375pt x 611.28375pt>
 File: ./Figures/diagrama_completo.png Graphic file (type png)
 <use ./Figures/diagrama_completo.png>
 Package pdftex.def Info: ./Figures/diagrama_completo.png  used on input line 25
 8.
 (pdftex.def)             Requested size: 388.7207pt x 238.3997pt.
-<./Figures/tareas_rtos.png, id=582, 740.0147pt x 426.09187pt>
+<./Figures/tareas_rtos.png, id=581, 740.0147pt x 426.09187pt>
 File: ./Figures/tareas_rtos.png Graphic file (type png)
 <use ./Figures/tareas_rtos.png>
 Package pdftex.def Info: ./Figures/tareas_rtos.png  used on input line 277.
@@ -1337,7 +1337,7 @@ LaTeX Info: Redefining \% on input line 432.
 LaTeX Info: Redefining \. on input line 490.
 LaTeX Info: Redefining \% on input line 490.
  [26]
-<./Figures/contenedores_ionic.png, id=615, 568.37344pt x 349.305pt>
+<./Figures/contenedores_ionic.png, id=614, 568.37344pt x 349.305pt>
 File: ./Figures/contenedores_ionic.png Graphic file (type png)
 <use ./Figures/contenedores_ionic.png>
 Package pdftex.def Info: ./Figures/contenedores_ionic.png  used on input line 5
@@ -1350,7 +1350,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 559.
 LaTeX Info: Redefining \% on input line 559.
 [27]
-<./Figures/P1_Home.png, id=622, 2409.0pt x 1084.05pt>
+<./Figures/P1_Home.png, id=621, 2409.0pt x 1084.05pt>
 File: ./Figures/P1_Home.png Graphic file (type png)
 <use ./Figures/P1_Home.png>
 Package pdftex.def Info: ./Figures/P1_Home.png  used on input line 571.
@@ -1358,7 +1358,7 @@ Package pdftex.def Info: ./Figures/P1_Home.png  used on input line 571.
 LaTeX Info: Redefining \. on input line 580.
 LaTeX Info: Redefining \% on input line 580.
  [28 <./Figures/contenedores_ionic.png> <./Figures/P1_Home.png>]
-<./Figures/P2_Luces.png, id=630, 2409.0pt x 1084.05pt>
+<./Figures/P2_Luces.png, id=629, 2409.0pt x 1084.05pt>
 File: ./Figures/P2_Luces.png Graphic file (type png)
 <use ./Figures/P2_Luces.png>
 Package pdftex.def Info: ./Figures/P2_Luces.png  used on input line 615.
@@ -1370,7 +1370,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 632.
 LaTeX Info: Redefining \% on input line 632.
 [29]
-<./Figures/P3_Motores.png, id=637, 1806.75pt x 2481.27pt>
+<./Figures/P3_Motores.png, id=636, 1806.75pt x 2481.27pt>
 File: ./Figures/P3_Motores.png Graphic file (type png)
 <use ./Figures/P3_Motores.png>
 Package pdftex.def Info: ./Figures/P3_Motores.png  used on input line 648.
@@ -1382,7 +1382,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 682.
 LaTeX Info: Redefining \% on input line 682.
 [30 <./Figures/P2_Luces.png>]
-<./Figures/P4_Energia.png, id=644, 2409.0pt x 1084.05pt>
+<./Figures/P4_Energia.png, id=643, 2409.0pt x 1084.05pt>
 File: ./Figures/P4_Energia.png Graphic file (type png)
 <use ./Figures/P4_Energia.png>
 Package pdftex.def Info: ./Figures/P4_Energia.png  used on input line 696.
@@ -1410,85 +1410,80 @@ LaTeX Info: Redefining \% on input line 119.
 
 ]
 Cap\'{\i }tulo 4.
-<./Figures/ionic_debug.png, id=667, 1225.57875pt x 458.46281pt>
+<./Figures/ionic_debug.png, id=665, 1225.57875pt x 458.46281pt>
 File: ./Figures/ionic_debug.png Graphic file (type png)
 <use ./Figures/ionic_debug.png>
-Package pdftex.def Info: ./Figures/ionic_debug.png  used on input line 30.
+Package pdftex.def Info: ./Figures/ionic_debug.png  used on input line 22.
 (pdftex.def)             Requested size: 392.19322pt x 146.71109pt.
 
-Overfull \hbox (2.39053pt too wide) in paragraph at lines 30--31
+Overfull \hbox (2.39053pt too wide) in paragraph at lines 22--23
  [][] 
  []
 
 [35 <./Figures/ionic_debug.png>]
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
  [36]
-<./Figures/app_json_recibido.png, id=680, 852.18375pt x 455.45157pt>
+<./Figures/app_json_recibido.png, id=677, 852.18375pt x 455.45157pt>
 File: ./Figures/app_json_recibido.png Graphic file (type png)
 <use ./Figures/app_json_recibido.png>
-Package pdftex.def Info: ./Figures/app_json_recibido.png  used on input line 12
-9.
+Package pdftex.def Info: ./Figures/app_json_recibido.png  used on input line 62
+.
 (pdftex.def)             Requested size: 392.00928pt x 209.51025pt.
 
-Overfull \hbox (2.20659pt too wide) in paragraph at lines 129--130
+Overfull \hbox (2.20659pt too wide) in paragraph at lines 62--63
  [][] 
  []
 
-<./Figures/pulsador_respuesta_esp32.png, id=683, 202.50656pt x 91.09032pt>
+<./Figures/pulsador_respuesta_esp32.png, id=679, 202.50656pt x 91.09032pt>
 File: ./Figures/pulsador_respuesta_esp32.png Graphic file (type png)
 <use ./Figures/pulsador_respuesta_esp32.png>
 Package pdftex.def Info: ./Figures/pulsador_respuesta_esp32.png  used on input 
-line 153.
+line 71.
 (pdftex.def)             Requested size: 202.50604pt x 91.09007pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 163.
-LaTeX Info: Redefining \% on input line 163.
-[37 <./Figures/app_json_recibido.png>]
-<./Figures/app_json_pulsador.png, id=690, 816.80156pt x 379.4175pt>
+<./Figures/app_json_pulsador.png, id=681, 816.80156pt x 379.4175pt>
 File: ./Figures/app_json_pulsador.png Graphic file (type png)
 <use ./Figures/app_json_pulsador.png>
-Package pdftex.def Info: ./Figures/app_json_pulsador.png  used on input line 17
-4.
+Package pdftex.def Info: ./Figures/app_json_pulsador.png  used on input line 82
+.
 (pdftex.def)             Requested size: 375.73328pt x 174.53416pt.
-LaTeX Info: Redefining \. on input line 191.
-LaTeX Info: Redefining \% on input line 191.
- [38 <./Figures/pulsador_respuesta_esp32.png> <./Figures/app_json_pulsador.png>
-]
-<./Figures/prc10.png, id=698, 602.25pt x 453.19313pt>
-File: ./Figures/prc10.png Graphic file (type png)
-<use ./Figures/prc10.png>
-Package pdftex.def Info: ./Figures/prc10.png  used on input line 207.
-(pdftex.def)             Requested size: 361.35278pt x 271.91797pt.
-<./Figures/maletin.png, id=700, 453.19313pt x 602.25pt>
-File: ./Figures/maletin.png Graphic file (type png)
-<use ./Figures/maletin.png>
-Package pdftex.def Info: ./Figures/maletin.png  used on input line 220.
-(pdftex.def)             Requested size: 271.91797pt x 361.35278pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 235.
-LaTeX Info: Redefining \% on input line 235.
-[39 <./Figures/prc10.png>]
-<./Figures/multiplus.png, id=708, 712.16063pt x 339.51843pt>
+LaTeX Info: Redefining \. on input line 91.
+LaTeX Info: Redefining \% on input line 91.
+[37 <./Figures/app_json_recibido.png> <./Figures/pulsador_respuesta_esp32.png>]
+<./Figures/prc10.png, id=689, 602.25pt x 453.19313pt>
+File: ./Figures/prc10.png Graphic file (type png)
+<use ./Figures/prc10.png>
+Package pdftex.def Info: ./Figures/prc10.png  used on input line 100.
+(pdftex.def)             Requested size: 361.35278pt x 271.91797pt.
+LaTeX Info: Redefining \. on input line 106.
+LaTeX Info: Redefining \% on input line 106.
+[38 <./Figures/app_json_pulsador.png> <./Figures/prc10.png>]
+<./Figures/maletin.png, id=697, 453.19313pt x 602.25pt>
+File: ./Figures/maletin.png Graphic file (type png)
+<use ./Figures/maletin.png>
+Package pdftex.def Info: ./Figures/maletin.png  used on input line 111.
+(pdftex.def)             Requested size: 271.91797pt x 361.35278pt.
+<./Figures/multiplus.png, id=700, 712.16063pt x 339.51843pt>
 File: ./Figures/multiplus.png Graphic file (type png)
 <use ./Figures/multiplus.png>
-Package pdftex.def Info: ./Figures/multiplus.png  used on input line 243.
+Package pdftex.def Info: ./Figures/multiplus.png  used on input line 122.
 (pdftex.def)             Requested size: 384.561pt x 183.33722pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 267.
-LaTeX Info: Redefining \% on input line 267.
-[40 <./Figures/maletin.png>])
+LaTeX Info: Redefining \. on input line 130.
+LaTeX Info: Redefining \% on input line 130.
+[39 <./Figures/maletin.png>]
+LaTeX Info: Redefining \. on input line 152.
+LaTeX Info: Redefining \% on input line 152.
+ [40 <./Figures/multiplus.png>])
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
- [41 <./Figures/multiplus.png>]
+ [41]
 \openout2 = `Chapters/Chapter5.aux'.
 
 
@@ -1603,7 +1598,7 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 Here is how much of TeX's memory you used:
  31532 strings out of 467828
  683831 string characters out of 5427024
- 1298524 words of memory out of 5000000
+ 1298512 words of memory out of 5000000
  59878 multiletter control sequences out of 15000+600000
  689263 words of font info for 112 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1624,9 +1619,9 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (60 pages, 9132355 bytes).
+Output written on memorianueva.pdf (60 pages, 9126073 bytes).
 PDF statistics:
- 893 PDF objects out of 1000 (max. 8388607)
+ 889 PDF objects out of 1000 (max. 8388607)
  179 named destinations out of 1000 (max. 500000)
  512 words of extra memory for PDF output out of 10000 (max. 10000000)
 
