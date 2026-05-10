@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  10 MAY 2026 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.1)  10 MAY 2026 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1564,7 +1564,7 @@ L3 programming layer <2026-01-19>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: 106C69B8068D2773EC9254B7B8B2F186;8970.
+(rerunfilecheck)             Checksum: 5AAF307FDC03075D18BD8D9DFFDA3418;9074.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1577,7 +1577,7 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 Here is how much of TeX's memory you used:
  31518 strings out of 467828
  683627 string characters out of 5427024
- 1299492 words of memory out of 5000000
+ 1298492 words of memory out of 5000000
  59869 multiletter control sequences out of 15000+600000
  689263 words of font info for 112 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1598,7 +1598,7 @@ e35/uplb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplb8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/public/urw-base35/uplr8a.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/urw-base35/uplri8a.pfb>
-Output written on memorianueva.pdf (56 pages, 11520066 bytes).
+Output written on memorianueva.pdf (56 pages, 11520260 bytes).
 PDF statistics:
  871 PDF objects out of 1000 (max. 8388607)
  174 named destinations out of 1000 (max. 500000)
