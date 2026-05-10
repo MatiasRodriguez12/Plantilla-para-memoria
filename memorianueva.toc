@@ -23,26 +23,26 @@
 \contentsline {section}{\numberline {3.1}Desarrollo de hardware}{15}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Comunicación con la red Enertik}{16}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Comunicación con la red Victron}{18}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Prototipo experimental}{19}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Desarrollo de PCB final y listado de componentes}{20}{subsection.3.1.4}%
-\contentsline {section}{\numberline {3.2}Desarrollo de firmware}{22}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tarea: recepción UART}{23}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Tarea: decodificación de comando CAN}{23}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Tarea: comunicación Modbus TCP}{24}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Tarea: pedido de datos}{25}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{25}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{26}{subsection.3.2.6}%
-\contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{27}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Aplicación: pestaña principal}{28}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Aplicación: pestaña luces}{29}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Aplicación: pestaña motores}{30}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Aplicación: pestaña energía}{31}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Aplicación: generación de instalador para Android}{32}{subsection.3.3.5}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{35}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Ensayos sobre la aplicación}{35}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Ensayos sobre el sistema}{36}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ensayos de laboratorio}{38}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{43}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{43}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{44}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{45}{appendix*.34}%
+\contentsline {subsection}{\numberline {3.1.3}Desarrollo de PCB final y listado de componentes}{19}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Desarrollo de firmware}{20}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tarea: recepción UART}{21}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Tarea: decodificación de comando CAN}{21}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Tarea: comunicación Modbus TCP}{22}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Tarea: pedido de datos}{23}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{24}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{24}{subsection.3.2.6}%
+\contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{25}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Arquitectura funcional de la aplicación}{26}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Secuencia de interacción entre la aplicación y el servidor}{27}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Generación de instalador para Android}{28}{subsection.3.3.3}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{31}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Diseño final de la aplicación}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ensayos sobre la aplicación}{32}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Ensayos sobre el sistema}{33}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Ensayos de laboratorio}{34}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Prototipo experimental}{35}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Ensayos sobre el sistema}{36}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{40}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{41}{appendix*.33}%

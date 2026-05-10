@@ -147,44 +147,6 @@ Para lograr la comunicación, resta definir qué dispositivo cumplirá el
 rol de maestro y cuál el de esclavo. Esta definición se abordará en la
 sección \ref{sec:desarrollo_firmware}, donde se detallará su implementación.
 
-\subsection{Prototipo experimental}
-
-Para realizar los primeros ensayos, se decidió realizar un primer
-prototipo del equipo. Para ello, se utilizó como base un PCB (\textit{Printed Circuit Board}) perforado
-de tipo experimental, sobre el que se soldaron diversos conectores,
-cableados y componentes de forma manual.
-
-La figura \ref{fig:prototipo_experimental} muestra el resultado del
-montaje del prototipo utilizado para los ensayos iniciales.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.27]{./Figures/prototipo_experimental.png}
-	\caption{Prototipo experimental del equipo.}
-	\label{fig:prototipo_experimental}
-\end{figure}
-
-Como se puede apreciar, el prototipo cuenta con cada uno de los módulos
-explicados en la sección \ref{sec:desarrollo_hardware}, donde:
-
-\begin{itemize}
-    \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
-    
-    \item Componente 2: regulador de tensión 7805 \citep{7805_datasheet}. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
-    
-    \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
-    
-    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceptor.
-    
-    \item Componente 5: módulo transceptor. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
-    
-    \item Componente 6: módulo W5100. De manera similar al módulo transceptor, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
-\end{itemize}
-
-Este prototipo permitió validar el funcionamiento general del sistema
-y realizar pruebas iniciales de integración entre los distintos módulos
-de hardware.
-
 \subsection{Desarrollo de PCB final y listado de componentes}
 
 El diseño del PCB final se desarrolló mediante el software Altium
@@ -219,20 +181,13 @@ diseño, se optó por integrarlo directamente en el PCB. Para ello, se
 incorporaron el microcontrolador PIC18F26K80 y el transceptor MCP2551
 en la placa. Esta decisión permitió optimizar el espacio disponible y
 reducir costos al unificar todos los componentes en una única placa.
-\newpage
+
 En cuanto al módulo W5100, se optó por utilizar la versión comercial
 disponible en el mercado. Como consecuencia, en el PCB se reservó un espacio para la colocación
 de un conector compatible con el módulo W5100, lo que permite su
 montaje manual de forma sencilla.
 
 En la figura \ref{fig:pcb_final} se puede observar el diseño final del PCB.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.4]{./Figures/pcb_pca10.png}
-	\caption{Diseño final para PCB del equipo.}
-	\label{fig:pcb_final}
-\end{figure}
 
 Como se puede apreciar, el PCB está compuesto por los siguientes componentes:
 
@@ -247,25 +202,23 @@ Como se puede apreciar, el PCB está compuesto por los siguientes componentes:
     \item Componente 8: conector de diez pines. Conector compatible con el módulo W5100. En este lugar se montará dicho componente.
 \end{itemize}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{./Figures/pcb_pca10.png}
+	\caption{Diseño final para PCB del equipo.}
+	\label{fig:pcb_final}
+\end{figure}
+
 Para el proceso de fabricación, fue necesaria la contratación de
 servicios de un fabricante especializado en este campo. Para ello, se
 generaron los denominados archivos Gerber \citep{web_altiu_gerber}.
-
-A modo de resumen, la figura \ref{fig:diagrama_completo} muestra todos los componentes de hardware empleados en el diseño y como se relacionan unos con otros.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.39]{./Figures/diagrama_completo.png}
-	\caption{Diagrama final de los componentes de hardware empleados.}
-	\label{fig:diagrama_completo}
-\end{figure}
 
 \section{Desarrollo de firmware}
 \label{sec:desarrollo_firmware}
 
 Como se mencionó en la sección \ref{sec:rtos}, se optó por utilizar
 FreeRTOS como base para el desarrollo del firmware.
-
+\newpage
 FreeRTOS permite estructurar el firmware mediante la ejecución de múltiples tareas. Su planificación genera un comportamiento concurrente a nivel lógico, lo que mejora la organización del sistema y facilita la gestión de sus funcionalidades.
 
 En este contexto, para el presente trabajo se implementaron seis tareas
@@ -278,7 +231,7 @@ aprecian las relaciones existentes entre ellas y con los módulos externos.
 	\caption{Relación entre las distintas tareas del firmware y su comunicación con el exterior.}
 	\label{fig:relacion_rtos}
 \end{figure}
-\newpage
+
 \subsection{Tarea: recepción UART}
 
 Esta tarea se encarga de monitorear de manera continua el puerto UART del
@@ -304,7 +257,7 @@ robusto de la comunicación UART.
 Esta tarea se encarga de decodificar los comandos recibidos desde la
 red CAN. Para ello, realiza la lectura de los datos almacenados en el
 buffer circular.
-
+\newpage
 La información transmitida en la red CAN sigue un formato
 predefinido. El primer byte corresponde a una marca de inicio, que
 permite identificar el comienzo de cada trama. Por otro lado, el último
@@ -429,7 +382,7 @@ extrae los distintos campos de datos y los interpreta según el tipo de
 paquete recibido. Los valores obtenidos se almacenan en estructuras de
 datos internas, que representan el estado actualizado de los distintos
 sensores y actuadores del motorhome.
-\newpage
+
 Adicionalmente, se realizan conversiones sobre los datos recibidos, ya que muchos de ellos se encuentran codificados. Estas conversiones permiten obtener magnitudes físicas en unidades reales, lo que facilita su posterior visualización y procesamiento.
 
 Por otra parte, la tarea también gestiona comandos destinados al módulo
@@ -446,7 +399,7 @@ Finalmente, una vez procesada la información, los datos actualizados se envían
 Esta tarea gestiona la implementación del servidor en el ESP32.
 
 En primer lugar, se encarga de configurar el dispositivo en modo
-\textit{Access Point}. En esta modalidad, el microcontrolador genera su
+\textit{access point}. En esta modalidad, el microcontrolador genera su
 propia red Wi-Fi, lo que permite la conexión directa de otros
 dispositivos. Además, se definen los parámetros de la red, tales como
 el nombre (SSID) y la contraseña de acceso.
@@ -464,14 +417,7 @@ pantalla solicite únicamente la información necesaria, lo que reduce el
 tráfico de datos y mejora la eficiencia del sistema.
 
 En particular, se definieron cuatro endpoints que admiten
-solicitudes de tipo GET:
-
-\begin{itemize}
-    \item Home
-    \item Luces  
-    \item Motores
-    \item Energía
-\end{itemize}
+solicitudes de tipo GET: home, luces, motores y enería.
 
 Cada uno de estos endpoints genera y devuelve un archivo en
 formato \texttt{JSON} (\textit{JavaScript Object Notation}) \citep{web_json} con la información requerida por la pantalla
@@ -559,174 +505,113 @@ la interfaz.
 
 Inicialmente, estos contenedores se representaron con colores para facilitar la visualización de la estructura. Una vez definida la disposición final, se ajustó su apariencia según el diseño de cada pantalla y, en la mayoría de los casos, se utilizó un fondo transparente para integrarlos visualmente con la interfaz.
 
-\subsection{Aplicación: pestaña principal}
-\label{sec:app_home}
+\subsection{Arquitectura funcional de la aplicación}
+\label{sec:app_arquitectura}
 
-La pestaña principal, representada en la figura  \ref{fig:app_home}, constituye el punto de acceso central a la
-información del sistema, ya que concentra las variables más relevantes
-asociadas al estado general del motorhome.
+La aplicación móvil se diseñó con una estructura basada en navegación
+por pestañas, con el objetivo de organizar las distintas funciones del
+sistema en módulos independientes.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.16]{./Figures/P1_Home.png}
-	\caption{Pestaña principal de la aplicación.}
-	\label{fig:app_home}
-\end{figure}
+Como se mencionó en la sección \ref{sec:tarea_server}, se definieron
+cuatro vistas principales: home, luces,
+motores y energía. Cada una de ellas agrupa
+funcionalidades asociadas a un subsistema específico del motorhome, lo
+que simplifica la navegación y mejora la experiencia de uso.
 
-Desde el punto de vista funcional, esta pantalla implementa un
-mecanismo de actualización periódica basado en solicitudes HTTP de tipo
-GET al endpoint home. 
-
-Para ello, se utiliza un temporizador interno que permite consultar de forma cíclica el estado del sistema. De este modo, la información visualizada se mantiene sincronizada con las variables reales del motorhome.
-
-La información presentada se organiza en distintos grupos funcionales. Por un lado, se incluyen variables asociadas al sistema de baterías, tales como tensión, corriente y porcentaje de carga. Por otro lado, se presentan magnitudes correspondientes al sistema de corriente alterna, entre las que se encuentran la tensión, la corriente y la frecuencia de entrada.
-
-Adicionalmente, se incorporan indicadores que permiten identificar el
-origen de la alimentación del sistema. Esta lógica responde al
-comportamiento del módulo PRC10, que establece un esquema de prioridad
-entre las distintas fuentes disponibles. 
-
-En este esquema, la línea de
-alimentación posee la mayor prioridad, seguida por el inversor y,
-finalmente, el grupo electrógeno. La interfaz refleja este criterio de
-forma visual, lo que permite interpretar rápidamente el estado de
-operación del sistema.
-
-Asimismo, la pantalla incluye la visualización del nivel de los tanques
-de agua, representados en términos porcentuales, lo que permite un
-monitoreo directo de estos recursos.
-
-En cuanto al control del sistema, se incorporan pulsadores que permiten
-accionar distintos actuadores del motorhome, como la bomba de agua y
-las esclusas de los tanques. Estos comandos se envían mediante
-solicitudes HTTP de tipo POST al endpoint pulsadores, donde se
-transmite la identificación del control y su nuevo estado en formato
-\texttt{JSON}.
-
-De esta manera, la pestaña principal integra en una única interfaz la visualización de variables críticas y el acceso a funciones de control, y representa el principal punto de interacción entre el usuario y el sistema.
-
-\subsection{Aplicación: pestaña luces}
-\label{sec:app_luces}
-
-La pestaña correspondiente al control de iluminación, representada en la figura \ref{fig:app_luces}, concentra las funciones asociadas al manejo de las luces del sistema.
+La figura \ref{fig:sitemap_app} presenta el mapa de navegación de la
+aplicación. En ella se observan las distintas vistas definidas y los
+principales elementos funcionales asociados a cada una de ellas, entre
+los que se incluyen variables de monitoreo, indicadores y controles.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.16]{./Figures/P2_Luces.png}
-	\caption{Pestaña luces de la aplicación.}
-	\label{fig:app_luces}
+	\includegraphics[scale=0.45]{./Figures/sitemap_app.png}
+	\caption{Arquitectura funcional de la aplicación.}
+	\label{fig:sitemap_app}
 \end{figure}
-
-Desde el punto de vista funcional, esta pantalla implementa un
-mecanismo de actualización periódica mediante solicitudes HTTP de tipo
-GET al endpoint luces. A través de estas consultas, se obtienen
-los estados de los circuitos de iluminación y el valor asociado al
-control de intensidad.
-
-En particular, el sistema permite gestionar tanto la iluminación
-interior como la exterior. Para el caso de la iluminación interior, se
-dispone de un control de intensidad basado en modulación por ancho de
-pulso, implementado en el módulo PRC10. Esto
-permite ajustar el nivel de iluminación mediante la variación del
-ciclo de trabajo de la señal.
 \newpage
-Las acciones de control se envían mediante solicitudes HTTP de tipo
-POST al endpoint pulsadores, donde se transmite la
-identificación del elemento a accionar y el valor correspondiente. Este
-esquema unifica el mecanismo de control para distintos tipos de
-actuadores, tanto discretos como analógicos.
+La vista home constituye la pantalla principal de la
+aplicación y centraliza las variables más relevantes del sistema. En
+ella se incluyen magnitudes asociadas al sistema de baterías,
+variables de corriente alterna, niveles de los tanques de agua y
+controles correspondientes a actuadores de uso frecuente, como la
+bomba de agua y las esclusas.
 
-De esta manera, la pestaña de iluminación permite supervisar el estado de los circuitos y ajustar su comportamiento a través de una interfaz simple, en coherencia con la arquitectura de comunicación definida para el sistema.
-\subsection{Aplicación: pestaña motores}
-\label{sec:app_motores}
+La vista luces concentra las funciones asociadas al sistema de
+iluminación del motorhome. Permite supervisar el estado de los
+circuitos de iluminación interior y exterior, así como regular la
+intensidad de la iluminación interior mediante un control de tipo
+dimmer.
 
-La pestaña de motores, representada en la figura  \ref{fig:app_motores}, se encarga de la supervisión y el control de los
-elementos móviles del motorhome.
+La vista motores agrupa el control de los elementos móviles
+del motorhome, tales como la mesa, el toldo y la cabina desplazable.
+Además, incorpora restricciones lógicas de seguridad vinculadas al
+estado del freno de mano del vehículo.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.16]{./Figures/P3_Motores.png}
-	\caption{Pestaña motores de la aplicación.}
-	\label{fig:app_motores}
-\end{figure}
-
-Desde el punto de vista funcional, esta pantalla implementa un
-mecanismo de actualización periódica mediante solicitudes HTTP de tipo
-GET al endpoint motores. A través de estas consultas, se
-obtienen tanto los estados de los actuadores como las variables
-necesarias para la lógica de control.
-
-La interfaz permite seleccionar el elemento móvil sobre el que se
-desea operar y presentar los controles asociados a dicho elemento. De
-esta forma, se reutiliza una misma estructura de control para distintos
-actuadores, lo que simplifica el diseño de la aplicación.
-
-Entre las variables recibidas se incluye el estado del freno de mano
-del vehículo. Esta señal se utiliza como condición de habilitación para
-determinados actuadores, en particular la cabina desplazable y el toldo.
-
-Cuando el freno de mano no se encuentra accionado, el sistema bloquea
-la interacción con estos controles. Esta restricción responde a
-criterios de seguridad, ya que dichos mecanismos solo deben operar con
-el vehículo detenido. Una vez que el sistema detecta la activación del
-freno de mano, los controles correspondientes se habilitan.
-
-Por otro lado, el motor asociado al desplazamiento de la mesa no
-depende de esta condición, por lo que su control permanece habilitado
-en todo momento.
-
-Las acciones de control se envían mediante solicitudes HTTP de tipo
-POST al endpoint pulsadores, donde se transmite la
-identificación del actuador y el estado requerido.
-
-De esta manera, la pestaña de motores centraliza el control de los
-elementos móviles e incorpora restricciones de operación que
-garantizan un uso seguro del sistema.
-
-\subsection{Aplicación: pestaña energía}
-\label{sec:app_energia}
-
-La pestaña de energía, representada en la figura \ref{fig:app_energia}, concentra la supervisión y el control de los
-principales sistemas energéticos del motorhome, entre ellos el grupo
+Finalmente, la vista energía centraliza el monitoreo y control
+de los principales subsistemas energéticos, entre ellos el grupo
 electrógeno, el cargador, el inversor y otros consumos de alta
-potencia.
+potencia vinculados al sistema.
+
+\subsection{Secuencia de interacción entre la aplicación y el servidor}
+\label{sec:secuencia_app_server}
+
+El funcionamiento de la aplicación se basa en una arquitectura
+cliente-servidor, en la que el dispositivo móvil actúa como cliente y
+el ESP32 como servidor encargado de procesar las solicitudes y
+administrar el acceso a las variables del sistema.
+
+La comunicación entre ambos dispositivos se implementó mediante el
+protocolo HTTP. En este esquema, la actualización de variables se
+realiza a través de solicitudes de tipo GET, mientras que las acciones
+de control se ejecutan mediante solicitudes de tipo POST.
+
+La figura \ref{fig:diagrama_get} representa la secuencia de intercambio
+correspondiente a la actualización periódica de variables.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.16]{./Figures/P4_Energia.png}
-	\caption{Pestaña energía de la aplicación.}
-	\label{fig:app_energia}
+	\includegraphics[scale=0.55]{./Figures/diagrama_get.png}
+	\caption{Secuencia de solicitudes GET entre la aplicación y el microcontrolador.}
+	\label{fig:diagrama_get}
 \end{figure}
 
-Desde el punto de vista funcional, esta pantalla implementa un
-mecanismo de actualización periódica mediante solicitudes HTTP de tipo
-GET al endpoint energia. A través de estas consultas se
-obtienen las variables asociadas al estado de los distintos equipos,
-lo que permite su monitoreo en tiempo real.
+Cada vez que el usuario accede a una pestaña de la aplicación, se
+activa un temporizador interno configurado con un período de tres
+segundos.
 
-La interfaz agrupa los controles según el tipo de sistema. En primer
-lugar, se dispone del control del grupo electrógeno, que permite su
-encendido y apagado, así como la selección del modo de operación del
-cebador. 
+Al finalizar cada período, la pestaña activa envía una solicitud GET a su
+endpoint asociado. El ESP32 procesa dicha solicitud y responde con un
+archivo en formato \texttt{JSON} que contiene las variables
+correspondientes a esa vista, junto con el estado actual de sus
+controles.
 
-Por otro lado, se incluyen los controles asociados al cargador
-y al inversor, junto con la visualización de variables relevantes como
-la corriente de carga y la potencia suministrada.
+Este mecanismo permite mantener sincronizada la información mostrada en
+pantalla con el estado real del sistema.
 
-Además, se incorporan controles correspondientes a otros sistemas de
-consumo energético, como el calentador de agua y el sistema de gas
-envasado de alta potencia. Esta integración permite centralizar el
-manejo de distintos dispositivos dentro de una misma interfaz.
+Por otra parte, las acciones de control se realizan mediante
+solicitudes HTTP de tipo POST. La figura \ref{fig:diagrama_post}
+representa esta secuencia de comunicación.
 
-Las acciones de control se envían mediante solicitudes HTTP de tipo
-POST al endpoint pulsadores, donde se transmite la
-identificación del equipo y el estado requerido.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{./Figures/diagrama_post.png}
+	\caption{Secuencia de solicitudes POST entre la aplicación y el microcontrolador.}
+	\label{fig:diagrama_post}
+\end{figure}
 
-De esta manera, la pestaña de energía permite supervisar y gestionar
-los distintos subsistemas energéticos desde un único punto de acceso,
-en coherencia con la arquitectura de control definida para el sistema.
+Cada vez que el usuario acciona un pulsador desde la interfaz, la
+aplicación genera una solicitud POST dirigida al endpoint
+pulsadores. En esta solicitud se transmite la identificación
+del control accionado y el nuevo estado requerido.
 
-\subsection{Aplicación: generación de instalador para Android}
+Luego, el ESP32 procesa la petición, ejecuta la lógica de control
+correspondiente y envía una respuesta de confirmación en formato
+\texttt{JSON}. Esta respuesta informa el nuevo estado del elemento
+controlado y permite mantener la coherencia entre el sistema físico y
+la interfaz de usuario.
+
+\subsection{Generación de instalador para Android}
 \label{sec:app_apk}
 
 Una vez finalizado el desarrollo de la aplicación, fue necesario
@@ -747,7 +632,7 @@ y permitir así un control más directo sobre la comunicación con el
 servidor del ESP32. Asimismo, se utilizaron utilidades para la
 generación y configuración de los recursos gráficos de la aplicación,
 como los íconos y elementos visuales requeridos por el sistema Android.
-\newpage
+
 A partir de este proceso, el trabajo fue importado en el entorno de
 desarrollo Android Studio. Este software permite gestionar la
 compilación de la aplicación, así como configurar parámetros propios

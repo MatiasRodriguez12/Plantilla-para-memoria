@@ -8,6 +8,30 @@ En este capítulo se explica cómo fueron los ensayos que se realizaron sobre el
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
+\section{Diseño final de la aplicación}
+\label{sec:diseno_final_app}
+
+Como resultado del proceso de desarrollo descrito en la sección \ref{sec:desarrollo_app}, se obtuvo una aplicación móvil funcional orientada al
+monitoreo y control de distintos subsistemas del motorhome.
+
+La interfaz final quedó organizada en cuatro pestañas principales:
+home, luces, motores y energía. Cada una de ellas fue diseñada para
+centralizar funciones específicas del sistema y facilitar la interacción
+del usuario con los distintos módulos controlados por el ESP32.
+
+La figura \ref{fig:app_final} presenta las cuatro pantallas finales de
+la aplicación desarrollada.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.11]{./Figures/app_pestañas.png}
+	\caption{Diseño final de las principales pantallas de la aplicación móvil.}
+	\label{fig:app_final}
+\end{figure}
+
+Estas pantallas constituyen la versión final utilizada durante los
+ensayos presentados en las secciones siguientes.
+
 \section{Ensayos sobre la aplicación}
 \label{sec:pruebasAPP}
 
@@ -25,7 +49,7 @@ La figura \ref{fig:ionic_debug} muestra el entorno de ejecución utilizado duran
 \end{figure}
 
 En el sector identificado como cuadro 1, se empleó la funcionalidad de simulación de distintos tamaños de pantalla, lo que permitió evaluar el comportamiento de la interfaz frente a diferentes resoluciones.
-\newpage
+
 Por otro lado, en el cuadro 2 se encuentra la consola del navegador, donde se visualizaron mensajes de depuración generados mediante instrucciones como \texttt{console.log()}. Estos mensajes incluyeron valores de variables y estructuras de datos en formato \texttt{JSON}, lo que facilitó el seguimiento del estado interno de la aplicación y la detección de errores durante su ejecución.
 
 El procedimiento de ensayo consistió en navegar entre las distintas pestañas de la aplicación, accionar los controles disponibles y observar el comportamiento de la interfaz. En paralelo, se analizaron los mensajes generados en la consola del navegador mediante instrucciones de depuración incorporadas en el código.
@@ -59,7 +83,7 @@ La figura \ref{fig:app_json_recibido} muestra un ejemplo del archivo \texttt{JSO
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.46]{./Figures/app_json_recibido.png}
+	\includegraphics[scale=0.46]{./Figures/app_json_recibido_2.png}
 	\caption{Archivo \texttt{JSON} recibido en la pestaña home.}
 	\label{fig:app_json_recibido}
 \end{figure}
@@ -79,7 +103,7 @@ Asimismo, se verificó la respuesta del servidor ante estas solicitudes. La figu
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.46]{./Figures/app_json_pulsador.png}
+	\includegraphics[scale=0.34]{./Figures/app_json_pulsador_2.png}
 	\caption{Respuesta del servidor ante una solicitud de control.}
 	\label{fig:app_json_pulsador}
 \end{figure}
@@ -88,16 +112,56 @@ Como resultado, se comprobó que los datos intercambiados entre la aplicación y
 
 A partir de estos ensayos, se concluyó que la comunicación entre la aplicación y el microcontrolador resultó confiable, lo que permitió validar el funcionamiento del servidor y avanzar hacia la etapa de pruebas con equipos reales.
 
+
 \section{Ensayos de laboratorio}
 \label{sec:ensayos_laboratorio}
 
 En esta etapa se realizaron ensayos con equipos reales de la red de domótica de Enertik, con el objetivo de validar el funcionamiento del sistema en condiciones representativas de operación.
 
+\subsection{Prototipo experimental}
+
+Para realizar los primeros ensayos, se decidió realizar un primer
+prototipo del equipo. Para ello, se utilizó como base un PCB (\textit{Printed Circuit Board}) perforado
+de tipo experimental, sobre el que se soldaron diversos conectores,
+cableados y componentes de forma manual.
+
+La figura \ref{fig:prototipo_experimental} muestra el montaje del prototipo utilizado para los ensayos iniciales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.27]{./Figures/prototipo_experimental.png}
+	\caption{Prototipo experimental del equipo.}
+	\label{fig:prototipo_experimental}
+\end{figure}
+
+Como se puede apreciar, el prototipo cuenta con cada uno de los módulos
+explicados en la sección \ref{sec:desarrollo_hardware}, donde:
+
+\begin{itemize}
+    \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
+    
+    \item Componente 2: regulador de tensión 7805 \citep{7805_datasheet}. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
+    
+    \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
+    
+    \item Componente 4: divisor resistivo. Corresponde al arreglo de resistencias encargado de adaptar los niveles de tensión y permitir una comunicación UART segura entre el ESP32 y el módulo transceptor.
+    
+    \item Componente 5: módulo transceptor. Se trata de una placa comercial provista por Enertik. En este prototipo se decidió incorporar un conector en el PCB experimental para facilitar su montaje y desmontaje de forma segura.
+    
+    \item Componente 6: módulo W5100. De manera similar al módulo transceptor, se utilizó un conector compatible que permite su montaje y desmontaje de forma sencilla y segura.
+\end{itemize}
+
+Este prototipo permitió validar el funcionamiento general del sistema
+y realizar pruebas iniciales de integración entre los distintos módulos
+de hardware.
+
+\subsection{Ensayos sobre el sistema}
+
 La figura \ref{fig:prc10} muestra el módulo PRC10 utilizado durante los ensayos. Este equipo fue separado y destinado específicamente a este desarrollo.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{./Figures/prc10.png}
+	\includegraphics[scale=0.23]{./Figures/prc10.png}
 	\caption{Módulo PRC10 utilizado en los ensayos.}
 	\label{fig:prc10}
 \end{figure}
