@@ -37,12 +37,12 @@
 \contentsline {subsection}{\numberline {3.3.3}Generación de instalador para Android}{28}{subsection.3.3.3}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{31}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Diseño final de la aplicación}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Ensayos sobre la aplicación}{32}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ensayos sobre el sistema}{33}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Ensayos de laboratorio}{34}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Prototipo experimental}{35}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Ensayos de integración del sistema completo}{36}{subsection.4.4.2}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{39}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones generales }{39}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Próximos pasos}{40}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{41}{appendix*.33}%
+\contentsline {section}{\numberline {4.2}Ensayos sobre la aplicación}{33}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Ensayos sobre el sistema}{35}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Ensayos de laboratorio}{36}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Prototipo experimental}{37}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Ensayos de integración del sistema completo}{38}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones generales }{41}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Próximos pasos}{42}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{43}{appendix*.35}%

@@ -14,21 +14,60 @@ En este capítulo se explica cómo fueron los ensayos que se realizaron sobre el
 Como resultado del proceso de desarrollo descrito en la sección \ref{sec:desarrollo_app}, se obtuvo una aplicación móvil funcional orientada al
 monitoreo y control de distintos subsistemas del motorhome.
 
-La interfaz final quedó organizada en cuatro pestañas principales:
-home, luces, motores y energía. Cada una de ellas fue diseñada para
+La interfaz final quedó organizada en cuatro pestañas principales, cada una de ellas fue diseñada para
 centralizar funciones específicas del sistema y facilitar la interacción
 del usuario con los distintos módulos controlados por el ESP32.
 
-La figura \ref{fig:app_final} presenta las cuatro pantallas finales de
-la aplicación desarrollada.
+La figura \ref{fig:pest_home} muestra el diseño final de la
+pantalla principal. En esta vista se priorizó la visualización de las
+variables más relevantes del sistema, organizadas en bloques claramente
+diferenciados. La distribución permite acceder de forma inmediata a la
+información crítica y a los controles de uso frecuente.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.11]{./Figures/app_pestañas.png}
-	\caption{Diseño final de las principales pantallas de la aplicación móvil.}
-	\label{fig:app_final}
+	\includegraphics[scale=0.16]{./Figures/P1_Home.png}
+	\caption{Pestaña home de la aplicación.}
+	\label{fig:pest_home}
 \end{figure}
 
+La figura \ref{fig:pest_luces} presenta la pantalla destinada al
+control de iluminación. En este diseño se priorizó una interfaz simple,
+con controles de acceso directo y una disposición que facilita la
+identificación rápida de cada componente.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/P2_Luces.png}
+	\caption{Pestaña luces de la aplicación.}
+	\label{fig:pest_luces}
+\end{figure}
+\newpage
+La figura \ref{fig:pest_motores} muestra la pantalla de control de
+motores. En este caso se adoptó una estructura centrada en la selección
+del elemento móvil y en la visualización de sus controles asociados, con
+el objetivo de simplificar la interacción del usuario.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.1214]{./Figures/P3_Motores.png}
+	\caption{Pestaña motores de la aplicación.}
+	\label{fig:pest_motores}
+\end{figure}
+
+La figura \ref{fig:pest_energia} presenta la pantalla destinada al
+control energético. Su diseño organiza los distintos subsistemas en
+sectores independientes, lo que facilita la supervisión simultánea de
+múltiples equipos.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.16]{./Figures/P4_Energia.png}
+	\caption{Pestaña energía de la aplicación.}
+	\label{fig:pest_energia}
+\end{figure}
+
+\newpage
 Estas pantallas constituyen la versión final utilizada durante los
 ensayos presentados en las secciones siguientes.
 
@@ -39,18 +78,25 @@ En esta etapa se realizaron ensayos sobre la aplicación móvil de forma indepen
 
 Para ello, se utilizó el entorno de desarrollo provisto por Ionic mediante el comando \texttt{ionic serve}, que permite ejecutar la aplicación en un navegador web. Este entorno facilitó el acceso a herramientas de depuración, tales como la simulación de distintos tamaños de pantalla y la visualización de mensajes en la consola.
 
-La figura \ref{fig:ionic_debug} muestra el entorno de ejecución utilizado durante los ensayos.
+La figura \ref{fig:ionic_debug_1} muestra el entorno de ejecución utilizado durante los ensayos.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.32]{./Figures/ionic_debug.png}
+	\includegraphics[scale=0.52]{./Figures/ionic_debug_1.png}
 	\caption{Entorno de ejecución y depuración de la aplicación.}
-	\label{fig:ionic_debug}
+	\label{fig:ionic_debug_1}
 \end{figure}
 
 En el sector identificado como cuadro 1, se empleó la funcionalidad de simulación de distintos tamaños de pantalla, lo que permitió evaluar el comportamiento de la interfaz frente a diferentes resoluciones.
 
-Por otro lado, en el cuadro 2 se encuentra la consola del navegador, donde se visualizaron mensajes de depuración generados mediante instrucciones como \texttt{console.log()}. Estos mensajes incluyeron valores de variables y estructuras de datos en formato \texttt{JSON}, lo que facilitó el seguimiento del estado interno de la aplicación y la detección de errores durante su ejecución.
+Por otro lado, en la figura \ref{fig:ionic_debug_2} se muestra la consola del navegador (indicada con el cuadro 2), donde se visualizaron mensajes de depuración generados mediante instrucciones como \texttt{console.log()}. Estos mensajes incluyeron valores de variables y estructuras de datos en formato \texttt{JSON}, lo que facilitó el seguimiento del estado interno de la aplicación y la detección de errores durante su ejecución.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.52]{./Figures/ionic_debug_2.png}
+	\caption{Consola del navegador utilizada como depurador.}
+	\label{fig:ionic_debug_2}
+\end{figure}
 
 El procedimiento de ensayo consistió en navegar entre las distintas pestañas de la aplicación, accionar los controles disponibles y observar el comportamiento de la interfaz. En paralelo, se analizaron los mensajes generados en la consola del navegador mediante instrucciones de depuración incorporadas en el código.
 
@@ -83,7 +129,7 @@ La figura \ref{fig:app_json_recibido} muestra un ejemplo del archivo \texttt{JSO
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.46]{./Figures/app_json_recibido_2.png}
+	\includegraphics[scale=0.7]{./Figures/app_json_recibido_3.png}
 	\caption{Archivo \texttt{JSON} recibido en la pestaña home.}
 	\label{fig:app_json_recibido}
 \end{figure}
@@ -103,7 +149,7 @@ Asimismo, se verificó la respuesta del servidor ante estas solicitudes. La figu
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.34]{./Figures/app_json_pulsador_2.png}
+	\includegraphics[scale=0.7]{./Figures/app_json_pulsador_3.png}
 	\caption{Respuesta del servidor ante una solicitud de control.}
 	\label{fig:app_json_pulsador}
 \end{figure}
@@ -172,7 +218,7 @@ La figura \ref{fig:equipos_enertik} muestra dicho entorno, donde los dispositivo
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{./Figures/maletin.png}
+	\includegraphics[scale=0.7]{./Figures/maletin.png}
 	\caption{Equipos Enertik utilizados en los ensayos.}
 	\label{fig:equipos_enertik}
 \end{figure}
