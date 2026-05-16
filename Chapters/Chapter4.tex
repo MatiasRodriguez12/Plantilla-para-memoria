@@ -19,10 +19,10 @@ centralizar funciones específicas del sistema y facilitar la interacción
 del usuario con los distintos módulos controlados por el ESP32.
 
 La figura \ref{fig:pest_home} muestra el diseño final de la
-pantalla principal. En esta vista se priorizó la visualización de las
-variables más relevantes del sistema, organizadas en bloques claramente
-diferenciados. La distribución permite acceder de forma inmediata a la
-información crítica y a los controles de uso frecuente.
+pantalla principal. La interfaz se organizó en bloques funcionales que
+agrupan las variables eléctricas del sistema, los niveles de los
+tanques de agua y los controles asociados. Esta disposición facilita la
+interpretación rápida del estado general del motorhome.
 
 \begin{figure}[h]
 	\centering
@@ -32,9 +32,10 @@ información crítica y a los controles de uso frecuente.
 \end{figure}
 
 La figura \ref{fig:pest_luces} presenta la pantalla destinada al
-control de iluminación. En este diseño se priorizó una interfaz simple,
-con controles de acceso directo y una disposición que facilita la
-identificación rápida de cada componente.
+control de iluminación. La interfaz se organizó de forma diferenciada
+para los circuitos de iluminación interior y exterior e incorpora un
+control deslizante para el ajuste de intensidad de la luz interior.
+Esta disposición permite una operación simple e intuitiva.
 
 \begin{figure}[h]
 	\centering
@@ -43,10 +44,14 @@ identificación rápida de cada componente.
 	\label{fig:pest_luces}
 \end{figure}
 \newpage
-La figura \ref{fig:pest_motores} muestra la pantalla de control de
-motores. En este caso se adoptó una estructura centrada en la selección
-del elemento móvil y en la visualización de sus controles asociados, con
-el objetivo de simplificar la interacción del usuario.
+La figura \ref{fig:pest_motores} muestra la pantalla destinada al
+control de los elementos móviles del motorhome. La interfaz se diseñó a
+partir de una estructura reutilizable, donde el usuario selecciona el
+elemento a controlar y accede a sus comandos asociados. 
+
+Además, se incorporaron indicadores visuales que informan el estado de
+habilitación de determinados actuadores, de acuerdo con las
+restricciones de seguridad definidas para el sistema.
 
 \begin{figure}[h]
 	\centering
@@ -56,9 +61,9 @@ el objetivo de simplificar la interacción del usuario.
 \end{figure}
 
 La figura \ref{fig:pest_energia} presenta la pantalla destinada al
-control energético. Su diseño organiza los distintos subsistemas en
-sectores independientes, lo que facilita la supervisión simultánea de
-múltiples equipos.
+control energético. La interfaz se organizó en bloques funcionales
+independientes, lo que facilita la identificación de cada subsistema y
+permite supervisar múltiples equipos de forma simultánea.
 
 \begin{figure}[h]
 	\centering
@@ -207,7 +212,7 @@ La figura \ref{fig:prc10} muestra el módulo PRC10 utilizado durante los ensayos
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.23]{./Figures/prc10.png}
+	\includegraphics[scale=0.6]{./Figures/prc10_2.png}
 	\caption{Módulo PRC10 utilizado en los ensayos.}
 	\label{fig:prc10}
 \end{figure}
@@ -240,6 +245,7 @@ En la pestaña principal se accionaron los pulsadores y se verificó la respuest
 
 Este procedimiento se replicó en las demás pestañas, donde se evaluaron los distintos controles implementados y su efecto sobre los dispositivos físicos del sistema.
 
+\newpage
 En relación con la comunicación con los equipos Victron, se utilizó la pestaña energía para controlar el equipo MultiPlus. 
 
 Al activar el Multiplus en modo inversor, el equipo comenzó a convertir la tensión
