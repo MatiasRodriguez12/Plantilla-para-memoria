@@ -147,15 +147,15 @@ Para lograr la comunicación, resta definir qué dispositivo cumplirá el
 rol de maestro y cuál el de esclavo. Esta definición se abordará en la
 sección \ref{sec:desarrollo_firmware}, donde se detallará su implementación.
 
-\subsection{Desarrollo de PCB final y listado de componentes}
+\subsection{Desarrollo de la placa final y listado de componentes}
 
-El diseño del PCB final se desarrolló mediante el software Altium
+El diseño del PCB (\textit{Printed Circuit Board}) se desarrolló mediante el software Altium
 Designer \citep{web_altium}. Este software es ampliamente utilizado en la industria, ya
 que permite crear esquemáticos de circuitos de forma sencilla. Estos sirven como base para el diseño de placas de circuito
 impreso.
 
 Para la creación de este PCB, se tomó como referencia el conexionado
-utilizado en el prototipo experimental.
+utilizado en el prototipo experimental (este se explicará en la sección \ref{sec:prototipo}).
 
 Dado que se espera que este desarrollo se convierta en un producto
 comercial, fue necesario realizar modificaciones en la selección de
@@ -198,7 +198,7 @@ Como se puede apreciar, el PCB está compuesto por los siguientes componentes:
 	\item Componente 4: PIC18F26K80. Microcontrolador que contiene la biblioteca desarrollada por Enertik para la comunicación entre equipos.
 	\item Componente 5: módulo ESP32. Microcontrolador que contiene el firmware principal del equipo.    
     \item Componente 6: regulador de tensión AP63203. Fuente de tensión de 3,3 V encargado de alimentar el ESP32.
-    \item Componente 7: regulador de tensión 7805. Componente responsable de suministrar una tensión estable de 5 V para alimentar el PIC y el W5100.   
+    \item Componente 7: regulador de tensión 7805 \citep{7805_datasheet}. Componente responsable de suministrar una tensión estable de 5 V para alimentar el PIC y el W5100.   
     \item Componente 8: conector de diez pines. Conector compatible con el módulo W5100. En este lugar se montará dicho componente.
 \end{itemize}
 

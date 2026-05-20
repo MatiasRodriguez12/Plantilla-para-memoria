@@ -14,7 +14,7 @@ En este capítulo se explica cómo fueron los ensayos que se realizaron sobre el
 Como resultado del proceso de desarrollo descrito en la sección \ref{sec:desarrollo_app}, se obtuvo una aplicación móvil funcional orientada al
 monitoreo y control de distintos subsistemas del motorhome.
 
-La interfaz final quedó organizada en cuatro pestañas principales, cada una de ellas fue diseñada para
+La interfaz final quedó organizada en cuatro pestañas principales, donde cada una de ellas fue diseñada para
 centralizar funciones específicas del sistema y facilitar la interacción
 del usuario con los distintos módulos controlados por el ESP32.
 
@@ -170,9 +170,9 @@ A partir de estos ensayos, se concluyó que la comunicación entre la aplicació
 En esta etapa se realizaron ensayos con equipos reales de la red de domótica de Enertik, con el objetivo de validar el funcionamiento del sistema en condiciones representativas de operación.
 
 \subsection{Prototipo experimental}
-
+\label{sec:prototipo}
 Para realizar los primeros ensayos, se decidió realizar un primer
-prototipo del equipo. Para ello, se utilizó como base un PCB (\textit{Printed Circuit Board}) perforado
+prototipo del equipo. Para ello, se utilizó como base un PCB experimental perforado
 de tipo experimental, sobre el que se soldaron diversos conectores,
 cableados y componentes de forma manual.
 
@@ -191,7 +191,7 @@ explicados en la sección \ref{sec:desarrollo_hardware}, donde:
 \begin{itemize}
     \item Componente 1: conector de cuatro hilos. Este conector es el estándar empleado en la red de domótica de Enertik. A través de él se energizan todos los componentes del PCB experimental y se accede a la comunicación CAN de la red.
     
-    \item Componente 2: regulador de tensión 7805 \citep{7805_datasheet}. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
+    \item Componente 2: regulador de tensión 7805. Este dispositivo se encarga de suministrar una tensión estable de 5 V. Dado que la tensión proveniente del motorhome es de 12 V, fue necesaria su utilización para adecuar los niveles de alimentación a los requeridos por los módulos.
     
     \item Componente 3: módulo ESP32. Es el microcontrolador principal de la placa y contiene el firmware de control del sistema. En este prototipo se alimentó a través del regulador 7805, ya que la placa de desarrollo dispone internamente de reguladores que reducen la tensión a 3,3 V. Para el desarrollo final fue necesaria la incorporación de un regulador adicional dedicado al ESP32.
     
