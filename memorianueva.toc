@@ -29,7 +29,7 @@
 \contentsline {subsection}{\numberline {3.2.2}Tarea: decodificación de comando CAN}{21}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Tarea: comunicación Modbus TCP}{22}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Tarea: pedido de datos}{23}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{24}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.5}Tarea: procesamiento de comandos recibidos}{23}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Tarea: control de servidor}{24}{subsection.3.2.6}%
 \contentsline {section}{\numberline {3.3}Desarrollo de la aplicación}{25}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Arquitectura funcional de la aplicación}{26}{subsection.3.3.1}%
@@ -45,4 +45,4 @@
 \contentsline {chapter}{\numberline {5}Conclusiones}{41}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Conclusiones generales }{41}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Próximos pasos}{42}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{43}{appendix*.35}%
+\contentsline {chapter}{Bibliografía}{43}{appendix*.34}%

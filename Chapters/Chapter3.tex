@@ -57,7 +57,7 @@ La figura \ref{fig:im_hw_transceiver} muestra un diagrama completo sobre cómo f
 	\caption{Diagrama de cómo se establece la comunicación CAN entre la red del motorhome y el ESP32.}
 	\label{fig:im_hw_transceiver}
 \end{figure}
-\newpage
+
 El microcontrolador PIC dispone de la biblioteca de comunicación
 propia desarrollada por Enertik, lo que le permite interactuar de forma
 nativa con la red de domótica del motorhome. Por su parte, el
@@ -83,12 +83,11 @@ lo que permitió una comunicación segura entre ambos dispositivos.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{./Figures/divisor_resistivo.png}
+	\includegraphics[scale=0.7]{./Figures/divisor_resistivo.png}
 	\caption{Diseño de divisor resistivo para adaptación UART.}
 	\label{fig:divisor_resistivo}
 \end{figure}
 
-\newpage
 Este divisor fue implementado en la conexión correspondiente a la línea
 de transmisión UART (Tx) del microcontrolador PIC hacia la línea de
 recepción UART (Rx) del ESP32. En el sentido contrario no fue necesaria
@@ -147,6 +146,7 @@ Para lograr la comunicación, resta definir qué dispositivo cumplirá el
 rol de maestro y cuál el de esclavo. Esta definición se abordará en la
 sección \ref{sec:desarrollo_firmware}, donde se detallará su implementación.
 
+\newpage
 \subsection{Desarrollo de la placa final y listado de componentes}
 
 El diseño del PCB (\textit{Printed Circuit Board}) se desarrolló mediante el software Altium
@@ -218,7 +218,7 @@ generaron los denominados archivos Gerber \citep{web_altiu_gerber}.
 
 Como se mencionó en la sección \ref{sec:rtos}, se optó por utilizar
 FreeRTOS como base para el desarrollo del firmware.
-\newpage
+
 FreeRTOS permite estructurar el firmware mediante la ejecución de múltiples tareas. Su planificación genera un comportamiento concurrente a nivel lógico, lo que mejora la organización del sistema y facilita la gestión de sus funcionalidades.
 
 En este contexto, para el presente trabajo se implementaron seis tareas
@@ -257,7 +257,7 @@ robusto de la comunicación UART.
 Esta tarea se encarga de decodificar los comandos recibidos desde la
 red CAN. Para ello, realiza la lectura de los datos almacenados en el
 buffer circular.
-\newpage
+
 La información transmitida en la red CAN sigue un formato
 predefinido. El primer byte corresponde a una marca de inicio, que
 permite identificar el comienzo de cada trama. Por otro lado, el último
@@ -529,7 +529,7 @@ los que se incluyen variables de monitoreo, indicadores y controles.
 	\caption{Arquitectura funcional de la aplicación.}
 	\label{fig:sitemap_app}
 \end{figure}
-\newpage
+
 La vista home constituye la pantalla principal de la
 aplicación y centraliza las variables más relevantes del sistema. En
 ella se incluyen magnitudes asociadas al sistema de baterías,

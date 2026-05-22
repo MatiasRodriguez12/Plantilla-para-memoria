@@ -47,8 +47,10 @@ En este contexto, las características del protocolo CAN, como su inmunidad al r
 El protocolo Modbus TCP es una variante del protocolo Modbus que opera sobre redes Ethernet mediante el uso de TCP/IP como medio de transporte \citep{web_tcpip}. Este protocolo permite el acceso a registros internos de dispositivos remotos a través de una estructura de comunicación simple y estandarizada.
 
 En el presente trabajo, Modbus TCP se utiliza para establecer la comunicación con el módulo Cerbo GX. Este dispositivo expone distintos registros asociados al estado y funcionamiento de los equipos del ecosistema Victron \citep{web_victron_modbus}. A través de este protocolo, el dispositivo basado en ESP32 consulta variables relevantes y envía comandos de control.
-\newpage
-La elección de Modbus TCP responde a que constituye el mecanismo de comunicación provisto de forma nativa por los equipos Victron. Esto permite acceder a la información del sistema y modificar su comportamiento mediante una interfaz documentada y estandarizada, sin necesidad de desarrollar soluciones propietarias. Además, su estructura basada en registros facilita la organización y el acceso a las variables de interés dentro del sistema.
+
+La elección de Modbus TCP responde a que constituye el mecanismo de comunicación provisto de forma nativa por los equipos Victron. 
+
+Esto permite acceder a la información del sistema y modificar su comportamiento mediante una interfaz documentada y estandarizada, sin necesidad de desarrollar soluciones propietarias. Además, su estructura basada en registros facilita la organización y el acceso a las variables de interés dentro del sistema.
 
 \subsection{Solicitudes HTTP}
 \label{sec:http}
@@ -72,7 +74,7 @@ capacidades de procesamiento en un único dispositivo.
 Entre sus principales características, el ESP32 dispone de puertos de propósito general (GPIO), conversores analógico-digitales (ADC), módulos de comunicación serie como UART (\textit{Universal Asynchronous Receiver-Transmitter}) \citep{web_uart}, SPI (\textit{Serial Peripheral Interface})\citep{web_spi} e I\textsuperscript{2}C (\textit{Inter-Integrated Circuit}) \citep{web_i2c},
 temporizadores y periféricos para generación de señales PWM (\textit{Pulse Width Modulation}) \citep{web_pwm}.
 
-Además, el dispositivo incorpora conectividad inalámbrica, como Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para el desarrollo de aplicaciones orientadas al campo IoT (Internet of Things).
+Además, el dispositivo incorpora conectividad inalámbrica, como Wi-Fi y Bluetooth, lo que lo convierte en una plataforma adecuada para el desarrollo de aplicaciones orientadas al campo IoT (\textit{Internet of Things}).
 \newpage
 La elección del ESP32 responde a la necesidad de disponer de un microcontrolador con capacidad para gestionar múltiples interfaces de comunicación y brindar conectividad inalámbrica, lo que permite su integración con los distintos subsistemas del vehículo y con la aplicación móvil. En este sentido, sus características lo convierten en una opción adecuada para el desarrollo del presente trabajo.
 
